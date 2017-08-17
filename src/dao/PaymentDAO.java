@@ -46,7 +46,6 @@ public class PaymentDAO {
     				"INSERT INTO " + NOME_TABELLA + " "
     				+ "(cliente, nomemetodo, credenziali) "
     				+ "VALUES (?,?,?)")) {
-    			pst.clearParameters();
     			
     			pst.setString(1, pagamento.getUserMailFromPayment());
     			pst.setString(2, pagamento.getNomeMetodo());
@@ -87,7 +86,6 @@ public class PaymentDAO {
     				+ "WHERE cliente = ? AND "
     				+ "nomemetodo = ? AND "
     				+ "credenziali = ?")) {
-    			pst.clearParameters();
     			
     			pst.setString(1, pagamento.getUserMailFromPayment());
     			pst.setString(2, pagamento.getNomeMetodo());
@@ -128,7 +126,6 @@ public class PaymentDAO {
     		try (PreparedStatement pst = con.prepareStatement(
     				"SELECT * FROM  " + NOME_TABELLA + " "
     				+ "WHERE cliente = ?")) {
-    			pst.clearParameters();
     			
     			pst.setString(1, mailUtente);
     			

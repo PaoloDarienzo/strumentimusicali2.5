@@ -47,7 +47,6 @@ public class ShoppingCartDAO {
     				"INSERT INTO " + NOME_TABELLA + " "
     				+ "(strumento, cliente, npezzi) "
     				+ "VALUES (?,?,?)")) {
-    			pst.clearParameters();
     			
     			pst.setInt(1, prodotto.getProduct().getID());
     			pst.setString(2, userMail);
@@ -90,7 +89,6 @@ public class ShoppingCartDAO {
     				"UPDATE " + NOME_TABELLA
     				+ " SET npezzi = ?"
     				+ " WHERE strumento = ? AND cliente = ?")) {
-    			pst.clearParameters();
     			
     			pst.setInt(1, newQuantity);
     			pst.setInt(2, productID);
@@ -130,7 +128,6 @@ public class ShoppingCartDAO {
     				"DELETE FROM " + NOME_TABELLA + " "
     				+ "WHERE strumento = ? AND "
     				+ "cliente = ?")) {
-    			pst.clearParameters();
     			
     			pst.setInt(1, productID);
     			pst.setString(2, userMail);
@@ -167,7 +164,6 @@ public class ShoppingCartDAO {
     		try (PreparedStatement pst = con.prepareStatement(
     				"DELETE FROM " + NOME_TABELLA + " "
     				+ "WHERE cliente = ?")) {
-    			pst.clearParameters();
     			
     			pst.setString(1, userMail);
     			
@@ -208,7 +204,6 @@ public class ShoppingCartDAO {
     		try (PreparedStatement pst = con.prepareStatement(
     				"SELECT * FROM  " + NOME_TABELLA + " "
     				+ "WHERE cliente = ?")) {
-    			pst.clearParameters();
     			
     			pst.setString(1, mailUtente);
     			

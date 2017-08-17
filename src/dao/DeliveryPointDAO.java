@@ -45,7 +45,6 @@ public class DeliveryPointDAO {
     				"INSERT INTO " + NOME_TABELLA + " "
     				+ "(cliente, via, civico, cap, citta) "
     				+ "VALUES (?,?,?,?,?)")) {
-    			pst.clearParameters();
     			
     			pst.setString(1, puntoDiConsegna.getUserMailFromDelPoint());
     			pst.setString(2, puntoDiConsegna.getVia());
@@ -89,7 +88,6 @@ public class DeliveryPointDAO {
     				+ "via = ? AND "
     				+ "civico = ? AND "
     				+ "CAP = ?")) {
-    			pst.clearParameters();
     			
     			pst.setString(1, puntoDiConsegna.getUserMailFromDelPoint());
     			pst.setString(2, puntoDiConsegna.getVia());
@@ -131,7 +129,6 @@ public class DeliveryPointDAO {
     		try (PreparedStatement pst = con.prepareStatement(
     				"SELECT * FROM  " + NOME_TABELLA + " "
     				+ "WHERE cliente = ?")) {
-    			pst.clearParameters();
     			
     			pst.setString(1, mailUtente);
     			

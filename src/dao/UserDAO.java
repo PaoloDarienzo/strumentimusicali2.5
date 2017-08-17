@@ -42,7 +42,6 @@ public class UserDAO {
     				"INSERT INTO " + NOME_TABELLA + " "
     				+ "(mail, nomeutente, password, nome, cognome, cf, ntelefono, ncellulare, cittadiresidenza, tipo) "
     				+ "VALUES (?,?,?,?,?,?,?,?,?,?)")) {
-    			pst.clearParameters();
     			
     			pst.setString(1, utente.getMail());
     			pst.setString(2, utente.getNomeUtente());
@@ -87,7 +86,6 @@ public class UserDAO {
     				"UPDATE " + NOME_TABELLA + " "
     				+ "SET ncellulare = ?"
     				+ "WHERE mail = ?")) {
-    			pst.clearParameters();
     			
     			pst.setString(1, utente.getNumeroCellulare());
     			pst.setString(2, utente.getMail());
