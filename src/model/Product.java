@@ -33,7 +33,7 @@ public class Product {
     private final List<Image> img;
     private int productType; //0 = product, 1 =Scholastic product, 2 = professional product
     private int sconto;
-    private Boolean usato;
+    private final Boolean usato;
     private int numeroPezziMinimo;
     private LivelloStrumento livelloConsigliato;
 	

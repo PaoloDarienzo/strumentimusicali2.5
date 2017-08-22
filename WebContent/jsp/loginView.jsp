@@ -30,7 +30,7 @@
     <p style="color: red;">${errorString}</p>
  
     <form method="POST" action="doLogin">
-       <table border="0">
+       <table>
           <tr>
              <td>User Name</td>
              <td><input type="text" name="userName" value= "${user.userName}" /> </td>

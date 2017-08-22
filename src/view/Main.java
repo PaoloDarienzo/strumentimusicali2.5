@@ -11,7 +11,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.*;
 
-import dao.ProductDAO;
 import model.*;
 
 /**
@@ -335,12 +334,10 @@ public class Main {
 	   			st.executeUpdate("DELETE FROM " + nomeTabella);
 	   		} catch (SQLException e) {
     			System.out.println("Errore durante eliminazione dati da " + nomeTabella + ": " + e.getMessage());
-    			return;
     		}
 	   		
 	   	} catch (SQLException e){
     		System.out.println("Problema durante la connessione iniziale alla base di dati: " + e.getMessage());
-    		return;
     	}
 		
 	}	
