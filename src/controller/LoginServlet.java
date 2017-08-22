@@ -11,9 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet(urlPatterns = { "/login"})
 public class LoginServlet extends HttpServlet {
+	
 	//TODO
 	//TO autogenerate
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 5876378905741836199L;
  
     public LoginServlet() {
         super();

@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-  pageEncoding="UTF-8" import="java.sql.*,java.lang.*" %>
+  pageEncoding="UTF-8" import="java.util.List, java.util.Iterator" %>
   
 <!DOCTYPE html>
 
@@ -33,84 +33,93 @@
 		<div
 			style = "text-align: center">
 			
-			Search <input name="search">
+			Search <input name="search"> <input type="submit" name="submit" value="Search"/>
+			
 		</div>
 		
-		<div style = "text-align: center">	
+		<div style = "text-align: center">
 		
 		    <%-- select value brand from drop-downlist --%>
 		    <div style = "display: inline-block">
+		    <%
+				List<String> brands = dao.QueriesDAO.getBrands();
+				Iterator<String> iterBrands = brands.iterator();
+			%>
 		    <form name="f1" method="get" action="#">
+		    	Select brand:
 		    	<select name="brand">
-					<option>brand</option>
+		    		<option>All</option>
+					<%  while(iterBrands.hasNext()){ %>
+            		<option> <%= iterBrands.next() %></option>
+       				 <% } %>
 				</select>
-		     <input type="submit" name="submit" value="Select Brand"/>
 		    </form>
 		    <%-- To display selected value from dropdown list. --%>
 		    <% 
-				String s = request.getParameter("brand");
-				if (s !=null)
-		        {
-					out.println("Selected Brand is : " +s);
-				}
+				String brandSelected = request.getParameter("brand");
 			%>
 			</div>
 			
-			<%-- select value type from drop-downlist --%>
+			<%-- select value of instrument type from drop-downlist --%>
 		    <div style = "display: inline-block">
+			<%
+				List<String> instrumentTypes = dao.QueriesDAO.getInstrumentType();
+				Iterator<String> iterInstrumentTypes = instrumentTypes.iterator();
+			%>
 		    <form name="f2" method="get" action="#">
-		    	<select name="type">
-					<option>type</option>
+		    	Select instrument type:
+		    	<select name="instrumentType">
+		    		<option>All</option>
+					<%  while(iterInstrumentTypes.hasNext()){ %>
+            		<option> <%= iterInstrumentTypes.next() %></option>
+       				 <% } %>
 				</select>
-		     <input type="submit" name="submit" value="Select type"/>
 		    </form>
 		    <%-- To display selected value from dropdown list. --%>
 		    <% 
-				String s1 = request.getParameter("type");
-				if (s1 !=null)
-		        {
-					out.println("Selected Brand is : " +s1);
-				}
+				String selectedInstrumentType = request.getParameter("instrumentType");
 			%>
 			</div>
 			
-			<%-- select value brand from drop-downlist --%>
+			<%-- select value used from drop-downlist --%>
 		    <div style = "display: inline-block">
 		    <form name="f3" method="get" action="#">
+		    	Select used status:
 		    	<select name="used">
+		    		<option>All</option>
+		    		<option>Not used</option>
 					<option>used</option>
 				</select>
-		     <input type="submit" name="submit" value="Select used"/>
 		    </form>
 		    <%-- To display selected value from dropdown list. --%>
 		    <% 
-				String s2 = request.getParameter("used");
-				if (s2 !=null)
-		        {
-					out.println("Selected Brand is : " +s2);
-				}
+				String selectedUsedStatus = request.getParameter("used");
 			%>
 			</div>
 			
-			<%-- select value brand from drop-downlist --%>
+			<%-- select value product type from drop-downlist --%>
 		    <div style = "display: inline-block">
 		    <form name="f4" method="get" action="#">
-		    	<select name="producttype">
-					<option>producttype</option>
+		    	Select product type:
+		    	<select name="productType">
+		    		<option>All</option>
+					<option>Professional product</option>
+					<option>Scholastic product</option>
+					<option>Classic product</option>
 				</select>
-		     <input type="submit" name="submit" value="Select producttype"/>
 		    </form>
 		    <%-- To display selected value from dropdown list. --%>
 		    <% 
-				String s3 = request.getParameter("producttype");
-				if (s3 !=null)
-		        {
-					out.println("Selected Brand is : " +s3);
-				}
+				String selectedProductType = request.getParameter("productType");
 			%>
 			</div>
 		
 		</div>
+		
+		<% 
+		     out.println("Searching: " + selectedProductType + ", " + 
+		    		 brandSelected + ", " + selectedInstrumentType + ", " + selectedUsedStatus);
+		%>
 		
 		<jsp:include page="_footer.jsp"></jsp:include>
 	
