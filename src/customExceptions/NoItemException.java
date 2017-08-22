@@ -10,9 +10,9 @@ package customExceptions;
 public class NoItemException extends RuntimeException{
 	
 	//TODO
-	//and update version
-	//private static final long serialVersionUID = -7341795101873587936L;
-	
+	//update version
+	private static final long serialVersionUID = 231911268268396171L;
+
 	/**
      * Constructor of NoItemException
      * @param message passed to the superclass
