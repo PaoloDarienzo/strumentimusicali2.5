@@ -31,7 +31,7 @@ public class Product {
      * @deprecated Image use not implemented
      */
     private final List<Image> img;
-    private int productType; //0 = product, 1 =Scholastic product, 2 = professional product
+    private int productType; //0 = product, 1 = Scholastic product, 2 = professional product
     private int sconto;
     private final Boolean usato;
     private int numeroPezziMinimo;
