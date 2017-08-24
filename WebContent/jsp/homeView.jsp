@@ -30,10 +30,13 @@
 		
 		<br/>
 		
-		<div
-			style = "text-align: center">
+		<div style = "text-align: center">
 			
-			Search <input name="search"> <input type="submit" name="submit" value="Search"/>
+			<form action="/Search" method="post">
+
+			Search <input name="search"> <input type="submit" value="Search"/>
+			
+			</form>
 			
 		</div>
 		
@@ -45,7 +48,7 @@
 				List<String> brands = dao.QueriesDAO.getBrands();
 				Iterator<String> iterBrands = brands.iterator();
 			%>
-		    <form name="f1" method="post" action="controller.SearchServlet">
+		    <form name="f1" method="post" action="/Search">
 		    	Select brand:
 		    	<select name="brand">
 		    		<option value="All">All</option>
@@ -62,7 +65,7 @@
 				List<String> instrumentTypes = dao.QueriesDAO.getInstrumentType();
 				Iterator<String> iterInstrumentTypes = instrumentTypes.iterator();
 			%>
-		    <form name="f2" method="post" action="controller.SearchServlet">
+		    <form name="f2" method="post" action="/Search">
 		    	Select instrument type:
 		    	<select name="instrumentType">
 		    		<option value="All">All</option>
@@ -75,7 +78,7 @@
 			
 			<%-- select value used from drop-downlist --%>
 		    <div style = "display: inline-block">
-		    <form name="f3" method="post" action="controller.SearchServlet">
+		    <form name="f3" method="post" action="/Search">
 		    	Select used status:
 		    	<select name="used">
 		    		<option value="0">All</option>
@@ -87,7 +90,7 @@
 			
 			<%-- select value product type from drop-downlist --%>
 		    <div style = "display: inline-block">
-		    <form name="f4" method="post" action="controller.SearchServlet">
+		    <form name="f4" method="post" action="/Search">
 		    	Select product type:
 		    	<select name="productType">
 		    		<option value="All">All</option>
@@ -99,9 +102,7 @@
 			</div>
 		
 		</div>
-		
-		<input type="submit" value="Submit">
-		
+				
 		<jsp:include page="_footer.jsp"></jsp:include>
 	
 	</body>

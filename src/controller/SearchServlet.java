@@ -3,10 +3,12 @@ package controller;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+@WebServlet(urlPatterns = { "/search"})
 public class SearchServlet extends HttpServlet {
 
 	//TODO
@@ -20,12 +22,15 @@ public class SearchServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException { 
 		
+		String searchParameters= request.getParameter("search"); 
+		
 		String brandSelected= request.getParameter("brand"); 
 		String selectedInstrumentType= request.getParameter("instrumentType"); 
 		String selectedUsedStatus= request.getParameter("used"); 
 		String selectedProductType= request.getParameter("productType");
 		
-		System.out.println("Inseriti: " + brandSelected + ", "
+		System.out.println("Inserted: " + searchParameters + ", "
+							+ brandSelected + ", "
 							+ selectedInstrumentType + ", "
 							+ selectedUsedStatus + ", "
 							+ selectedProductType + ".");
