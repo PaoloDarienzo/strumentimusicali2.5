@@ -1,26 +1,35 @@
+//TODO
+//Javadoc
 package controller;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * Servlet implementation class SearchServlet
+ */
 @WebServlet(urlPatterns = { "/search"})
 public class SearchServlet extends HttpServlet {
 
 	//TODO
 	//To autogenerate
-	private static final long serialVersionUID = -1953084286713579746L;
+	private static final long serialVersionUID = 1770411980658250964L;	
 	
+	/**
+     * @see HttpServlet#HttpServlet()
+     */
 	public SearchServlet() {
 		super();
 	}
 	
 	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException { 
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException { 
 		
 		String searchParameters= request.getParameter("search"); 
 		
@@ -34,6 +43,10 @@ public class SearchServlet extends HttpServlet {
 							+ selectedInstrumentType + ", "
 							+ selectedUsedStatus + ", "
 							+ selectedProductType + ".");
+		
+		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/jsp/searchView.jsp");
+
+		dispatcher.forward(request, response);
 		
 		
 	}

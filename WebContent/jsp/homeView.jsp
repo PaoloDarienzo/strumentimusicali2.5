@@ -32,11 +32,9 @@
 		
 		<div style = "text-align: center">
 			
-			<form action="/Search" method="post">
+			<form action="${pageContext.request.contextPath}/search" method="get">
 
 			Search <input name="search"> <input type="submit" value="Search"/>
-			
-			</form>
 			
 		</div>
 		
@@ -48,15 +46,13 @@
 				List<String> brands = dao.QueriesDAO.getBrands();
 				Iterator<String> iterBrands = brands.iterator();
 			%>
-		    <form name="f1" method="post" action="/Search">
-		    	Select brand:
-		    	<select name="brand">
-		    		<option value="All">All</option>
-					<%  while(iterBrands.hasNext()){ %>
-            		<option><%= (String) iterBrands.next() %></option>
-       				 <% } %>
-				</select>
-		    </form>
+	    	Select brand:
+	    	<select name="brand">
+	    		<option value="All">All</option>
+				<%  while(iterBrands.hasNext()){ %>
+           		<option><%= (String) iterBrands.next() %></option>
+      				 <% } %>
+			</select>
 			</div>
 			
 			<%-- select value of instrument type from drop-downlist --%>
@@ -65,41 +61,37 @@
 				List<String> instrumentTypes = dao.QueriesDAO.getInstrumentType();
 				Iterator<String> iterInstrumentTypes = instrumentTypes.iterator();
 			%>
-		    <form name="f2" method="post" action="/Search">
-		    	Select instrument type:
-		    	<select name="instrumentType">
-		    		<option value="All">All</option>
-					<%  while(iterInstrumentTypes.hasNext()){ %>
-            		<option><%= (String) iterInstrumentTypes.next() %></option>
-       				 <% } %>
-				</select>
-		    </form>
+	    	Select instrument type:
+	    	<select name="instrumentType">
+	    		<option value="All">All</option>
+				<%  while(iterInstrumentTypes.hasNext()){ %>
+           		<option><%= (String) iterInstrumentTypes.next() %></option>
+      				 <% } %>
+			</select>
 			</div>
 			
 			<%-- select value used from drop-downlist --%>
 		    <div style = "display: inline-block">
-		    <form name="f3" method="post" action="/Search">
-		    	Select used status:
-		    	<select name="used">
-		    		<option value="0">All</option>
-		    		<option value="false">Not used</option>
-					<option value="true">used</option>
-				</select>
-		    </form>
+	    	Select used status:
+	    	<select name="used">
+	    		<option value="0">All</option>
+	    		<option value="false">Not used</option>
+				<option value="true">used</option>
+			</select>
 			</div>
 			
 			<%-- select value product type from drop-downlist --%>
 		    <div style = "display: inline-block">
-		    <form name="f4" method="post" action="/Search">
-		    	Select product type:
-		    	<select name="productType">
-		    		<option value="All">All</option>
-					<option value="2">Professional product</option>
-					<option value="1">Scholastic product</option>
-					<option value="0">Classic product</option>
-				</select>
-		    </form>
+	    	Select product type:
+	    	<select name="productType">
+	    		<option value="All">All</option>
+				<option value="2">Professional product</option>
+				<option value="1">Scholastic product</option>
+				<option value="0">Classic product</option>
+			</select>
 			</div>
+			
+			</form>
 		
 		</div>
 				
