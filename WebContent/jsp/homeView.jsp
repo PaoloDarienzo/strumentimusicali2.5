@@ -76,7 +76,7 @@
 	    	<select name="used">
 	    		<option value="0">All</option>
 	    		<option value="false">Not used</option>
-				<option value="true">used</option>
+				<option value="true">Used</option>
 			</select>
 			</div>
 			

@@ -44,6 +44,8 @@ public class SearchServlet extends HttpServlet {
 							+ selectedUsedStatus + ", "
 							+ selectedProductType + ".");
 		
+		//QueriesDAO.getProducts(searchParameters, brandSelected, selectedInstrumentType, selectedInstrumentType, selectedProductType);
+		
 		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/jsp/searchView.jsp");
 
 		dispatcher.forward(request, response);

@@ -11,6 +11,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.Product;
+
 public class QueriesDAO {
 	
     private final static String JDBC_URL = "jdbc:postgresql://localhost:5432/strumenti_database";
@@ -75,4 +77,35 @@ public class QueriesDAO {
 			
 	}
 
+    public static List<Product> getProducts(String search, String brandSelected, String selectedInstrumentType, 
+    										String selectedUsedStatus, String selectedProductType) throws ClassNotFoundException{
+    	
+    	//TODO
+    	
+    	Class.forName("org.postgresql.Driver");
+    	
+		try (Connection con = DriverManager.getConnection(JDBC_URL, JDBC_USERNAME, JDBC_PASSWORD)){
+		    		
+			try (PreparedStatement pst = con.prepareStatement(
+		    				"SELECT * FROM prodotto "
+		    				+ "WHERE marca=? AND "
+		    				+ "classificazione=? AND "
+		    				+ "usato=? AND "
+		    				+ "producttype=? AND "
+		    				+ "descrizione LIKE '%?%'")) {
+			
+			ResultSet rs = pst.executeQuery();
+			
+		} catch (SQLException e) {
+			System.out.println("Errore durante query dei dati: " + e.getMessage());
+			}
+			
+		} catch (SQLException e){
+			System.out.println("Problema durante la connessione iniziale alla base di dati: " + e.getMessage());
+			}    	
+    	
+    	return null;
+    	
+    }
+    
 }
