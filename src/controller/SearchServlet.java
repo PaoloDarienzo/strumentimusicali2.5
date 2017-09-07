@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.QueriesDAO;
+
 /**
  * Servlet implementation class SearchServlet
  */
@@ -35,8 +37,8 @@ public class SearchServlet extends HttpServlet {
 		
 		String brandSelected= request.getParameter("brand"); 
 		String selectedInstrumentType= request.getParameter("instrumentType"); 
-		String selectedUsedStatus= request.getParameter("used"); 
 		String selectedProductType= request.getParameter("productType");
+		String selectedUsedStatus= request.getParameter("used"); 
 		
 		System.out.println("Inserted: " + searchParameters + ", "
 							+ brandSelected + ", "
@@ -44,7 +46,12 @@ public class SearchServlet extends HttpServlet {
 							+ selectedUsedStatus + ", "
 							+ selectedProductType + ".");
 		
-		//QueriesDAO.getProducts(searchParameters, brandSelected, selectedInstrumentType, selectedInstrumentType, selectedProductType);
+		try {
+			QueriesDAO.getProducts(searchParameters, brandSelected, selectedInstrumentType, selectedInstrumentType, selectedProductType);
+		} catch (ClassNotFoundException e) {
+			System.out.println("Error with the connection to the database.");
+			e.printStackTrace();
+		}
 		
 		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/jsp/searchView.jsp");
 

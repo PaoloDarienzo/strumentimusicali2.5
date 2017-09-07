@@ -82,19 +82,37 @@ public class QueriesDAO {
     	
     	//TODO
     	
+    	if(brandSelected == "All")
+    		brandSelected = "%";
+     	
+    	if(selectedInstrumentType == "All")
+    		brandSelected = "%";
+    	
+     	if(selectedProductType == "All")
+     		selectedProductType="%";
+    	
     	Class.forName("org.postgresql.Driver");
     	
 		try (Connection con = DriverManager.getConnection(JDBC_URL, JDBC_USERNAME, JDBC_PASSWORD)){
 		    		
 			try (PreparedStatement pst = con.prepareStatement(
-		    				"SELECT * FROM prodotto "
-		    				+ "WHERE marca=? AND "
-		    				+ "classificazione=? AND "
-		    				+ "usato=? AND "
-		    				+ "producttype=? AND "
-		    				+ "descrizione LIKE '%?%'")) {
-			
+		    				"SELECT * FROM strumento "
+		    				+ "WHERE marca LIKE ? AND "
+		    				+ "classificazione LIKE ? AND "
+		    				+ "producttype = ?" )) {
+				
+				pst.setString(1, brandSelected);
+				pst.setString(2, selectedInstrumentType);
+				pst.setString(3, selectedProductType);
+				
 			ResultSet rs = pst.executeQuery();
+			
+			//System.out.println(rs.));
+			System.out.println("DIOGA'");
+			while (rs.next()) {
+				System.out.println(rs.getInt(0));
+				System.out.println("DIOGA");
+			}
 			
 		} catch (SQLException e) {
 			System.out.println("Errore durante query dei dati: " + e.getMessage());
