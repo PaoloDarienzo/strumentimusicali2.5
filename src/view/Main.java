@@ -132,19 +132,19 @@ public class Main {
 				+ "in particolar modo i principianti, di avere uno strumento con caratteristiche simili a "
 				+ "modelli di chitarra che hanno fatto la storia della musica.", 
 				(float) 5.00, (float) 89.00, TipoStrumento.PIZZICO, Brand.EKO,
-				new Date(2016-1900,11,02), AdminIP, 0, 0, 0, null, false);
+				new Date(2016-1900,11,02), AdminIP, "c", 0, 0, null, false);
 		
 		Product ltd_alexi = new Product(createProductID(), "ltd alexi", 2, 
 				"Chitarra Elettrica Solid Body Signature Alexi Laiho. \n" + "Pick-Up: ESP Designed LH-301B.", 
 				(float) 6.66, (float) 649.00, TipoStrumento.PIZZICO, Brand.ESP,
-				new Date(2017-1900,06,06), AdminIP, 2,
+				new Date(2017-1900,06,06), AdminIP, "p",
 				10, 0, null, true);
 		
 		Product CASIO_SA46 = new Product(createProductID(), "Casio SA46", 150, 
 				"Piu' che un giocattolo: "
 				+ "d'altronde i piu' piccoli devono sviluppare sui 32 tasti la "
 				+ "passione per la musica fin dall'inizio.", (float) 1.2, (float) 45.00, 
-				TipoStrumento.TASTIERA, Brand.CASIO, new Date(2016-1900,06,06), AdminIP, 1,
+				TipoStrumento.TASTIERA, Brand.CASIO, new Date(2016-1900,06,06), AdminIP, "s",
 				15, 8, LivelloStrumento.PRINCIPIANTE, false);
 		
 		//Aggiunta di prodotti al database

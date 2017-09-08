@@ -25,7 +25,7 @@ public class LoginServlet extends HttpServlet {
             throws ServletException, IOException {
  
          
-        // Forward to /WEB-INF/views/loginView.jsp     
+        // Forward to /jsp/loginView.jsp     
         RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/jsp/loginView.jsp");
          
         dispatcher.forward(request, response);

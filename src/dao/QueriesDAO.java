@@ -8,6 +8,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -82,37 +83,39 @@ public class QueriesDAO {
     	
     	//TODO
     	
-    	if(brandSelected == "All")
+    	if(brandSelected.equals("All"))
     		brandSelected = "%";
      	
-    	if(selectedInstrumentType == "All")
-    		brandSelected = "%";
+    	if(selectedInstrumentType.equals("All"))
+    		selectedInstrumentType = "%";
     	
-     	if(selectedProductType == "All")
-     		selectedProductType="%";
+     	if(selectedProductType.equals("All"))
+     		selectedProductType = "%";
+     	
+     	if(selectedUsedStatus.equals("0"))
+     		selectedUsedStatus = "NOT UNKNOWN";
+     		
     	
     	Class.forName("org.postgresql.Driver");
     	
 		try (Connection con = DriverManager.getConnection(JDBC_URL, JDBC_USERNAME, JDBC_PASSWORD)){
-		    		
-			try (PreparedStatement pst = con.prepareStatement(
-		    				"SELECT * FROM strumento "
-		    				+ "WHERE marca LIKE ? AND "
-		    				+ "classificazione LIKE ? AND "
-		    				+ "producttype = ?" )) {
-				
-				pst.setString(1, brandSelected);
-				pst.setString(2, selectedInstrumentType);
-				pst.setString(3, selectedProductType);
-				
-			ResultSet rs = pst.executeQuery();
+		    
+			String query = "SELECT * FROM strumento "
+							+ "WHERE marca LIKE '" + brandSelected
+							+ "' AND classificazione LIKE '" + selectedInstrumentType
+							+ "' AND producttype LIKE '" + selectedProductType 
+							+ "' AND usato IS " + selectedUsedStatus;
 			
-			//System.out.println(rs.));
-			System.out.println("DIOGA'");
-			while (rs.next()) {
-				System.out.println(rs.getInt(0));
-				System.out.println("DIOGA");
-			}
+			System.out.println(query);
+			
+			try (Statement st = con.createStatement()) {
+				st.executeQuery(query);
+				
+				ResultSet rs = st.getResultSet();
+				
+				while (rs.next()) {
+					System.out.println("ID: " + rs.getString(1) + ", nome: " + rs.getString(4));
+				}
 			
 		} catch (SQLException e) {
 			System.out.println("Errore durante query dei dati: " + e.getMessage());

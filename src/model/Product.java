@@ -31,7 +31,7 @@ public class Product {
      * @deprecated Image use not implemented
      */
     private final List<Image> img;
-    private int productType; //0 = product, 1 = Scholastic product, 2 = professional product
+    private String productType; //c = classic product, s = Scholastic product, p = professional product
     private int sconto;
     private final Boolean usato;
     private int numeroPezziMinimo;
@@ -57,7 +57,7 @@ public class Product {
      */
     public Product(int ID, String nome, int numeroPezziDisponibili, String descrizione,
                         float peso, float prezzo, TipoStrumento classificazione,
-                        Brand marca, Date dataInserimento, InetAddress IPInserimento, int productType,
+                        Brand marca, Date dataInserimento, InetAddress IPInserimento, String productType,
                         int sconto, int numeroPezziMinimo, LivelloStrumento livelloConsigliato,
                         Boolean usato){
 
@@ -74,13 +74,13 @@ public class Product {
         this.img = new ArrayList<Image>();
         this.productType = productType;
         
-        if (productType==1) {
+        if (productType == "s") {
             this.sconto = sconto;
             this.numeroPezziMinimo = numeroPezziMinimo;
             this.livelloConsigliato = livelloConsigliato;
             this.usato = false;
         }
-        else if(productType==2) {
+        else if(productType == "p") {
             this.sconto = sconto;
             this.usato = usato; 
             this.numeroPezziMinimo = 0;
@@ -88,7 +88,7 @@ public class Product {
         }
         else {
         	
-        	assert productType == 0;
+        	assert productType == "c";
         	this.sconto = 0;
         	this.numeroPezziMinimo = 0;
         	this.usato = false;
@@ -238,18 +238,18 @@ public class Product {
     }
     
     /**
-     * Returns the int indicating the product type: 1 for scholastic product, 2 for professional product, 0 otherwise
-     * @return the int indicating the product type
+     * Returns the string indicating the product type: s for scholastic product, p for professional product, c otherwise
+     * @return the string indicating the product type
      */
-    public int getProductType() {
+    public String getProductType() {
     	return this.productType;
     }
     
     /**
-     * Sets the int indicating the product type: 1 for scholastic product, 2 for professional product, 0 otherwise
+     * Sets the string indicating the product type: s for scholastic product, p for professional product, c otherwise
      * @param newType is the type of product; scholastic, professional or normal one
      */
-    public void setProductType(int newType) {
+    public void setProductType(String newType) {
     	this.productType = newType;
     }
     

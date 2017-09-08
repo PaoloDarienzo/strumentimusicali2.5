@@ -49,16 +49,6 @@ public class Payment {
         return this.credenziali;
     }
     
-    //TODO
-    public void addInDatabase(){    	
-    }
-    
-    //TODO
-    public void updateInDatabase(){
-    }
-    
-    //TODO
-    public void deleteFromDatabase(){
-    }
+
     
 }

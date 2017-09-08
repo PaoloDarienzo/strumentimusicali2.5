@@ -60,7 +60,7 @@ public class ProductDAO {
     			pst.setFloat(8, prodotto.getPrezzo());
     			pst.setString(9, prodotto.getClassificazione().toString());
     			pst.setString(10, prodotto.getMarca().toString());
-    			pst.setInt(11, prodotto.getProductType());
+    			pst.setString(11, prodotto.getProductType());
     			pst.setBoolean(12, prodotto.getUsato());
     			pst.setInt(13, prodotto.getSconto());
     			pst.setInt(14, prodotto.getNumeroPezziMinimo());
@@ -200,7 +200,7 @@ public class ProductDAO {
     				float prezzo = rs.getInt("prezzo");
     				String classificazione = rs.getString("classificazione");
     				String marca = rs.getString("marca");
-    				int productType = rs.getInt("producttype");
+    				String productType = rs.getString("producttype");
     				int sconto = rs.getInt("sconto");
     				int nPezziMinimi = rs.getInt("npezziminimi");
     				String livelloConsigliato = rs.getString("livelloconsigliato");

@@ -47,7 +47,7 @@ public class SearchServlet extends HttpServlet {
 							+ selectedProductType + ".");
 		
 		try {
-			QueriesDAO.getProducts(searchParameters, brandSelected, selectedInstrumentType, selectedInstrumentType, selectedProductType);
+			QueriesDAO.getProducts(searchParameters, brandSelected, selectedInstrumentType, selectedUsedStatus, selectedProductType);
 		} catch (ClassNotFoundException e) {
 			System.out.println("Error with the connection to the database.");
 			e.printStackTrace();

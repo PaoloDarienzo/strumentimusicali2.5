@@ -85,9 +85,9 @@
 	    	Select product type:
 	    	<select name="productType">
 	    		<option value="All">All</option>
-				<option value="2">Professional product</option>
-				<option value="1">Scholastic product</option>
-				<option value="0">Classic product</option>
+				<option value="p">Professional product</option>
+				<option value="s">Scholastic product</option>
+				<option value="c">Classic product</option>
 			</select>
 			</div>
 			
