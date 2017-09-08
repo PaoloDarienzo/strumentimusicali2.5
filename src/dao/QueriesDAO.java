@@ -3,6 +3,7 @@
 
 package dao;
 
+import java.net.UnknownHostException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -79,9 +80,12 @@ public class QueriesDAO {
 	}
 
     public static List<Product> getProducts(String search, String brandSelected, String selectedInstrumentType, 
-    										String selectedUsedStatus, String selectedProductType) throws ClassNotFoundException{
+    										String selectedUsedStatus, String selectedProductType) 
+    												throws ClassNotFoundException, UnknownHostException{
     	
     	//TODO
+    	
+    	List<Product> queryResults = new ArrayList<Product>();
     	
     	if(brandSelected.equals("All"))
     		brandSelected = "%";
@@ -106,15 +110,13 @@ public class QueriesDAO {
 							+ "' AND producttype LIKE '" + selectedProductType 
 							+ "' AND usato IS " + selectedUsedStatus;
 			
-			System.out.println(query);
-			
 			try (Statement st = con.createStatement()) {
 				st.executeQuery(query);
 				
 				ResultSet rs = st.getResultSet();
 				
 				while (rs.next()) {
-					System.out.println("ID: " + rs.getString(1) + ", nome: " + rs.getString(4));
+					queryResults.add(ProductDAO.getFromDatabase(rs.getInt(1)));
 				}
 			
 		} catch (SQLException e) {
@@ -125,7 +127,7 @@ public class QueriesDAO {
 			System.out.println("Problema durante la connessione iniziale alla base di dati: " + e.getMessage());
 			}    	
     	
-    	return null;
+    	return queryResults;
     	
     }
     

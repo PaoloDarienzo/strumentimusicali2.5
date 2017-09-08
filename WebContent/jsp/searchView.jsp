@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-  pageEncoding="UTF-8" import="java.util.List, java.util.Iterator" %>
+  pageEncoding="UTF-8" 
+  import="java.util.List, java.util.ArrayList, java.util.Iterator"
+  import="model.Product" %>
   
 <!DOCTYPE html>
 
@@ -31,6 +33,8 @@
 		<br/>
 		
 		HERE THERE WILL BE THE RESULTS OF THE QUERY.
+		
+		<% List<Product> queryResults = (ArrayList<Product>)request.getAttribute("queryResults"); %>
 				
 		<jsp:include page="_footer.jsp"></jsp:include>
 	

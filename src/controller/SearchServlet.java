@@ -3,6 +3,8 @@
 package controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.QueriesDAO;
+import model.Product;
 
 /**
  * Servlet implementation class SearchServlet
@@ -33,6 +36,8 @@ public class SearchServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException { 
 		
+		List<Product> queryResults = new ArrayList<Product>();
+		
 		String searchParameters= request.getParameter("search"); 
 		
 		String brandSelected= request.getParameter("brand"); 
@@ -47,13 +52,20 @@ public class SearchServlet extends HttpServlet {
 							+ selectedProductType + ".");
 		
 		try {
-			QueriesDAO.getProducts(searchParameters, brandSelected, selectedInstrumentType, selectedUsedStatus, selectedProductType);
+			queryResults= QueriesDAO.getProducts(searchParameters, brandSelected, selectedInstrumentType, selectedUsedStatus, selectedProductType);
+		
 		} catch (ClassNotFoundException e) {
 			System.out.println("Error with the connection to the database.");
 			e.printStackTrace();
 		}
 		
+		for(Product p: queryResults) {
+			System.out.println("ID: " + p.getID() + ", nome: " + p.getNome() + ".");
+		}
+		
 		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/jsp/searchView.jsp");
+		
+		request.setAttribute("queryResults", queryResults);
 
 		dispatcher.forward(request, response);
 		
