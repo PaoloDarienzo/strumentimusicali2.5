@@ -7,6 +7,8 @@
 
 <html>
 
+<link href="CSS/Styles.css" rel="stylesheet" type="text/css">
+
 	<head>
 		<meta charset="UTF-8">
 		
@@ -31,11 +33,64 @@
 		<h3>Results</h3>
 		
 		<br/>
+			
+		HERE THERE WILL BE THE RESULTS OF THE QUERY. <br/>
 		
-		HERE THERE WILL BE THE RESULTS OF THE QUERY.
+		<% List<Product> queryResults = (ArrayList<Product>) request.getAttribute("queryResults");
 		
-		<% List<Product> queryResults = (ArrayList<Product>)request.getAttribute("queryResults"); %>
-				
+		for(Product product : queryResults) { %>
+		
+		<table>
+		<tr> 
+			<th> <% out.println(product.getNome()); %> </th> 
+		</tr>
+		
+		<tr>
+			<td> Descrizione </td>
+			<td> <% out.println(product.getDescrizione()); %> </td>
+		</tr>
+		
+		<tr>
+			<td> Peso </td>
+			<td> <%  out.println(product.getPeso()); %> </td>
+		</tr>
+		
+		<tr>
+			<td> Marca </td>
+			<td> <%  out.println(product.getMarca()); %> </td>
+		</tr>
+		
+		<tr>
+			<td> Classificazione </td>
+			<td> <%  out.println(product.getClassificazione()); %> </td>
+		</tr>
+		
+		<tr>
+			<td> Stato </td>
+			<% Boolean stato = product.getUsato(); %>
+			<% if(stato == true) { %>
+			<td> Usato </td>
+			<% } else if(stato == false) { %>
+			<td> Nuovo </td>
+			<% } %>
+		</tr>
+		
+		<tr>
+			<td> Data di inserimento </td>
+			<td> <%  out.println(product.getDataInserimento()); %> </td>
+		</tr>
+		
+		<tr>
+			<td> Prezzo </td>
+			<td> <%  out.println(product.getPrezzo()); %> € </td>
+		</tr>
+		
+		</table>
+		
+		<br/>
+		
+		<% } %>
+						
 		<jsp:include page="_footer.jsp"></jsp:include>
 	
 	</body>

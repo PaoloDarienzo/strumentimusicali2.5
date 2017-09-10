@@ -59,14 +59,15 @@ public class SearchServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		
+		//TODO
 		for(Product p: queryResults) {
 			System.out.println("ID: " + p.getID() + ", nome: " + p.getNome() + ".");
 		}
 		
+		request.setAttribute("queryResults", queryResults);
+		
 		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/jsp/searchView.jsp");
 		
-		request.setAttribute("queryResults", queryResults);
-
 		dispatcher.forward(request, response);
 		
 		
