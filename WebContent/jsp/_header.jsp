@@ -3,7 +3,7 @@
   
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-<div style="background: #E0E0E0; height: 85px; padding: 5px;">
+<div id="header">
 
 	<div style="float: left;">
 		<img style="float: left;" src="images/duck-walking.gif" alt="Ducking around" align="bottom" height="42" width="42">
