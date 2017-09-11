@@ -97,8 +97,7 @@ public class QueriesDAO {
      		selectedProductType = "%";
      	
      	if(selectedUsedStatus.equals("0"))
-     		selectedUsedStatus = "NOT UNKNOWN";
-     		
+     		selectedUsedStatus = "NOT UNKNOWN";     		
     	
     	Class.forName("org.postgresql.Driver");
     	
@@ -109,6 +108,8 @@ public class QueriesDAO {
 							+ "' AND classificazione LIKE '" + selectedInstrumentType
 							+ "' AND producttype LIKE '" + selectedProductType 
 							+ "' AND usato IS " + selectedUsedStatus;
+			
+			System.out.println("Query:\n" + query);
 			
 			try (Statement st = con.createStatement()) {
 				st.executeQuery(query);

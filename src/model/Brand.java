@@ -9,7 +9,6 @@ package model;
 public enum Brand {
 	
 	CASIO,
-	CORG,
 	CORT,
 	DDRUM,
 	DWDRUMS,
@@ -21,8 +20,9 @@ public enum Brand {
 	GRETSCH,
 	HAMMOND,
 	IBANEZ,
+	KORG,
 	MARK_BASS,
-	MARVIS,
+	MAVIS,
 	MEINL,
 	MUSICMAN,
 	OVATION,

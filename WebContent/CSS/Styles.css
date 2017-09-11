@@ -1,17 +1,45 @@
-table {
+.qrtable {
 	font-family: arial, sans-serif;
+	font-size: 12px;
+	color: #333333;
+	display: inline-block;
+	float: left;
+	width: 30%;
+	border-width: 2px;
+	border-color: #729ea5;
 	border-collapse: collapse;
-	width: 100%;
+	margin-right:20px;
 }
 
-td, th {
-	border: 1px solid #dddddd;
+.qrtable th {
+	font-size:12px;
+	background-color:#80b3ff;
+	border-width: 2px;
+	padding: 10px;
+	border-style: solid;
+	border-color: #729ea5;
+	text-align: center;
+	width:200px;
+}
+
+.qrtable td {
+	font-size:12px;
+	border-width: 2px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #729ea5;
+	width:200px;
 	text-align: left;
 	padding: 8px;
 }
 
-tr:nth-child(even) {
-	background-color: #dddddd;
+.qrtable tr {
+	background-color:#d4e3e5;
+	width:200px;
+}
+
+.qrtable tr:hover {
+	background-color:#ffffff;
 }
 
 #header {

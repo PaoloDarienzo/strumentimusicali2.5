@@ -32,17 +32,15 @@
 		
 		<h3>Results</h3>
 		
-		<br/>
-			
-		HERE THERE WILL BE THE RESULTS OF THE QUERY. <br/>
+		<br/> <br/>
 		
 		<% List<Product> queryResults = (ArrayList<Product>) request.getAttribute("queryResults");
 		
 		for(Product product : queryResults) { %>
 		
-		<table>
+		<table class = "qrtable" border="2">
 		<tr> 
-			<th> <% out.println(product.getNome()); %> </th> 
+			<th colspan="2"> <% out.println(product.getNome()); %> </th> 
 		</tr>
 		
 		<tr>
@@ -52,7 +50,7 @@
 		
 		<tr>
 			<td> Peso </td>
-			<td> <%  out.println(product.getPeso()); %> </td>
+			<td> <%  out.println(product.getPeso()); %> Kg </td>
 		</tr>
 		
 		<tr>
@@ -67,12 +65,15 @@
 		
 		<tr>
 			<td> Stato </td>
-			<% Boolean stato = product.getUsato(); %>
-			<% if(stato == true) { %>
-			<td> Usato </td>
-			<% } else if(stato == false) { %>
-			<td> Nuovo </td>
-			<% } %>
+			<% 
+			Boolean stato = product.getUsato();
+			String printStato = "N/A";
+			if(stato == true) {
+			printStato = "Usato";
+			} else if(stato == false) {
+				printStato = "Nuovo";
+			} %>
+			<td> <% out.println(printStato); %> </td>
 		</tr>
 		
 		<tr>
@@ -87,10 +88,8 @@
 		
 		</table>
 		
-		<br/>
-		
 		<% } %>
-						
+		
 		<jsp:include page="_footer.jsp"></jsp:include>
 	
 	</body>

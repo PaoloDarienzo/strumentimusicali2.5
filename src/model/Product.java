@@ -74,21 +74,20 @@ public class Product {
         this.img = new ArrayList<Image>();
         this.productType = productType;
         
-        if (productType == "s") {
+        if (productType.equalsIgnoreCase("s")) {
             this.sconto = sconto;
             this.numeroPezziMinimo = numeroPezziMinimo;
             this.livelloConsigliato = livelloConsigliato;
             this.usato = false;
         }
-        else if(productType == "p") {
+        else if(productType.equalsIgnoreCase ("p")) {
             this.sconto = sconto;
             this.usato = usato; 
             this.numeroPezziMinimo = 0;
             this.livelloConsigliato = LivelloStrumento.ND;
         }
         else {
-        	
-        	assert productType == "c";
+        	assert productType.equalsIgnoreCase("c");
         	this.sconto = 0;
         	this.numeroPezziMinimo = 0;
         	this.usato = false;

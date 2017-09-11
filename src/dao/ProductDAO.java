@@ -197,7 +197,7 @@ public class ProductDAO {
     				int npezzidisponibili = rs.getInt("npezzidisponibili");
     				String descrizione = rs.getString("descrizione");
     				float peso = rs.getFloat("peso");
-    				float prezzo = rs.getInt("prezzo");
+    				float prezzo = rs.getFloat("prezzo");
     				String classificazione = rs.getString("classificazione");
     				String marca = rs.getString("marca");
     				String productType = rs.getString("producttype");
