@@ -7,9 +7,8 @@
 
 <html>
 
-<link href="CSS/Styles.css" rel="stylesheet" type="text/css">
-
 	<head>
+		<link href="CSS/Styles.css" rel="stylesheet" type="text/css">
 		<meta charset="UTF-8">
 		
 		<meta name="description" content="Negozio di strumenti musicali">
@@ -38,7 +37,7 @@
 		
 		for(Product product : queryResults) { %>
 		
-		<table class = "qrtable" border="2">
+		<table class = "qrtable">
 		<tr> 
 			<th colspan="2"> <% out.println(product.getNome()); %> </th> 
 		</tr>

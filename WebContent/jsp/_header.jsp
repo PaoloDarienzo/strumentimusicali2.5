@@ -6,9 +6,11 @@
 <div id="header">
 
 	<div style="float: left;">
-		<img style="float: left;" src="images/duck-walking.gif" alt="Ducking around" align="bottom" height="42" width="42">
-		<h1 style="float: left;">zumzum.it, il miglior sito di strumenti musicali!</h1>
-		<img style="float: left;" src="images/duck-walking.gif" alt="Ducking around" align="bottom" height="42" width="42">
+		<h1 style="float: left;">
+		<img style="float: left; width: 42px; height: 42px;" src="images/duck-walking.gif" alt="Ducking around" align="bottom">
+		zumzum.it, il miglior sito di strumenti musicali!
+		<img style="float: right; width: 42px; height: 42px;" src="images/duck-walking.gif" alt="Ducking around" align="bottom">
+		</h1>
 	</div>
  
 	<div style="float: right; padding: 10px; text-align: right;">
