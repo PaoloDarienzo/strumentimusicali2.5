@@ -224,6 +224,7 @@ public class ProductDAO {
     	} catch (SQLException e){
     		System.out.println("Problema durante la connessione iniziale alla base di dati: " + e.getMessage());
     	}
+    	
 		return null;
     	
     }

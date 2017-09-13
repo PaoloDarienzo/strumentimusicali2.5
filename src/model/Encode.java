@@ -19,7 +19,7 @@ public class Encode {
      * @throws NoSuchAlgorithmException if an error occurs with the encryption of the string, 
      * i.e. the algorithm used for the encryption can't be found
 	 */
-	protected static String cryptingString(String messageToEncrypt) throws NoSuchAlgorithmException{
+	public static String cryptingString(String messageToEncrypt) throws NoSuchAlgorithmException{
 		
 		MessageDigest md5 = MessageDigest.getInstance("MD5");
 		md5.update(StandardCharsets.UTF_8.encode(messageToEncrypt));

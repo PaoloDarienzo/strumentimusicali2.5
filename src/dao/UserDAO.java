@@ -1,11 +1,18 @@
 package dao;
 
+//TODO
+//JAVADOC
+
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import model.Encode;
+import model.TipoCliente;
 import model.User;
 
 /**
@@ -135,5 +142,57 @@ public class UserDAO {
     	}
     	
     }
+    
+    public static User getUser(String userID, String psw) throws ClassNotFoundException, NoSuchAlgorithmException {
+    	
+    	User userFound = null;
+    	
+    	psw = Encode.cryptingString(psw);
+    	
+    	Class.forName("org.postgresql.Driver");
+    	
+    	try (Connection con = DriverManager.getConnection(JDBC_URL, JDBC_USERNAME, JDBC_PASSWORD)){
+			
+			try (Statement st = con.createStatement()) {
+				
+				String loginQuery = "SELECT * FROM cliente WHERE "
+						+ "mail = '" + userID + "' OR nomeutente = '" + userID + "' "
+						+ "AND password = '" + psw + "'";
+				
+				st.executeQuery(loginQuery);
+				
+				ResultSet rs = st.getResultSet();
+				
+				if(rs.next()) {
+					
+					String mail = rs.getString("mail");
+					String nomeutente = rs.getString("nomeutente");
+					String nome = rs.getString("nome");
+					String cognome = rs.getString("Cognome");
+					String cf = rs.getString("cf");
+					String ntelefono = rs.getString("ntelefono");
+					String ncellulare = rs.getString("ncellulare");
+					String cittadiresidenza = rs.getString("cittadiresidenza");
+					String tipo = rs.getString("tipo");
+    				
+    				TipoCliente tipoEnum = TipoCliente.valueOf(tipo);
+    				
+    				return new User(mail, nomeutente, psw, nome, cognome, 
+    						ntelefono, cittadiresidenza, cf, tipoEnum, ncellulare);
+					
+				}
+			
+		} catch (SQLException e) {
+			System.out.println("Errore durante query dei dati: " + e.getMessage());
+			}
+			
+		} catch (SQLException e){
+			System.out.println("Problema durante la connessione iniziale alla base di dati: " + e.getMessage());
+			}
 
+    	return userFound;
+    	
+    }
+    
+    
 }

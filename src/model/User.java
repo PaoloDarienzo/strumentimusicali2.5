@@ -15,7 +15,6 @@ import static java.util.stream.Collectors.toList;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
-import java.security.NoSuchAlgorithmException;
 
 import view.Main;
 
@@ -54,16 +53,14 @@ public class User {
      * @param CF is the fiscal code of the user
      * @param tipoCliente indicates the type of user
      * @param numeroCellulare is the private telephone number of the user
-     * @throws NoSuchAlgorithmException if an error occurs with the encryption of the password, 
-     * i.e. the algorithm used for the encryption can't be found
      */
     public User(String mail, String nomeUtente, String password, String nome, String cognome, 
             String numeroTelefono, String cittaDiResidenza,
-            String CF, TipoCliente tipoCliente, String numeroCellulare) throws NoSuchAlgorithmException{
+            String CF, TipoCliente tipoCliente, String numeroCellulare){
 		
         this.mail = mail;
         this.nomeUtente = nomeUtente;
-        this.password = Encode.cryptingString(password);
+        this.password = password;
         this.nome = nome;
         this.cognome = cognome;
         this.numeroTelefono =numeroTelefono;
@@ -89,15 +86,13 @@ public class User {
      * @param cittaDiResidenza is the city in which resides the user
      * @param CF is the fiscal code of the user
      * @param tipoCliente indicates the type of user
-     * @throws NoSuchAlgorithmException if an error occurs with the encryption of the password, 
-     * i.e. the algorithm used for the encryption can't be found
      */
     public User(String mail, String nomeUtente, String password, String nome, String cognome, 
-    		String numeroTelefono, String cittaDiResidenza, String CF, TipoCliente tipoCliente) throws NoSuchAlgorithmException{
+    		String numeroTelefono, String cittaDiResidenza, String CF, TipoCliente tipoCliente){
     	
         this.mail = mail;
         this.nomeUtente = nomeUtente;
-        this.password = Encode.cryptingString(password);
+        this.password = password;
         this.nome = nome;
         this.cognome = cognome;
         this.numeroTelefono =numeroTelefono;
@@ -123,15 +118,13 @@ public class User {
      * @param numeroTelefono is the telephone number of the user
      * @param cittaDiResidenza is the city in which resides the user
      * @param CF is the fiscal code of the user
-     * @throws NoSuchAlgorithmException if an error occurs with the encryption of the password, 
-     * i.e. the algorithm used for the encryption can't be found
      */
     public User(String mail, String nomeUtente, String password, String nome, String cognome, 
-    		String numeroTelefono, String cittaDiResidenza, String CF) throws NoSuchAlgorithmException{
+    		String numeroTelefono, String cittaDiResidenza, String CF){
     	
         this.mail = mail;
         this.nomeUtente = nomeUtente;
-        this.password = Encode.cryptingString(password);
+        this.password = password;
         this.nome = nome;
         this.cognome = cognome;
         this.numeroTelefono =numeroTelefono;

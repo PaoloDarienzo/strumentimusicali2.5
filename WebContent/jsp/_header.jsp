@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-  pageEncoding="UTF-8" %>
+  pageEncoding="UTF-8" import="model.User" %>
   
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
@@ -15,8 +15,12 @@
  
 	<div style="float: right; padding: 10px; text-align: right;">
  
-		<!-- User store in session with attribute: loggedUser -->
-		Hello <b>${loggedUser.nomeUtente}</b>!
+		<!-- User store in session with attribute: currentSessionUser -->
+		<% User currentUser = (User) session.getAttribute("currentSessionUser"); %>
+		<% String nomeUtente = "culo";
+		nomeUtente = (currentUser == null) ? "" : currentUser.getNomeUtente(); %>
+		
+		Welcome <b> <%= nomeUtente %> </b>!
 
 		<jsp:include page="_loginButton.jsp"></jsp:include>
  

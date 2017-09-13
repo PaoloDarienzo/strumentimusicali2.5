@@ -37,8 +37,8 @@
 				<form action="${pageContext.request.contextPath}/search" method="get">
 	
 					Search <input name="search"> <input type="submit" value="Search"/>
-				
-			</div>
+					
+					<br/>			
 		
 				    <%-- select value brand from drop-downlist --%>
 				    <div style = "display: inline-block">
@@ -92,6 +92,8 @@
 					</div>
 			
 				</form>
+				
+			</div>
 		
 		</div>
 				

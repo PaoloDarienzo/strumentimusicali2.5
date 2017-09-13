@@ -29,7 +29,7 @@
  
     <p style="color: red;">${errorString}</p>
  
-    <form method="POST" action="doLogin">
+    <form action="${pageContext.request.contextPath}/login" method="POST">
        <table>
           <tr>
              <td>User Name</td>
