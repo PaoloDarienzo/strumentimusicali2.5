@@ -23,6 +23,8 @@
 		Welcome <b> <%= nomeUtente %> </b>!
 
 		<jsp:include page="_loginButton.jsp"></jsp:include>
+		
+		<a href="${pageContext.request.contextPath}/cart">Carrello</a>
  
 	</div>
  
