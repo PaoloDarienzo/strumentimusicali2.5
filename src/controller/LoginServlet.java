@@ -35,6 +35,8 @@ public class LoginServlet extends HttpServlet {
     	String userID = request.getParameter("uname");    
         String psw = request.getParameter("psw");
         
+        System.out.println(psw);
+        
         try {
         	
 			User user = UserDAO.getUser(userID, psw);
@@ -48,7 +50,8 @@ public class LoginServlet extends HttpServlet {
 			}
 			
 			else {
-				response.sendRedirect(""); //failure
+				//TODO
+				System.exit(1);
 			}
 			
 			
