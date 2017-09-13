@@ -17,7 +17,7 @@
  
 		<!-- User store in session with attribute: currentSessionUser -->
 		<% User currentUser = (User) session.getAttribute("currentSessionUser"); %>
-		<% String nomeUtente = "culo";
+		<% String nomeUtente = null;
 		nomeUtente = (currentUser == null) ? "" : currentUser.getNomeUtente(); %>
 		
 		Welcome <b> <%= nomeUtente %> </b>!
