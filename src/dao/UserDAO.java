@@ -156,7 +156,7 @@ public class UserDAO {
 			try (Statement st = con.createStatement()) {
 				
 				String loginQuery = "SELECT * FROM cliente WHERE "
-						+ "mail = '" + userID + "' OR nomeutente = '" + userID + "' "
+						+ "mail ILIKE '" + userID + "' OR nomeutente ILIKE '" + userID + "' "
 						+ "AND password = '" + psw + "'";
 				
 				st.executeQuery(loginQuery);

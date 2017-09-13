@@ -28,12 +28,6 @@ public class LoginServlet extends HttpServlet {
     public LoginServlet() {
         super();
     }
-    
-    @Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/jsp/homeView.jsp");
-    	dispatcher.forward(request, response);
-	}
  
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
