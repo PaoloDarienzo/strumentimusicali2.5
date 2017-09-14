@@ -1,5 +1,6 @@
 package dao;
 
+import java.net.UnknownHostException;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -147,8 +148,10 @@ public class UserDAO {
      * @return the user found in the database
      * @throws ClassNotFoundException if an error occurs with the connection to the database
      * @throws NoSuchAlgorithmException if the algorithm used for encrypting the password cannot be found
+     * @throws UnknownHostException if an error occurs with the determination of the IP address
      */
-    public static User getUser(String userID, String psw) throws ClassNotFoundException, NoSuchAlgorithmException {
+    public static User getUser(String userID, String psw) 
+    		throws ClassNotFoundException, NoSuchAlgorithmException, UnknownHostException{
     	
     	User userFound = null;
     	
@@ -182,8 +185,12 @@ public class UserDAO {
     				
     				TipoCliente tipoEnum = TipoCliente.valueOf(tipo);
     				
-    				return new User(mail, nomeutente, psw, nome, cognome, 
+    				userFound = new User(mail, nomeutente, psw, nome, cognome, 
     						ntelefono, cittadiresidenza, cf, tipoEnum, ncellulare);
+    				
+    				userFound.setDeliveryPoint();
+    				userFound.setPayment();
+    				userFound.setShoppingCart();
 					
 				}
 			
