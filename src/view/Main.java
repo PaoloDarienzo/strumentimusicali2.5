@@ -1,15 +1,12 @@
 package view;
 
-import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.*;
 
 import model.*;
 
@@ -79,7 +76,6 @@ public class Main {
 	   	
 	}//End maxIDInDatabase
 
-	@SuppressWarnings("deprecation")
 	public static void main(String[] args) throws ClassNotFoundException, NoSuchAlgorithmException, UnknownHostException{
 		
 		/*

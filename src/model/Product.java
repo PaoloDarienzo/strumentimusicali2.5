@@ -12,7 +12,7 @@ import dao.ProductDAO;
  * The product class represents the product, with all his attributes.
  * ID is unique for every product.
  * @author Paolo D'Arienzo
- * @version 1.4
+ * @version 1.5
  *
  */
 public class Product {
@@ -31,7 +31,10 @@ public class Product {
      * @deprecated Image use not implemented
      */
     private final List<Image> img;
-    private String productType; //c = classic product, s = Scholastic product, p = professional product
+    /**
+     * c = classic product, s = Scholastic product, p = professional product
+     */
+    private String productType;
     private int sconto;
     private final Boolean usato;
     private int numeroPezziMinimo;
@@ -214,7 +217,7 @@ public class Product {
      * @return an image of the product
      * @deprecated Not implemented
      */
-    public Image getImg(int i){
+    public Image getImage(int i){
         return this.img.get(i);
     }
     
@@ -256,7 +259,7 @@ public class Product {
      * Returns if the product is used or not
      * @return a boolean value that state for used or not
      */
-    public Boolean getUsato(){
+    public Boolean isUsato(){
         return this.usato;
     }
     

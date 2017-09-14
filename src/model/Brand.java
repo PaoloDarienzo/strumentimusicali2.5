@@ -3,7 +3,7 @@ package model;
 /**
  * Enumeration class of the brands of products.
  * @author Paolo D'Arienzo
- * @version 1.4
+ * @version 1.5
  *
  */
 public enum Brand {
@@ -35,6 +35,7 @@ public enum Brand {
 	TAMA,
 	WARWICK,
 	YAMAHA,
-	ZILDJIAN
+	ZILDJIAN,
+	Other
 	
 }

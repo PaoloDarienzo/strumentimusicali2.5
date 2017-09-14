@@ -1,12 +1,15 @@
 package model;
 
+//TODO
+//Manca gestione in DAO
+
 import customExceptions.NoItemException;
 
 /**
  * ProductInCart associate the product that is already added in the cart
  * to an <i>int</i> that indicate the number of that product in the cart.
  * @author Paolo D'Arienzo
- * @version 1.4
+ * @version 1.5
  */
 public class ProductInCart{
     

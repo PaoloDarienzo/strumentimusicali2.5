@@ -1,9 +1,11 @@
 package model;
 
+import dao.DeliveryPointDAO;
+
 /**
  * DeliveryPoint class represents a delivery point for the user.
  * @author Paolo D'Arienzo
- * @version 1.4
+ * @version 1.5
  */
 public class DeliveryPoint {
     
@@ -68,5 +70,23 @@ public class DeliveryPoint {
 	public String getCAP() {
 		return this.CAP;
 	}
+	
+    /**
+     * Adds the delivery point in the database
+     * @throws ClassNotFoundException if an error occurs with the connection to the database
+     * @see DeliveryPointDAO#addOneDeliveryPoint(DeliveryPoint)
+     */
+    public void addInDatabase() throws ClassNotFoundException {
+    	DeliveryPointDAO.addOneDeliveryPoint(this);    	
+    }
+    
+    /**
+     * Deletes the delivery point in the database
+     * @throws ClassNotFoundException if an error occurs with the connection to the database
+     * @see DeliveryPointDAO#removeOneDeliveryPoint(delivery point)
+     */
+    public void deleteFromDatabase() throws ClassNotFoundException {
+    	DeliveryPointDAO.removeOneDeliveryPoint(this);    	
+    }
     
 }

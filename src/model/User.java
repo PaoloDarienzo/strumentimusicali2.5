@@ -21,7 +21,7 @@ import view.Main;
 /**
  * The User class represents whoever wants to connect to the website.
  * @author Paolo D'Arienzo
- * @version 1.4
+ * @version 1.5
  *
  */
 public class User {
@@ -382,11 +382,14 @@ public class User {
      * Creates a new <i>purchase</i> and adds it in the user's purchase list
      * @param pagamento is the purchase that have to be added
      * @param metodoDiConsegna is the delivery method chose by the user
+     * @param host IP address of the client
      * @throws UnknownHostException when is not possible to determine the IP address
      */
-    public void confirmPurchase(Payment pagamento, MetodoDiConsegna metodoDiConsegna) throws UnknownHostException{
+    public void confirmPurchase(Payment pagamento, MetodoDiConsegna metodoDiConsegna, String host) 
+    		throws UnknownHostException{
+    	
     	//TODO
-    	//AGGIUSTARE INDIRIZZO IP; non del local host, ma di chi lo chiama
+    	//AGGIUSTARE INDIRIZZO IP; rimuovere eccezione?
     	
     	//if the cart is empty, there is nothing to register
     	if (this.shoppingCart.getArticoliInCarrello().isEmpty()){
@@ -399,7 +402,9 @@ public class User {
 					.stream()
 					.collect(toList());
     		
-    		InetAddress UserIP = InetAddress.getLocalHost();    		
+    		InetAddress UserIP = InetAddress.getLocalHost();
+    		//TODO
+    		//InetAddress UserIP = InetAddress.getByName(String host);
     		
 			Purchase acquisto = new Purchase(this.mail, Main.createPurchaseID(), UserIP, 
 					metodoDiConsegna, pagamento, getTotalPrice(), articoliCopia);

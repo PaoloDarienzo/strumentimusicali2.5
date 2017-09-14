@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
   pageEncoding="UTF-8" 
   import="java.util.List, java.util.ArrayList, java.util.Iterator"
-  import="model.Product"
-  import="model.ShoppingCart" %>
+  import="model.Product, model.ShoppingCart, model.User" %>
   
 
 
@@ -11,11 +10,12 @@
 		
 		<br/> <br/>
 		
-		<% if(session.getAttribute("currentSessionUser") != null)
+		<% if(session.getAttribute("currentSessionUser") != null){
 		   User currentUser = (User) session.getAttribute("currentSessionUser"); 
 		   ShoppingCart userCart = currentUser.getShoppingCart();
+		}
 		
-		for(Product product : queryResults) { %>
+		//for(Product product : queryResults) { %>
 		
 		<table class = "qrtable">
 		<tr> 
@@ -67,7 +67,7 @@
 		
 		</table>
 		
-		<% } %>
+		<% //} %>
 		
 		<jsp:include page="_footer.jsp"></jsp:include>
 	

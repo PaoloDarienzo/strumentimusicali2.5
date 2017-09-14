@@ -8,7 +8,7 @@ import java.security.NoSuchAlgorithmException;
 /**
  * The Encode class provides the encryption of elements
  * @author Paolo D'Arienzo
- * @version 1.4
+ * @version 1.5
  */
 public class Encode {
 	

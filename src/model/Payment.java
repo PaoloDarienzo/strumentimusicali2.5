@@ -1,9 +1,12 @@
 package model;
 
+import dao.PaymentDAO;
+
+
 /**
  * Payment class represents the method of payment of the user.
  * @author Paolo D'Arienzo
- * @version 1.4
+ * @version 1.5
  */
 public class Payment {
     
@@ -49,6 +52,22 @@ public class Payment {
         return this.credenziali;
     }
     
-
+    /**
+     * Adds the payment in the database
+     * @throws ClassNotFoundException if an error occurs with the connection to the database
+     * @see PaymentDAO#addOnePayment(Payment)
+     */
+    public void addInDatabase() throws ClassNotFoundException {
+    	PaymentDAO.addOnePayment(this);    	
+    }
+    
+    /**
+     * Deletes the payment in the database
+     * @throws ClassNotFoundException if an error occurs with the connection to the database
+     * @see PaymentDAO#deleteFromDatabase(Payment)
+     */
+    public void deleteFromDatabase() throws ClassNotFoundException {
+    	PaymentDAO.removeOnePayment(this);    	
+    }
     
 }

@@ -1,8 +1,5 @@
 package dao;
 
-//TODO
-//JAVADOC
-
 import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -18,7 +15,7 @@ import model.User;
 /**
  * UserDAO class contains all the methods that interact with the database relatively to the user.
  * @author Paolo D'Arienzo
- * @version 1.4
+ * @version 1.5
  *
  */
 public class UserDAO {
@@ -143,6 +140,14 @@ public class UserDAO {
     	
     }
     
+    /**
+     * Queries the database and returns the user with the indicated ID, if the password is correct
+     * @param userID it's the user ID; it can be the user mail or the nickname of the user
+     * @param psw i'ts the password inserted from the user
+     * @return the user found in the database
+     * @throws ClassNotFoundException if an error occurs with the connection to the database
+     * @throws NoSuchAlgorithmException if the algorithm used for encrypting the password cannot be found
+     */
     public static User getUser(String userID, String psw) throws ClassNotFoundException, NoSuchAlgorithmException {
     	
     	User userFound = null;
@@ -193,6 +198,5 @@ public class UserDAO {
     	return userFound;
     	
     }
-    
     
 }

@@ -3,7 +3,7 @@ package model;
 /**
  *  Enumeration class of the types of instruments.
  * @author Paolo D'Arienzo
- * @version 1.4
+ * @version 1.5
  *
  */
 public enum TipoStrumento {

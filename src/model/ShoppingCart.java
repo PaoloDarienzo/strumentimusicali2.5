@@ -12,7 +12,7 @@ import dao.ShoppingCartDAO;
 /**
  *  ShoppingCart class represents the shopping cart, that is associated to an user.
  * @author Paolo D'Arienzo
- * @version 1.4
+ * @version 1.5
  *
  */
 public class ShoppingCart {

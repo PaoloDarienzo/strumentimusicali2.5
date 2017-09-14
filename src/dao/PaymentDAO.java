@@ -10,13 +10,11 @@ import java.util.List;
 
 import model.Payment;
 
-
-
 /**
  * PaymentDAO class contains all the methods that interact with the database relatively to 
  * the payments and to the classes that extend it.
  * @author Paolo D'Arienzo
- * @version 1.4
+ * @version 1.5
  */
 public class PaymentDAO {
 	

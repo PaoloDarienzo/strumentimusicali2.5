@@ -1,6 +1,3 @@
-//TODO
-//JAVADOC
-
 package dao;
 
 import java.net.UnknownHostException;
@@ -15,12 +12,22 @@ import java.util.List;
 
 import model.Product;
 
+/**
+ * QueriesDAO class contains all the queries on the databases needed for the project.
+ * @author Paolo D'Arienzo
+ * @version 1.5
+ */
 public class QueriesDAO {
 	
     private final static String JDBC_URL = "jdbc:postgresql://localhost:5432/strumenti_database";
     private final static String JDBC_USERNAME = "postgres";
     private final static String JDBC_PASSWORD = "effe";
     
+    /**
+     * Queries the database looking for all the brands
+     * @return the list of brands present in the database
+     * @throws ClassNotFoundException if an error occurs with the connection to the database
+     */
     public static List<String> getBrands() throws ClassNotFoundException {
     	
     	List<String> result = new ArrayList<String>();
@@ -50,6 +57,11 @@ public class QueriesDAO {
 			
 	}
     
+    /**
+     * Queries the database looking for all the instrument types
+     * @return the list of instrument types present in the database
+     * @throws ClassNotFoundException if an error occurs with the connection to the database
+     */
     public static List<String> getInstrumentType() throws ClassNotFoundException {
     	
     	List<String> result = new ArrayList<String>();
@@ -79,11 +91,23 @@ public class QueriesDAO {
 			
 	}
 
+    /**
+     * Queries the database looking for all the products with the indicated filters
+     * @param search is the string containing all the key words to look for
+     * @param brandSelected is the filter for the brand
+     * @param selectedInstrumentType is the filter for the instrument type
+     * @param selectedUsedStatus is the filter for the used status
+     * @param selectedProductType is the filter of the product type
+     * @return the list of products found in the database with the indicated filters
+     * @throws ClassNotFoundException if an error occurs with the connection to the database
+     * @throws UnknownHostException  if an error occurs with the determination of the IP address
+     */
     public static List<Product> getProducts(String search, String brandSelected, String selectedInstrumentType, 
     										String selectedUsedStatus, String selectedProductType) 
     												throws ClassNotFoundException, UnknownHostException{
     	
     	//TODO
+    	//Search
     	
     	List<Product> queryResults = new ArrayList<Product>();
     	

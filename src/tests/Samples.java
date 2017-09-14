@@ -20,6 +20,7 @@ import view.Main;
 
 public class Samples {
 	
+	@SuppressWarnings("deprecation")
 	private void sample() throws ClassNotFoundException, NoSuchAlgorithmException, UnknownHostException {
 		
 		//Setting productID based on IDs already present in the database (in table strumento)
@@ -177,7 +178,7 @@ public class Samples {
 				admin1.getShoppingCart().addToCart(CASIO_SA46);
 				
 				admin1.addPayment(new Payment(admin1.getMail(), "payPal", "123-123-123"));
-				admin1.confirmPurchase(admin1.getPayment().get(0), MetodoDiConsegna.INGIORNATA);
+				admin1.confirmPurchase(admin1.getPayment().get(0), MetodoDiConsegna.INGIORNATA, null);
 				
 				Payment pagamento = new Payment(admin1.getMail(), "VISA", "321-321-321");
 				admin1.addPayment(pagamento);

@@ -10,14 +10,17 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import model.*;
+import model.Brand;
+import model.LivelloStrumento;
+import model.Product;
+import model.TipoStrumento;
 
 
 /**
  * ProductDAO class contains all the methods that interact with the database relatively to 
  * the product and to the classes that extend it.
  * @author Paolo D'Arienzo
- * @version 1.4
+ * @version 1.5
  *
  */
 public class ProductDAO {
@@ -61,7 +64,7 @@ public class ProductDAO {
     			pst.setString(9, prodotto.getClassificazione().toString());
     			pst.setString(10, prodotto.getMarca().toString());
     			pst.setString(11, prodotto.getProductType());
-    			pst.setBoolean(12, prodotto.getUsato());
+    			pst.setBoolean(12, prodotto.isUsato());
     			pst.setInt(13, prodotto.getSconto());
     			pst.setInt(14, prodotto.getNumeroPezziMinimo());
     			pst.setString(15, prodotto.getLivelloConsigliato().toString());
@@ -110,7 +113,7 @@ public class ProductDAO {
     			pst.setInt(6, prodotto.getSconto());
     			pst.setInt(7, prodotto.getNumeroPezziMinimo());
     			pst.setString(8, prodotto.getLivelloConsigliato().toString());
-    			pst.setBoolean(9, prodotto.getUsato());
+    			pst.setBoolean(9, prodotto.isUsato());
     			
     			pst.setInt(10, prodotto.getID());
     			
@@ -179,8 +182,6 @@ public class ProductDAO {
     	
     	try (Connection con = DriverManager.getConnection(JDBC_URL, JDBC_USERNAME, JDBC_PASSWORD)){
 
-    		//TODO
-    		//sostituire il * con il nome delle colonne
     		try (PreparedStatement pst = con.prepareStatement(
     				"SELECT * FROM strumento "
     				+ "WHERE id = ?")) {
