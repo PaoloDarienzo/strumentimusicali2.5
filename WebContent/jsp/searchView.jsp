@@ -49,23 +49,23 @@
 		
 		<tr>
 			<td> Peso </td>
-			<td> <%  out.println(product.getPeso()); %> Kg </td>
+			<td> <% out.println(product.getPeso()); %> Kg </td>
 		</tr>
 		
 		<tr>
 			<td> Marca </td>
-			<td> <%  out.println(product.getMarca()); %> </td>
+			<td> <% out.println(product.getMarca()); %> </td>
 		</tr>
 		
 		<tr>
 			<td> Classificazione </td>
-			<td> <%  out.println(product.getClassificazione()); %> </td>
+			<td> <% out.println(product.getClassificazione()); %> </td>
 		</tr>
 		
 		<tr>
 			<td> Stato </td>
 			<% 
-			Boolean stato = product.getUsato();
+			Boolean stato = product.isUsato();
 			String printStato = "N/A";
 			if(stato == true) {
 			printStato = "Usato";
@@ -77,12 +77,12 @@
 		
 		<tr>
 			<td> Data di inserimento </td>
-			<td> <%  out.println(product.getDataInserimento()); %> </td>
+			<td> Disponibile da: <% out.println(product.getDataInserimento()); %> </td>
 		</tr>
 		
 		<tr>
 			<td> Prezzo </td>
-			<td> <%  out.println(product.getPrezzo()); %> € </td>
+			<td> <% out.println(product.getPrezzo()); %> € </td>
 		</tr>
 		
 		</table>

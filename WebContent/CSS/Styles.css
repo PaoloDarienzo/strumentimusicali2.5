@@ -1,3 +1,15 @@
+.logoutButton{
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 50%;
+    display: inline-block;
+    float: right;
+}
+
 .qrtable {
 	font-family: arial, sans-serif;
 	font-size: 12px;
@@ -44,8 +56,8 @@
 
 #header {
 	background: #E0E0E0;
-	height: 85px;
-	padding: 5px;
+	height: 90px;
+	padding: 20px;
 }
 
 #footer {
@@ -60,3 +72,14 @@
 	padding: 5px; 
 	margin-top: 10px;
   }
+  
+ #title { 
+ 	float: left;
+    display: block;
+    font-size: 1.7em;
+    margin-top: 0.67em;
+    margin-bottom: 0.67em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+}

@@ -7,24 +7,43 @@
 
 	<div style="float: left;">
 		<h1 style="float: left;">
-		<img style="float: left; width: 42px; height: 42px;" src="images/duck-walking.gif" alt="Ducking around" align="bottom">
+		<a href="${pageContext.request.contextPath}/home">
+			<img style="float: left; width: 42px; height: 42px;" src="images/duck-walking.gif" alt="Ducking around" align="middle">
+		</a>
 		zumzum.it, il miglior sito di strumenti musicali!
-		<img style="float: right; width: 42px; height: 42px;" src="images/duck-walking.gif" alt="Ducking around" align="bottom">
+		<a href="${pageContext.request.contextPath}/home">
+			<img style="float: right; width: 42px; height: 42px;" src="images/duck-walking.gif" alt="Ducking around" align="middle">
+		</a>
 		</h1>
 	</div>
  
 	<div style="float: right; padding: 10px; text-align: right;">
- 
+	
 		<!-- User store in session with attribute: currentSessionUser -->
-		<% User currentUser = (User) session.getAttribute("currentSessionUser"); %>
-		<% String nomeUtente = null;
-		nomeUtente = (currentUser == null) ? "" : currentUser.getNomeUtente(); %>
+		<% 
+		Boolean loggedStatus = null;
+		User currentUser = (User) session.getAttribute("currentSessionUser");
+		if (currentUser != null){
+			loggedStatus = true;
+		}
+		else{
+			loggedStatus = false;
+		}
+		String nomeUtente = null;
+		nomeUtente = (loggedStatus) ? currentUser.getNomeUtente() : "";
+		%>
 		
 		Welcome <b> <%= nomeUtente %> </b>!
-
-		<jsp:include page="_loginButton.jsp"></jsp:include>
 		
-		<a href="${pageContext.request.contextPath}/cart">Carrello</a>
+		<% if(loggedStatus){ %>
+			<br/>
+			<a style="display:inline-block; float:left" href="${pageContext.request.contextPath}/cart">Carrello</a>
+			<jsp:include page="_logoutButton.jsp"></jsp:include>
+		<% } else if(!loggedStatus){ %>
+			<jsp:include page="_loginButton.jsp"></jsp:include>
+			<br/>
+			<a style="display:inline-block; float:left" href="${pageContext.request.contextPath}/register">Not registered?</a>
+		<% } %>
  
 	</div>
  
