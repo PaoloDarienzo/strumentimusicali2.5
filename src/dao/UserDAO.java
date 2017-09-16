@@ -206,4 +206,43 @@ public class UserDAO {
     	
     }
     
+    /**
+     * Returns if the parameter inserted is in the database, as email or as nickname
+     * @param parameterToSearch is the parameter to check
+     * @return true if the parameter is in the database, false otherwise
+     * @throws ClassNotFoundException if an error occurs with the connection to the database
+     */
+    public static Boolean isUserInDatabase(String parameterToSearch) throws ClassNotFoundException {
+    	
+    	Class.forName("org.postgresql.Driver");
+    	
+    	try (Connection con = DriverManager.getConnection(JDBC_URL, JDBC_USERNAME, JDBC_PASSWORD)){
+			
+			try (Statement st = con.createStatement()) {
+				
+				String loginQuery = "SELECT * FROM cliente WHERE "
+						+ "(mail ILIKE '" + parameterToSearch + "' OR nomeutente ILIKE '" + parameterToSearch + "')";
+				
+				st.executeQuery(loginQuery);
+				
+				ResultSet rs = st.getResultSet();
+				
+				if(!rs.first()) {
+					return false;
+				}
+				else
+					return true;
+			
+		} catch (SQLException e) {
+			System.out.println("Errore durante query dei dati: " + e.getMessage());
+			}
+			
+		} catch (SQLException e){
+			System.out.println("Problema durante la connessione iniziale alla base di dati: " + e.getMessage());
+			}
+    	
+    	return null;
+    	
+    }
+    
 }
