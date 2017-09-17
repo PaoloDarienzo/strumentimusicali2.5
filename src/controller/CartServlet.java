@@ -16,8 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 public class CartServlet extends HttpServlet {
 
 	//TODO
-	//To autogenerate
-	private static final long serialVersionUID = -5486332566484278880L;
+	private static final long serialVersionUID = 5262857407246188300L;
        
     /**
      * @see HttpServlet#HttpServlet()

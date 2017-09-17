@@ -26,7 +26,7 @@
 		<jsp:include page="_header.jsp"></jsp:include>
 		<jsp:include page="_menu.jsp"></jsp:include>
 		
-		<h2>Register here</h2>
+		<h2 style="text-align: center;">Register here!</h2>
 		
 		<form action="${pageContext.request.contextPath}/register" method="POST">
 		
@@ -63,13 +63,16 @@
 				
 				<label><b>Select type of user</b></label>
 				<select name="userType" required>
-					<option value="c">Casual user</option>
-					<option value="p">Professional user</option>
-					<option value="s">Scholastic user</option>						
+				<optgroup style="font-size:14px;">
+						<option value="c">Casual user</option>
+						<option value="p">Professional user</option>
+						<option value="s">Scholastic user</option>
+					</optgroup>					
 				</select>
 				
 				<br/>
 				<i>All the fields with the * can be left free.</i>
+				<br/><br/>
 	
 				<div class="clearfix">
 					<button type="button" class="cancelbtn">Cancel</button>

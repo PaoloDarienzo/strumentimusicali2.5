@@ -218,20 +218,16 @@ public class UserDAO {
     	
     	try (Connection con = DriverManager.getConnection(JDBC_URL, JDBC_USERNAME, JDBC_PASSWORD)){
 			
-			try (Statement st = con.createStatement()) {
+			try (Statement st = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE)) {
 				
 				String loginQuery = "SELECT * FROM cliente WHERE "
-						+ "(mail ILIKE '" + parameterToSearch + "' OR nomeutente ILIKE '" + parameterToSearch + "')";
+						+ "mail ILIKE '" + parameterToSearch + "' OR nomeutente ILIKE '" + parameterToSearch + "'";
 				
 				st.executeQuery(loginQuery);
 				
 				ResultSet rs = st.getResultSet();
 				
-				if(!rs.first()) {
-					return false;
-				}
-				else
-					return true;
+				return rs.first(); //True if ResultSet has something, false otherwise
 			
 		} catch (SQLException e) {
 			System.out.println("Errore durante query dei dati: " + e.getMessage());

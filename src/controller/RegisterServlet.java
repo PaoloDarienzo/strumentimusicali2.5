@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.UserDAO;
-import model.Brand;
 import model.Encode;
 import model.TipoCliente;
 import model.User;
@@ -59,21 +58,26 @@ public class RegisterServlet extends HttpServlet {
 		String city = request.getParameter("city");
 		String userType = request.getParameter("userType");
 		
+		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/jsp/registerResponseView.jsp");
+		
 		if(psw.equals(pswRepeated)) {
 			
-			//try {
-				//UserDAO.isUserInDatabase(mail)
-				if (false) { //mail already inserted in database
-					System.exit(-1);
+			try {
+				if (UserDAO.isUserInDatabase(mail)) { //mail already inserted in database
+					request.setAttribute("registerResponse", "Error: mail already registered.");
+					dispatcher.forward(request, response);
+					return;
 				}
-			/*} catch (ClassNotFoundException e) {
+			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}*/
+			}
 			
 			try {
 				if (UserDAO.isUserInDatabase(username)) { //username already picked
-					System.exit(-1);
+					request.setAttribute("registerResponse", "Error: username already picked.");
+					dispatcher.forward(request, response);
+					return;
 				}
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
@@ -114,26 +118,25 @@ public class RegisterServlet extends HttpServlet {
 				utente = new User(mail, username, psw, name, surname, ntelefono, city, cf, userTypeEnum, ncellulare);
 			}
 			
-			if(utente != null) {
-				try {
-					UserDAO.addInDatabase(utente);
-				} catch (ClassNotFoundException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-			else { //Error in creation of user
-				System.exit(-1);
+			try {
+				
+				UserDAO.addInDatabase(utente);
+				
+				request.setAttribute("registerResponse", "SUCCESS! User registered!");
+				dispatcher.forward(request, response);
+				return;
+				
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 			
 		}
 		else { //Password are different
-			System.exit(-1);
+			request.setAttribute("registerResponse", "Error: inserted passwords do not match.");
+			dispatcher.forward(request, response);
+			return;
 		}
-		
-		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/jsp/homeView.jsp");
-		
-		dispatcher.forward(request, response);
 		
 	}
 

@@ -54,4 +54,14 @@
     <servlet-name>RegisterServlet</servlet-name>
     <url-pattern>/Register</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>pswForgotServlet</display-name>
+    <servlet-name>pswForgotServlet</servlet-name>
+    <servlet-class>controller.pswForgotServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>pswForgotServlet</servlet-name>
+    <url-pattern>/Forgotpsw</url-pattern>
+  </servlet-mapping>
 </web-app>
