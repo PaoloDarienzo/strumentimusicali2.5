@@ -94,7 +94,7 @@ public class QueriesDAO {
     /**
      * Queries the database looking for all the products with the indicated filters
      * @param searchStringIsVoid if true, the search string is void
-     * @param search is the string containing all the key words to look for
+     * @param search is the string containing all the keywords to look for
      * @param brandSelected is the filter for the brand
      * @param selectedInstrumentType is the filter for the instrument type
      * @param selectedUsedStatus is the filter for the used status
