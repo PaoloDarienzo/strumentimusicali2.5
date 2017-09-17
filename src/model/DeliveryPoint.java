@@ -83,7 +83,7 @@ public class DeliveryPoint {
     /**
      * Deletes the delivery point in the database
      * @throws ClassNotFoundException if an error occurs with the connection to the database
-     * @see DeliveryPointDAO#removeOneDeliveryPoint(delivery point)
+     * @see DeliveryPointDAO#removeOneDeliveryPoint(DeliveryPoint)
      */
     public void deleteFromDatabase() throws ClassNotFoundException {
     	DeliveryPointDAO.removeOneDeliveryPoint(this);    	

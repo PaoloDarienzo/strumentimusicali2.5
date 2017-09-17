@@ -93,6 +93,7 @@ public class QueriesDAO {
 
     /**
      * Queries the database looking for all the products with the indicated filters
+     * @param searchStringIsVoid if true, the search string is void
      * @param search is the string containing all the key words to look for
      * @param brandSelected is the filter for the brand
      * @param selectedInstrumentType is the filter for the instrument type
@@ -102,13 +103,10 @@ public class QueriesDAO {
      * @throws ClassNotFoundException if an error occurs with the connection to the database
      * @throws UnknownHostException  if an error occurs with the determination of the IP address
      */
-    public static List<Product> getProducts(String search, String brandSelected, String selectedInstrumentType, 
+    public static List<Product> getProducts(Boolean searchStringIsVoid, String search, 
+    										String brandSelected, String selectedInstrumentType, 
     										String selectedUsedStatus, String selectedProductType) 
     												throws ClassNotFoundException, UnknownHostException{
-    	
-    	//TODO
-    	//Search
-    	
     	List<Product> queryResults = new ArrayList<Product>();
     	
     	if(brandSelected.equals("All"))
@@ -121,17 +119,25 @@ public class QueriesDAO {
      		selectedProductType = "%";
      	
      	if(selectedUsedStatus.equals("0"))
-     		selectedUsedStatus = "NOT UNKNOWN";     		
-    	
+     		selectedUsedStatus = "NOT UNKNOWN";
+     	
+     	if(searchStringIsVoid) {
+     		search = "true";
+     	}
+     	else {
+     		search = "to_tsvector(descrizione || '. ' || nome) @@ to_tsquery('" + search + "')";
+     	}
+     	
     	Class.forName("org.postgresql.Driver");
     	
 		try (Connection con = DriverManager.getConnection(JDBC_URL, JDBC_USERNAME, JDBC_PASSWORD)){
-		    
+			
 			String query = "SELECT * FROM strumento "
-							+ "WHERE marca LIKE '" + brandSelected
+							+ "WHERE (marca LIKE '" + brandSelected
 							+ "' AND classificazione LIKE '" + selectedInstrumentType
 							+ "' AND producttype LIKE '" + selectedProductType 
-							+ "' AND usato IS " + selectedUsedStatus;
+							+ "' AND usato IS " + selectedUsedStatus
+							+ ") AND " + search;
 			
 			System.out.println("Query:\n" + query);
 			

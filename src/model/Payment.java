@@ -64,7 +64,7 @@ public class Payment {
     /**
      * Deletes the payment in the database
      * @throws ClassNotFoundException if an error occurs with the connection to the database
-     * @see PaymentDAO#deleteFromDatabase(Payment)
+     * @see PaymentDAO#removeOnePayment(Payment)
      */
     public void deleteFromDatabase() throws ClassNotFoundException {
     	PaymentDAO.removeOnePayment(this);    	
