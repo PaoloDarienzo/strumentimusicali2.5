@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-  pageEncoding="UTF-8" import="java.util.List, java.util.Iterator" %>
+  pageEncoding="UTF-8" import="java.util.List, java.util.Iterator, dao.*" %>
   
 <!DOCTYPE html>
 
