@@ -380,12 +380,14 @@ public class User {
     
     /**
      * Creates a new <i>purchase</i> and adds it in the user's purchase list
-     * @param pagamento is the purchase that have to be added
-     * @param metodoDiConsegna is the delivery method chose by the user
+     * @param pagamento is the purchase that has to be added
+     * @param metodoDiConsegna is the delivery method chosen by the user
+     * @param puntoDiConsegna is the delivery point chosen by the user
      * @param host IP address of the client
      * @throws UnknownHostException when is not possible to determine the IP address
      */
-    public void confirmPurchase(Payment pagamento, MetodoDiConsegna metodoDiConsegna, String host) 
+    public void confirmPurchase(Payment pagamento, MetodoDiConsegna metodoDiConsegna, 
+    							DeliveryPoint puntoDiConsegna, String host) 
     		throws UnknownHostException{
     	
     	//TODO
@@ -407,7 +409,8 @@ public class User {
     		//InetAddress UserIP = InetAddress.getByName(String host);
     		
 			Purchase acquisto = new Purchase(this.mail, Main.createPurchaseID(), UserIP, 
-					metodoDiConsegna, pagamento, getTotalPrice(), articoliCopia);
+					metodoDiConsegna, pagamento, puntoDiConsegna,
+					getTotalPrice(), articoliCopia);
 			
 			this.purchase.add(acquisto);
     	}

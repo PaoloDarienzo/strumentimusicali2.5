@@ -153,7 +153,7 @@ public class ProductDAO {
     					+ "WHERE id = " + productID);
     			
     			int n = st.getUpdateCount();
-    			System.out.println("Rimosse " + n + " righe.");
+    			System.out.println("Rimosse " + n + " righe da tabella strumento: " + productID);
     			
     		} catch (SQLException e) {
     			System.out.println("Errore durante cancellazione dati: " + e.getMessage());

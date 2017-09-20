@@ -96,7 +96,7 @@ public class ShoppingCartDAO {
     			
     			int n = pst.executeUpdate();
     			System.out.println("Modificate " + n + " righe in tabella " + NOME_TABELLA + ": " +
-    					"user: " + userMail + ", product and new num: " + productID + ", " + newQuantity + ".");
+    					userMail + ", product and new num: " + productID + ", " + newQuantity + ".");
     			
     		} catch (SQLException e) {
     			System.out.println("Errore durante aggiornamento dati: " + e.getMessage());

@@ -95,7 +95,8 @@ public class DeliveryPointDAO {
     			pst.setString(4, puntoDiConsegna.getCAP());
     			
     			int n = pst.executeUpdate();
-    			System.out.println("Rimosse " + n + " righe.");
+    			System.out.println("Rimosse " + n + " righe da tabella " + NOME_TABELLA + ": " 
+    								+ puntoDiConsegna.getUserMailFromDelPoint() + ".");
     			
     		} catch (SQLException e) {
     			System.out.println("Errore durante cancellazione dati: " + e.getMessage());

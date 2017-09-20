@@ -126,10 +126,10 @@ public class UserDAO {
     		try (Statement st = con.createStatement()){
     			st.executeUpdate(
     					"DELETE FROM " + NOME_TABELLA + " "
-    					+ "WHERE mail = " + userMail);
+    					+ "WHERE mail = '" + userMail + "'");
     			
     			int n = st.getUpdateCount();
-    			System.out.println("Rimosse " + n + " righe.");
+    			System.out.println("Rimosse " + n + " righe da " + NOME_TABELLA + ": " + userMail + ".");
     			
     		} catch (SQLException e) {
     			System.out.println("Errore durante cancellazione dati: " + e.getMessage());

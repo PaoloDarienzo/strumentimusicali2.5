@@ -20,6 +20,7 @@ public class Purchase {
     private final InetAddress IPAddress;
     private final MetodoDiConsegna metodoDiConsegna;
     private final Payment pagamento;
+    private final DeliveryPoint puntoDiConsegna;
     private final float prezzoTotale;
     private final List<ProductInCart> articoliAcquistati;
     
@@ -30,11 +31,13 @@ public class Purchase {
      * @param IPAddress is the IP address of the user who execute the purchase
      * @param metodoDiConsegna is the delivery method chosen by the user
      * @param pagamento is the payment used for the purchase
+     * @param puntoDiConsegna is the delivery point selected by the user
      * @param prezzoTotale is the total price of the purchase
      * @param articoliAcquistati is the list of products purchased
      */
     public Purchase(String mail, int ID, InetAddress IPAddress, MetodoDiConsegna metodoDiConsegna,
-    				Payment pagamento, float prezzoTotale, List<ProductInCart> articoliAcquistati){
+    				Payment pagamento, DeliveryPoint puntoDiConsegna,
+    				float prezzoTotale, List<ProductInCart> articoliAcquistati){
     	this.userMail = mail;
         this.ID = ID;
         this.data = new Date(System.currentTimeMillis());
@@ -42,6 +45,7 @@ public class Purchase {
         this.IPAddress = IPAddress;
         this.metodoDiConsegna = metodoDiConsegna;
         this.pagamento = pagamento;
+        this.puntoDiConsegna= puntoDiConsegna;
         this.prezzoTotale = prezzoTotale;
         this.articoliAcquistati = articoliAcquistati;
     }
@@ -92,6 +96,14 @@ public class Purchase {
      */
     public MetodoDiConsegna getMetodoDiConsegnaFromPurchase(){
     	return this.metodoDiConsegna;
+    }
+    
+    /**
+     * Returns the delivery point of the purchase
+     * @return the delivery point of the purchase
+     */
+    public DeliveryPoint getPuntoDiConsegnaFromPurchase(){
+    	return this.puntoDiConsegna;
     }
     
     /**

@@ -1,3 +1,6 @@
+//TODO
+//ID in DAO?
+
 package view;
 
 import java.net.UnknownHostException;
@@ -7,8 +10,6 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
-import model.*;
 
 /**
  * 
@@ -87,39 +88,14 @@ public class Main {
 		svuotaTab("aggiunto");
 		*/
 		
-		svuotaTab("cliente");
-		
-		//Creazione di utenti
-		
-		User admin0 = new User("lhe1995@gmail.com", "Lucy", Encode.cryptingString("minzione"),
-				"Lucia", "Crivellini", "3909829182", "Verona",
-				"LCLZCRV9484123", TipoCliente.ADMIN, "93980908890");
-		
-		User admin1 = new User("lorenzorik@gmail.com", "lorenzoricci", Encode.cryptingString("Sandalo94"),
-								"Lorenzo", "Ricci", "3409320876", "San Giovanni Lupatoto",
-								"LRNRCC9325", TipoCliente.ADMIN, "93980908890");
-		
-		User admin2 = new User("Pleasant94@gmail.com", "paolodarienzo", Encode.cryptingString("Sandalo94"),
-								"Paolo", "D'Arienzo", "3460996201", "Povegliano Veronese",
-								"DRNPLA9426NG", TipoCliente.ADMIN);
-		
-		User PC1 = new User("paolo.darienzo@studenti.univr.it", "paolodarienzo2", Encode.cryptingString("Criptami"),
-									"Paolo", "D'Arienzo", "1234567890", "Verona", "DRNAPAMDWNO12F", TipoCliente.PROFESSIONISTA);
-		
-		User HC1 = new User("lorenzo.ricci@studenti.univr.it", "lorenzoricci2", 
-				Encode.cryptingString("CriptamiTutto"), "Lorenzo", "Ricci", "1234567890", "Lugagnano", "ASDQO8N310L", TipoCliente.TITOLARE);
-		
-		User occasionale1 = new User("mario.rossi@gmail.com", "rossirossi", Encode.cryptingString("albero"),
-				"Mario", "Rossi", "0987654321", "Roma", "RSSMAR102FLAS");
-
-		//Aggiunta di utenti al database
-		admin1.addInDatabase();
-		admin2.addInDatabase();
-		PC1.addInDatabase();
-		HC1.addInDatabase();
-		occasionale1.addInDatabase();
-		
-		admin0.addInDatabase();
+		//Setting productID based on IDs already present in the database (in table strumento)
+		for(int i = 0; i < Main.maxIDInDatabase("strumento"); i++){
+			Main.createProductID();
+		}
+		//Setting productID based on IDs already present in the database (in table acquisto)
+		for(int i = 0; i < Main.maxIDInDatabase("ordine"); i++){
+			Main.createPurchaseID();
+		}
 		
 	}
 	

@@ -112,10 +112,10 @@ public class RegisterServlet extends HttpServlet {
 			User utente = null;
 			
 			if (ncellulare != "") {
-				utente = new User(mail, username, psw, name, surname, ntelefono, city, cf, userTypeEnum);
+				utente = new User(mail, username, psw, name, surname, ntelefono, city, cf, userTypeEnum, ncellulare);
 			}
 			else {
-				utente = new User(mail, username, psw, name, surname, ntelefono, city, cf, userTypeEnum, ncellulare);
+				utente = new User(mail, username, psw, name, surname, ntelefono, city, cf, userTypeEnum);
 			}
 			
 			try {
