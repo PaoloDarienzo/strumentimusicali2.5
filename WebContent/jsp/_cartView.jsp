@@ -1,73 +1,44 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
   pageEncoding="UTF-8" 
   import="java.util.List, java.util.ArrayList, java.util.Iterator"
-  import="model.Product, model.ShoppingCart, model.User" %>
+  import="model.Product, model.ProductInCart, model.User" %>
   
+<!DOCTYPE html>
 
+<html>
 
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="CSS/Styles.css" rel="stylesheet" type="text/css">
+		<meta charset="UTF-8">
 		
-		<h3>Carrello</h3>
+		<meta name="description" content="Negozio di strumenti musicali">
+		<meta name="keywords" content="strumenti, musicali, negozio">
+		<meta name="author" content="Paolo D'Arienzo">
+		
+		<link rel="icon" href="images/favicon-32x32.png" />
+		
+		<title>zumzum.it</title>
+		
+	</head>
+	
+	<body>
+	
+		<jsp:include page="_header.jsp"></jsp:include>
+		<jsp:include page="_menu.jsp"></jsp:include>
+		
+		<h3>Prodotti nel carrello</h3>
+		
+		<% User currentUser = (User) session.getAttribute("currentSessionUser");
+		if (currentUser != null){ %>
+			<%= currentUser.getShoppingCart().getArticoliInCarrello().size() %>
+		<% }
+		else{
+			
+		} %>
 		
 		<br/> <br/>
-		
-		<% if(session.getAttribute("currentSessionUser") != null){
-		   User currentUser = (User) session.getAttribute("currentSessionUser"); 
-		   ShoppingCart userCart = currentUser.getShoppingCart();
-		}
-		
-		//for(Product product : queryResults) { %>
-		
-		<table class = "qrtable">
-		<tr> 
-			<th colspan="2"> <% out.println(product.getNome()); %> </th> 
-		</tr>
-		
-		<tr>
-			<td> Descrizione </td>
-			<td> <% out.println(product.getDescrizione()); %> </td>
-		</tr>
-		
-		<tr>
-			<td> Peso </td>
-			<td> <%  out.println(product.getPeso()); %> Kg </td>
-		</tr>
-		
-		<tr>
-			<td> Marca </td>
-			<td> <%  out.println(product.getMarca()); %> </td>
-		</tr>
-		
-		<tr>
-			<td> Classificazione </td>
-			<td> <%  out.println(product.getClassificazione()); %> </td>
-		</tr>
-		
-		<tr>
-			<td> Stato </td>
-			<% 
-			Boolean stato = product.getUsato();
-			String printStato = "N/A";
-			if(stato == true) {
-			printStato = "Usato";
-			} else if(stato == false) {
-				printStato = "Nuovo";
-			} %>
-			<td> <% out.println(printStato); %> </td>
-		</tr>
-		
-		<tr>
-			<td> Data di inserimento </td>
-			<td> <%  out.println(product.getDataInserimento()); %> </td>
-		</tr>
-		
-		<tr>
-			<td> Prezzo </td>
-			<td> <%  out.println(product.getPrezzo()); %> € </td>
-		</tr>
-		
-		</table>
-		
-		<% //} %>
+
 		
 		<jsp:include page="_footer.jsp"></jsp:include>
 	

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
   pageEncoding="UTF-8" 
   import="java.util.List, java.util.ArrayList, java.util.Iterator"
-  import="model.Product" %>
+  import="model.Product, model.User" %>
   
 <!DOCTYPE html>
 
@@ -82,6 +82,21 @@
 			<td> Prezzo </td>
 			<td> <% out.println(product.getPrezzo()); %> € </td>
 		</tr>
+		
+		<% User currentUser = (User) session.getAttribute("currentSessionUser");
+				if (currentUser != null){%>
+				<tr><td  colspan="2">  
+					<form action="${pageContext.request.contextPath}/cart" method="get">
+					<input id="addProduct" type="submit" value="Aggiungi al Carrello"/>
+					<% currentUser.getShoppingCart().addToCart(product); %> 
+				</td></tr>
+				 <%} 
+			else{
+			
+				} %>
+		<tr>
+			
+
 		
 		</table>
 		
