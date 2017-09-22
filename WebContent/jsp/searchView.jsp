@@ -87,8 +87,7 @@
 				if (currentUser != null){%>
 				<tr><td  colspan="2">  
 					<form action="${pageContext.request.contextPath}/cart" method="get">
-					<input id="addProduct" type="submit" value="Aggiungi al Carrello"/>
-					<% currentUser.getShoppingCart().addToCart(product); %> 
+					<input type="submit" value="Aggiungi al Carrello"/>
 				</td></tr>
 				 <%} 
 			else{
