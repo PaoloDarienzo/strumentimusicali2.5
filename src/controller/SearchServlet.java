@@ -69,7 +69,6 @@ public class SearchServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		//TODO
 		for(Product p: queryResults) {
 			System.out.println("ID: " + p.getID() + ", nome: " + p.getNome() + ".");
 		}

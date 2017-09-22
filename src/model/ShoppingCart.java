@@ -47,9 +47,30 @@ public class ShoppingCart {
      * @see ShoppingCartDAO#addOneItem(String, ProductInCart)
      */
     public void addToCart(Product product) throws ClassNotFoundException{
-    	ProductInCart aggiunto = new ProductInCart(product);
-        this.articoliInCarrello.add(aggiunto);
-        ShoppingCartDAO.addOneItem(this.userMail, aggiunto);
+    	
+    	int IDProductToAdd = product.getID();
+    	Boolean isAlreadyAdded = null;
+    	
+    	for (ProductInCart prodottoInCarrello : this.articoliInCarrello) {
+    		if(prodottoInCarrello.getProduct().getID() == IDProductToAdd) {
+    			isAlreadyAdded = true;
+    			
+    			//While I'm here, I add 1 item
+    			prodottoInCarrello.addOneItem();
+    			ShoppingCartDAO.updateInDatabase(this.userMail, IDProductToAdd, prodottoInCarrello.getNumeroProdotto());
+    			
+    			break;
+    		}
+    		else
+    			isAlreadyAdded = false;    			
+    	}
+    	
+    	if(!isAlreadyAdded) { //The product that is added wasn't already in cart
+    		ProductInCart aggiunto = new ProductInCart(product);
+            this.articoliInCarrello.add(aggiunto);
+            ShoppingCartDAO.addOneItem(this.userMail, aggiunto);   
+    	}
+    	
     }
 
     /**

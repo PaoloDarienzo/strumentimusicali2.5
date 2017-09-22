@@ -1,11 +1,12 @@
 //TODO
-//Ridefinire tutta la pagina jsp
+//javadoc
 
 package controller;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -46,16 +47,18 @@ public class LoginServlet extends HttpServlet {
 			}
 			
 			else {
-				//TODO
-				System.exit(1);
+				RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/jsp/loginResponseView.jsp");
+				
+				request.setAttribute("loginResponse", "Error: username or password are wrong.");
+				dispatcher.forward(request, response);
+				return;
 			}
 			
 			
-		} catch (ClassNotFoundException e) {
+		} catch (NoSuchAlgorithmException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			
-		} catch (NoSuchAlgorithmException e) {
+		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}	
