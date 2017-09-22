@@ -12,6 +12,7 @@
 			<a href="${pageContext.request.contextPath}/home" class="image-link">
 				<img class="duck-size" src="images/duck-walking.gif" alt="Ducking around" style="float:right; align: center;">
 			</a>
+			 
 		</div>
 	</div>
  
@@ -37,9 +38,11 @@
 		<div id="clear"></div>
 		<% if(loggedStatus){ %>
 			<div style="float: left;">
-				<a href="${pageContext.request.contextPath}/cart" class="image-link">
-					<%=currentUser.getShoppingCart().getNumberOfItems()%> items - €<%=currentUser.getShoppingCart().getTotalPrice()%>
-				</a>
+			
+			<a href="${pageContext.request.contextPath}/cart" class="image-link">
+				<button type="button" onclick="">Carrello:<br /><%=currentUser.getShoppingCart().getNumberOfItems()%> items - €<%=currentUser.getShoppingCart().getTotalPrice()%></button>
+			</a>
+				
 			</div>
 			<div id="clear"></div>
 			<div>
