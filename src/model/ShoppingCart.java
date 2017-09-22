@@ -214,6 +214,23 @@ public class ShoppingCart {
     }
     
     /**
+     * Returns the total number of items in the cart, adding the number of item of every product.
+     * @return the total number of items in the cart
+     */
+    public int getNumberOfItems() {
+    	
+    	int totalCount = 0;
+    	
+    	for(ProductInCart prodottoInCarrello : this.articoliInCarrello) {
+    		totalCount += prodottoInCarrello.getNumeroProdotto();
+    	}
+
+    	return totalCount;
+    	
+    }
+    
+    
+    /**
      * Returns the total price of the items in the shopping cart
      * @return the total price of the items in the shoppng cart
      */

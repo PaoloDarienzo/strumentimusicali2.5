@@ -38,7 +38,7 @@
 		<% if(loggedStatus){ %>
 			<div style="float: left;">
 				<a href="${pageContext.request.contextPath}/cart" class="image-link">
-					<%=currentUser.getShoppingCart().getArticoliInCarrello().size()%> items - €<%=currentUser.getShoppingCart().getTotalPrice()%>
+					<%=currentUser.getShoppingCart().getNumberOfItems()%> items - €<%=currentUser.getShoppingCart().getTotalPrice()%>
 				</a>
 			</div>
 			<div id="clear"></div>
