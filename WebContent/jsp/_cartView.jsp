@@ -28,16 +28,40 @@
 		<jsp:include page="_menu.jsp"></jsp:include>
 		
 		<h3>Prodotti nel carrello</h3>
+
+				<% User currentUser = (User) session.getAttribute("currentSessionUser");
+				if (currentUser != null){ %>
+
+			<table class= "qrtable">
+				<tr><th colspan = "4">Articoli totali:</th></tr>
+				<tr><th colspan = "3">Nome</th><th colspan = "1">Prezzo</th></tr>
+	
+			<% List<ProductInCart> cartProducts = currentUser.getShoppingCart().getArticoliInCarrello();
 		
-		<% User currentUser = (User) session.getAttribute("currentSessionUser");
-		if (currentUser != null){ %>
-			<%= currentUser.getShoppingCart().getArticoliInCarrello().size() %>
-		<% }
-		else{
+			for(ProductInCart product : cartProducts) { %>
 			
-		} %>
-		
+				<tr>
+					<td colspan="3"><% out.println(product.getProduct().getNome()); %></td>
+					<td colspan="1"><% out.println(product.getProduct().getPrezzo()); %></td>
+				</tr>
+			
+				<%}%>		
+			<tr>
+				<th colspan="3">Articoli totali:</th>
+				<td colspan="1"><%= currentUser.getShoppingCart().getArticoliInCarrello().size() %></td>
+			</tr>
+			
+			<tr>
+				<th colspan="3">Totale:</th>
+				<td colspan="1"><%= currentUser.getShoppingCart().getTotalPrice() %></td>
+			</tr>
+
+		</table>
 		<br/> <br/>
+						<% }
+				else{
+					
+				} %>
 
 		
 		<jsp:include page="_footer.jsp"></jsp:include>
