@@ -8,6 +8,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import dao.ProductDAO;
+import model.User;
 
 /**
  * Servlet implementation class CartServlet
@@ -53,6 +57,24 @@ public class CartServlet extends HttpServlet {
     @Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	
-	}
+    	int productID = Integer.parseInt(request.getParameter("productID"));
+    	
+    	HttpSession session = request.getSession(true);
+    	User loggedUser = (User) session.getAttribute("currentSessionUser");
+    	
+    	try {
+    		
+			loggedUser.getShoppingCart().addToCart(ProductDAO.getFromDatabase(productID));
+			
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	
+    	RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/jsp/_cartView.jsp");
+		
+		dispatcher.forward(request, response);
+    
+    }
 
 }

@@ -85,18 +85,20 @@
 		
 		<% User currentUser = (User) session.getAttribute("currentSessionUser");
 				if (currentUser != null){%>
-				<tr><td  colspan="2">  
-					<form action="${pageContext.request.contextPath}/cart" method="get">
-					<input type="submit" value="Aggiungi al Carrello"/>
-				</td></tr>
-				 <%} 
-			else{
-			
-				} %>
-		<tr>
-			
-
-		
+				<tr>
+					<td colspan="2">  
+						<form action="${pageContext.request.contextPath}/cart" method="POST">
+							<input type="hidden" name="productID" value="<%=product.getID()%>" />
+							<input type="submit" value="Aggiungi al Carrello"/>
+						</form>
+					</td>
+				</tr>
+				 <%} else{%>
+				<tr>
+					<td colspan="2">Account required to buy.</td>
+				</tr>
+			<%} %>
+						
 		</table>
 		
 		<% } %>
