@@ -3,7 +3,8 @@
   
 <div id="header">
 	
-	<div style="float: left; vertical-align: middle;">
+	<div style="float: left;">
+		<div style="vertical-align: middle;">
 			<a href="${pageContext.request.contextPath}/home" class="image-link">
 				<img class="duck-size" src="images/duck-walking.gif" alt="Ducking around" style="float:left; align: center;">
 			</a>
@@ -11,6 +12,7 @@
 			<a href="${pageContext.request.contextPath}/home" class="image-link">
 				<img class="duck-size" src="images/duck-walking.gif" alt="Ducking around" style="float:right; align: center;">
 			</a>
+		</div>
 	</div>
  
 	<div style="float: right;">
@@ -29,14 +31,26 @@
 		nomeUtente = (loggedStatus) ? currentUser.getNomeUtente() : "";
 		%>
 		
+		<div style="float: left;">
 		Welcome <b><%= nomeUtente %></b>!
-		
+		</div>
+		<div id="clear"></div>
 		<% if(loggedStatus){ %>
-			<a href="${pageContext.request.contextPath}/cart">Carrello</a>
-			<jsp:include page="_logoutButton.jsp"></jsp:include>
+			<div style="float: left;">
+				<a href="${pageContext.request.contextPath}/cart" class="image-link">
+					<%=currentUser.getShoppingCart().getArticoliInCarrello().size()%> items - €<%=currentUser.getShoppingCart().getTotalPrice()%>
+				</a>
+			</div>
+			<div id="clear"></div>
+			<div>
+				<jsp:include page="_logoutButton.jsp"></jsp:include>
+			</div>
+			<div id="clear"></div>
 		<% } else if(!loggedStatus){ %>
-			<jsp:include page="_loginButton.jsp"></jsp:include>
-			<br/>
+			<div style="float: left;">
+				<jsp:include page="_loginButton.jsp"></jsp:include>
+			</div>
+			<div id="clear"></div>
 			<a href="${pageContext.request.contextPath}/register">Not registered?</a>
 		<% } %>
  

@@ -7,7 +7,7 @@
     cursor: pointer;
     width: 50%;
     display: inline-block;
-    float: right;
+    float: left;
 }
 
 .qrtable {
@@ -113,6 +113,7 @@ button {
     border: none;
     cursor: pointer;
     width: 100%;
+    overflow: visible;
 }
 
 /* Extra styles for the cancel button */
