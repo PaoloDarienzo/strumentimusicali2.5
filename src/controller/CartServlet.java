@@ -40,7 +40,7 @@ public class CartServlet extends HttpServlet {
     @Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/jsp/_cartView.jsp");
+		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/jsp/cartView.jsp");
 
 		dispatcher.forward(request, response);
 		
@@ -71,7 +71,7 @@ public class CartServlet extends HttpServlet {
 			e.printStackTrace();
 		}
     	
-    	RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/jsp/_cartView.jsp");
+    	RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/jsp/cartView.jsp");
 		
 		dispatcher.forward(request, response);
     

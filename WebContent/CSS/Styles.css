@@ -1,3 +1,36 @@
+.plusBtn {
+    background-color: #2eb82e;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    overflow: visible;
+}
+
+.minusBtn {
+    background-color: #cc0000;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    overflow: visible;
+}
+
+.removeBtn {
+    background-color: #660000;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    overflow: visible;
+}
+
 .logoutButton{
     background-color: #4CAF50;
     color: white;
