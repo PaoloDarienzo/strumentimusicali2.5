@@ -47,7 +47,7 @@ public class InitializationForTests {
 		
 	}
 	
-	protected static List<Product> productInit() throws UnknownHostException{
+	protected static List<Product> productInit() throws UnknownHostException, ClassNotFoundException{
 		
 		List<Product> productList = new ArrayList<Product>();
 		

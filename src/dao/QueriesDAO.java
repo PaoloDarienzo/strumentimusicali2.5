@@ -162,4 +162,39 @@ public class QueriesDAO {
     	
     }
     
+    /**
+	 * Executes a query on the database <i>strumenti_database</i>, on the table indicated,
+	 *  in search of the maximum value of <i>ID</i>.
+	 * @param tabella is the table in which searching the maximum value
+	 * @return an int representing the maximum value found for the ID
+	 * @throws ClassNotFoundException if an error occurs with the connection to the database
+	 */
+	public static int maxIDInDatabase(String tabella) throws ClassNotFoundException{
+		
+		Class.forName("org.postgresql.Driver");
+		
+	   	try (Connection con = DriverManager.getConnection(JDBC_URL, JDBC_USERNAME, JDBC_PASSWORD)){
+	    	
+	   		try(Statement st = con.createStatement()){
+	   			
+	   			ResultSet rs = st.executeQuery("SELECT MAX(ID) FROM " + tabella);
+	   			
+	   			while (rs.next()) {
+	   				return rs.getInt(1);
+	   			}
+	   			
+	   		} catch (SQLException e) {
+    			System.out.println("Errore durante interrogazione della tabella " + tabella + ": " + e.getMessage());
+    			return -1;
+    		}
+	   		
+	   	} catch (SQLException e){
+    		System.out.println("Problema durante la connessione iniziale alla base di dati: " + e.getMessage());
+    		return -2;
+    	}
+	   	
+		return -3;
+	   	
+	}//End maxIDInDatabase
+    
 }

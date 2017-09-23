@@ -8,6 +8,7 @@ import java.util.Optional;
 
 import dao.DeliveryPointDAO;
 import dao.PaymentDAO;
+import dao.PurchaseDAO;
 import dao.ShoppingCartDAO;
 import dao.UserDAO;
 
@@ -385,13 +386,11 @@ public class User {
      * @param puntoDiConsegna is the delivery point chosen by the user
      * @param host IP address of the client
      * @throws UnknownHostException when is not possible to determine the IP address
+     * @throws ClassNotFoundException if an error occurs with the connection to the database
      */
     public void confirmPurchase(Payment pagamento, MetodoDiConsegna metodoDiConsegna, 
     							DeliveryPoint puntoDiConsegna, String host) 
-    		throws UnknownHostException{
-    	
-    	//TODO
-    	//AGGIUSTARE INDIRIZZO IP; rimuovere eccezione?
+    		throws UnknownHostException, ClassNotFoundException{
     	
     	//if the cart is empty, there is nothing to register
     	if (this.shoppingCart.getArticoliInCarrello().isEmpty()){
@@ -404,15 +403,18 @@ public class User {
 					.stream()
 					.collect(toList());
     		
-    		InetAddress UserIP = InetAddress.getLocalHost();
-    		//TODO
-    		//InetAddress UserIP = InetAddress.getByName(String host);
+    		InetAddress UserIP = InetAddress.getByName(host);
     		
 			Purchase acquisto = new Purchase(this.mail, Main.createPurchaseID(), UserIP, 
 					metodoDiConsegna, pagamento, puntoDiConsegna,
 					getTotalPrice(), articoliCopia);
 			
 			this.purchase.add(acquisto);
+			
+			this.getShoppingCart().removeAllFromCart();
+
+			PurchaseDAO.addInDatabase(acquisto);
+			
     	}
     	
     }

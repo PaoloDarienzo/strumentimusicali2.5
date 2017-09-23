@@ -15,7 +15,7 @@ import view.Main;
 public class TestProduct {
 
 	@Test
-	public void testCreation() throws UnknownHostException {		
+	public void testCreation() throws UnknownHostException, ClassNotFoundException {		
 		
 		int i = Main.createProductID() + 500;
 		

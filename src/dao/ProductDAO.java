@@ -178,6 +178,7 @@ public class ProductDAO {
     	//username:= postgres
     	//password:= effe
     	//Database name:=strumenti_database
+    	
     	Class.forName("org.postgresql.Driver");
     	
     	try (Connection con = DriverManager.getConnection(JDBC_URL, JDBC_USERNAME, JDBC_PASSWORD)){

@@ -11,6 +11,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import dao.QueriesDAO;
+
 /**
  * 
  * @author Paolo D'Arienzo
@@ -30,52 +32,28 @@ public class Main {
     /**
      * Updates the productID that is unique per JVM run.
      * @return the updated value of <i>productID</i>
+     * @throws ClassNotFoundException if an error occurs with the connection to the database
      */
-	public static synchronized int createProductID(){
+	public static synchronized int createProductID() throws ClassNotFoundException{
+		int maxID = QueriesDAO.maxIDInDatabase("strumento");
+		while(productID <= maxID) {
+			productID++;
+		}
 	    return productID++;
 	}
 	
     /**
      * Updates the purchaseID that is unique per JVM run.
      * @return the updated value of <i>purchaseID</i>
+     * @throws ClassNotFoundException if an error occurs with the connection to the database
      */
-	public static synchronized int createPurchaseID(){
+	public static synchronized int createPurchaseID() throws ClassNotFoundException{
+		int maxID = QueriesDAO.maxIDInDatabase("ordine");
+		while(purchaseID <= maxID) {
+			purchaseID++;
+		}
 	    return purchaseID++;
 	}
-	
-	/**
-	 * Executes a query on the database <i>strumenti_professionali</i>, on the table indicated,
-	 *  in search of the maximum value of <i>ID</i>.
-	 * @param tabella is the table in which searching the maximum value
-	 * @return an int representing the maximum value found for the ID
-	 * @throws ClassNotFoundException if an error occurs with the connection to the database
-	 */
-	public static int maxIDInDatabase(String tabella) throws ClassNotFoundException{
-		
-		Class.forName("org.postgresql.Driver");
-		
-	   	try (Connection con = DriverManager.getConnection(JDBC_URL, JDBC_USERNAME, JDBC_PASSWORD)){
-	    	
-	   		try(Statement st = con.createStatement()){
-	   			
-	   			ResultSet rs = st.executeQuery("SELECT MAX(ID) FROM " + tabella);
-	   			
-	   			while (rs.next()) {
-	   				return rs.getInt(1);
-	   			}
-	   			
-	   		} catch (SQLException e) {
-    			System.out.println("Errore durante interrogazione della tabella strumento: " + e.getMessage());
-    			return -1;
-    		}
-	   		
-	   	} catch (SQLException e){
-    		System.out.println("Problema durante la connessione iniziale alla base di dati: " + e.getMessage());
-    		return -2;
-    	}
-		return -3;
-	   	
-	}//End maxIDInDatabase
 
 	public static void main(String[] args) throws ClassNotFoundException, NoSuchAlgorithmException, UnknownHostException{
 		
@@ -87,15 +65,6 @@ public class Main {
 		svuotaTab("puntodiconsegna");
 		svuotaTab("aggiunto");
 		*/
-		
-		//Setting productID based on IDs already present in the database (in table strumento)
-		for(int i = 0; i < Main.maxIDInDatabase("strumento"); i++){
-			Main.createProductID();
-		}
-		//Setting productID based on IDs already present in the database (in table acquisto)
-		for(int i = 0; i < Main.maxIDInDatabase("ordine"); i++){
-			Main.createPurchaseID();
-		}
 		
 	}
 	

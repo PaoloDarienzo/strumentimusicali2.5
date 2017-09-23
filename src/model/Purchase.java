@@ -51,6 +51,34 @@ public class Purchase {
     }
     
     /**
+     * Constructor of purchase.
+     * @param data is the date of the purchase
+     * @param ora is the time of the purchase
+     * @param mail is the e-mail of the user
+     * @param ID is the ID of the purchase
+     * @param IPAddress is the IP address of the user who execute the purchase
+     * @param metodoDiConsegna is the delivery method chosen by the user
+     * @param pagamento is the payment used for the purchase
+     * @param puntoDiConsegna is the delivery point selected by the user
+     * @param prezzoTotale is the total price of the purchase
+     * @param articoliAcquistati is the list of products purchased
+     */
+    public Purchase(Date data, Time ora, String mail, int ID, InetAddress IPAddress, 
+    		MetodoDiConsegna metodoDiConsegna, Payment pagamento, DeliveryPoint puntoDiConsegna,
+			float prezzoTotale, List<ProductInCart> articoliAcquistati){
+		this.userMail = mail;
+		this.ID = ID;
+		this.data = data;
+		this.ora = ora;
+		this.IPAddress = IPAddress;
+		this.metodoDiConsegna = metodoDiConsegna;
+		this.pagamento = pagamento;
+		this.puntoDiConsegna= puntoDiConsegna;
+		this.prezzoTotale = prezzoTotale;
+		this.articoliAcquistati = articoliAcquistati;
+}
+    
+    /**
      * Returns the mail of the user
      * @return the mail of the user
      */

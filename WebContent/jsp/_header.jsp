@@ -42,7 +42,8 @@
 			
 			<a href="${pageContext.request.contextPath}/cart">
 				<button type="button" onclick="">Carrello:<br/>
-					<%=currentUser.getShoppingCart().getNumberOfItems()%> items - <%=formatter.format("%.2f", currentUser.getShoppingCart().getTotalPrice())%> €
+					<% String strItems =(currentUser.getShoppingCart().getNumberOfItems() == 1) ? "item" : "items"; %>
+					<%=currentUser.getShoppingCart().getNumberOfItems()%> <%=strItems%> - <%=formatter.format("%.2f", currentUser.getShoppingCart().getTotalPrice())%> €
 				</button>
 			</a>
 				

@@ -90,6 +90,14 @@
 	
 	</div>
 	
+	<br/>
+	
+	<!-- Zona storico acquisti -->
+	
+	<div>
+		
+	</div>
+	
 	</body>
 	
 </html>
