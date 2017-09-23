@@ -71,6 +71,14 @@ public class DeliveryPoint {
 		return this.CAP;
 	}
 	
+	/**
+	 * Returns the complete address of the delivery point
+	 */
+	@Override
+	public String toString() {
+		return (via + " " + civico + ", " + CAP + ", " + citta + ".");
+	}
+	
     /**
      * Adds the delivery point in the database
      * @throws ClassNotFoundException if an error occurs with the connection to the database

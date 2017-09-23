@@ -20,6 +20,7 @@
 	
 		<!-- User store in session with attribute: currentSessionUser -->
 		<% 
+		java.util.Formatter formatter = new java.util.Formatter();
 		Boolean loggedStatus = null;
 		User currentUser = (User) session.getAttribute("currentSessionUser");
 		if (currentUser != null){
@@ -39,8 +40,10 @@
 		<% if(loggedStatus){ %>
 			<div style="float: left;">
 			
-			<a href="${pageContext.request.contextPath}/cart" class="image-link">
-				<button type="button" onclick="">Carrello:<br /><%=currentUser.getShoppingCart().getNumberOfItems()%> items - €<%=currentUser.getShoppingCart().getTotalPrice()%></button>
+			<a href="${pageContext.request.contextPath}/cart">
+				<button type="button" onclick="">Carrello:<br/>
+					<%=currentUser.getShoppingCart().getNumberOfItems()%> items - <%=formatter.format("%.2f", currentUser.getShoppingCart().getTotalPrice())%> €
+				</button>
 			</a>
 				
 			</div>
@@ -55,7 +58,8 @@
 			</div>
 			<div id="clear"></div>
 			<a href="${pageContext.request.contextPath}/register">Not registered?</a>
-		<% } %>
+		<% } 
+		formatter.close(); %>
  
 	</div>
 	

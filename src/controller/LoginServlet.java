@@ -27,6 +27,23 @@ public class LoginServlet extends HttpServlet {
     public LoginServlet() {
         super();
     }
+    
+	/**
+	 * 
+     * @param request
+     * @param response
+     * @throws javax.servlet.ServletException
+     * @throws java.io.IOException
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+    @Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/jsp/loginView.jsp");
+
+		dispatcher.forward(request, response);
+		
+	}
  
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

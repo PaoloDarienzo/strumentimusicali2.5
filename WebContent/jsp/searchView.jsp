@@ -29,82 +29,82 @@
 		
 		<h3>Results</h3>
 		
-		<br/> <br/>
-		
 		<% List<Product> queryResults = (ArrayList<Product>) request.getAttribute("queryResults");
 		
-		for(Product product : queryResults) { %>
+		for(Product product : queryResults) { 
 		
-		<table class = "qrtable">
-		<tr> 
-			<th colspan="2"> <% out.println(product.getNome()); %> </th> 
-		</tr>
+			java.util.Formatter formatter = new java.util.Formatter(); %>
 		
-		<tr>
-			<td> Descrizione </td>
-			<td> <% out.println(product.getDescrizione()); %> </td>
-		</tr>
-		
-		<tr>
-			<td> Peso </td>
-			<td> <% out.println(product.getPeso()); %> Kg </td>
-		</tr>
-		
-		<tr>
-			<td> Marca </td>
-			<td> <% out.println(product.getMarca()); %> </td>
-		</tr>
-		
-		<tr>
-			<td> Classificazione </td>
-			<td> <% out.println(product.getClassificazione()); %> </td>
-		</tr>
-		
-		<tr>
-			<td> Stato </td>
+			<table class = "qrtable">
+				<tr> 
+					<th colspan="2"> <% out.println(product.getNome()); %> </th> 
+				</tr>
+				
+				<tr>
+					<td> Descrizione </td>
+					<td> <% out.println(product.getDescrizione()); %> </td>
+				</tr>
+				
+				<tr>
+					<td> Peso </td>
+					<td> <% out.println(product.getPeso()); %> Kg </td>
+				</tr>
+				
+				<tr>
+					<td> Marca </td>
+					<td> <% out.println(product.getMarca()); %> </td>
+				</tr>
+				
+				<tr>
+					<td> Classificazione </td>
+					<td> <% out.println(product.getClassificazione()); %> </td>
+				</tr>
+				
+				<tr>
+					<td> Stato </td>
+					<% 
+					Boolean stato = product.isUsato();
+					String printStato = "N/A";
+					if(stato == true) {
+					printStato = "Usato";
+					} else if(stato == false) {
+						printStato = "Nuovo";
+					} %>
+					<td> <% out.println(printStato); %> </td>
+				</tr>
+				
+				<tr>
+					<td> Data di inserimento </td>
+					<td> Disponibile da: <% out.println(product.getDataInserimento()); %> </td>
+				</tr>
+				
+				<tr>
+					<td> Prezzo </td>
+					<td> <%=formatter.format("%.2f", product.getPrezzo())%> €</td>
+				</tr>
+				
+				<% User currentUser = (User) session.getAttribute("currentSessionUser");
+					if (currentUser != null){%>
+						<tr>
+							<td colspan="2">  
+								<form action="${pageContext.request.contextPath}/cart" method="POST">
+									<input type="hidden" name="productIDToAdd" value="<%=product.getID()%>" />
+									<input type="submit" value="Aggiungi al Carrello"/>
+								</form>
+							</td>
+						</tr>
+					<%} else{%>
+						<tr>
+							<td colspan="2"><b><a href="${pageContext.request.contextPath}/register">Account required to buy.</a></b></td>
+						</tr>
+					<%} %>
+								
+			</table>
+			
 			<% 
-			Boolean stato = product.isUsato();
-			String printStato = "N/A";
-			if(stato == true) {
-			printStato = "Usato";
-			} else if(stato == false) {
-				printStato = "Nuovo";
+				formatter.close();
 			} %>
-			<td> <% out.println(printStato); %> </td>
-		</tr>
-		
-		<tr>
-			<td> Data di inserimento </td>
-			<td> Disponibile da: <% out.println(product.getDataInserimento()); %> </td>
-		</tr>
-		
-		<tr>
-			<td> Prezzo </td>
-			<td> <% out.println(product.getPrezzo()); %> € </td>
-		</tr>
-		
-		<% User currentUser = (User) session.getAttribute("currentSessionUser");
-				if (currentUser != null){%>
-				<tr>
-					<td colspan="2">  
-						<form action="${pageContext.request.contextPath}/cart" method="POST">
-							<input type="hidden" name="productIDToAdd" value="<%=product.getID()%>" />
-							<input type="submit" value="Aggiungi al Carrello"/>
-						</form>
-					</td>
-				</tr>
-				 <%} else{%>
-				<tr>
-					<td colspan="2">Account required to buy.</td>
-				</tr>
-			<%} %>
-						
-		</table>
-		
-		<% } %>
-		
-		<jsp:include page="_footer.jsp"></jsp:include>
-	
+			
 	</body>
 	
 </html>

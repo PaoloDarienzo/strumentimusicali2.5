@@ -53,6 +53,26 @@ public class Payment {
     }
     
     /**
+     * Returns the censored credentials of the payment method
+     * @return the censored credentials of the payment method
+     */
+    public String getCredenzialiCensurate(){
+    	int strLength = credenziali.length();
+    	String firstPart = credenziali.substring(0, strLength - 3);
+    	String lastPart = credenziali.substring(strLength - 3);
+    	firstPart = firstPart.replaceAll("(?s).", "*");
+        return (firstPart + lastPart);
+    }
+    
+    /**
+     * Returns the payment method with credentials censored
+     */
+    @Override
+    public String toString() {
+    	return (nomeMetodo + ": " + this.getCredenzialiCensurate());
+    }
+    
+    /**
      * Adds the payment in the database
      * @throws ClassNotFoundException if an error occurs with the connection to the database
      * @see PaymentDAO#addOnePayment(Payment)

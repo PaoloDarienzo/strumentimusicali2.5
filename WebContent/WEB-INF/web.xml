@@ -64,7 +64,7 @@
     <servlet-name>pswForgotServlet</servlet-name>
     <url-pattern>/Forgotpsw</url-pattern>
   </servlet-mapping>
- <servlet>
+  <servlet>
     <description></description>
     <display-name>CartServlet</display-name>
     <servlet-name>CartServlet</servlet-name>
@@ -74,7 +74,7 @@
     <servlet-name>CartServlet</servlet-name>
     <url-pattern>/CartServlet</url-pattern>
   </servlet-mapping>
-    <servlet>
+  <servlet>
     <description></description>
     <display-name>ModifyCartServlet</display-name>
     <servlet-name>ModifyCartServlet</servlet-name>
@@ -83,5 +83,55 @@
   <servlet-mapping>
     <servlet-name>ModifyCartServlet</servlet-name>
     <url-pattern>/ModifyCart</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>PurchaseServlet</display-name>
+    <servlet-name>PurchaseServlet</servlet-name>
+    <servlet-class>controller.PurchaseServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PurchaseServlet</servlet-name>
+    <url-pattern>/Purchase</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UserProfileServlet</display-name>
+    <servlet-name>UserProfileServlet</servlet-name>
+    <servlet-class>controller.UserProfileServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UserProfileServlet</servlet-name>
+    <url-pattern>/UserProfile</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ModifyPaymentServlet</display-name>
+    <servlet-name>ModifyPaymentServlet</servlet-name>
+    <servlet-class>controller.ModifyPaymentServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ModifyPaymentServlet</servlet-name>
+    <url-pattern>/ModifyPayment</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ModifyDeliveryPointServlet</display-name>
+    <servlet-name>ModifyDeliveryPointServlet</servlet-name>
+    <servlet-class>controller.ModifyDeliveryPointServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ModifyDeliveryPointServlet</servlet-name>
+    <url-pattern>/ModifyDeliveryPoint</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ConfirmedPurchaseServlet</display-name>
+    <servlet-name>ConfirmedPurchaseServlet</servlet-name>
+    <servlet-class>controller.ConfirmedPurchaseServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ConfirmedPurchaseServlet</servlet-name>
+    <url-pattern>/ConfirmedPurchase</url-pattern>
   </servlet-mapping>
 </web-app>

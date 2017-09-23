@@ -30,10 +30,11 @@
 		<h3 style="text-align: center;">Carrello</h3>
 
 		<%
+		java.util.Formatter totalPrice = new java.util.Formatter();
 		User currentUser = (User) session.getAttribute("currentSessionUser");
 		if (currentUser != null){ %>
 
-			<table class= "qrtable">
+			<table class="qrtable">
 			
 				<tr><th colspan="5">Prodotti nel carrello</th></tr>
 				<tr>
@@ -45,11 +46,14 @@
 	
 				<% List<ProductInCart> cartProducts = currentUser.getShoppingCart().getArticoliInCarrello();
 		
-				for(ProductInCart productInCart : cartProducts) { %>
+				for(ProductInCart productInCart : cartProducts) { 
+					java.util.Formatter unitaryPrice = new java.util.Formatter();
+					java.util.Formatter productsPrice = new java.util.Formatter();
+				%>
 			
 					<tr>
 						<td><% out.println(productInCart.getProduct().getNome()); %></td>
-						<td><% out.println(productInCart.getProduct().getPrezzo()); %> €</td>
+						<td><%=unitaryPrice.format("%.2f", productInCart.getProduct().getPrezzo())%> €</td>
 						<td><% out.println(productInCart.getNumeroProdotto()); %></td>
 						<td>
 							<form action="${pageContext.request.contextPath}/modifyCart" method="POST">
@@ -59,10 +63,13 @@
 								<button class="removeBtn" name="remove" type="submit" value="removeBtn">x</button>
 							</form>
 						</td>
-						<td><% out.println((productInCart.getProduct().getPrezzo()) * (productInCart.getNumeroProdotto())); %> €</td>
+						<td><%=productsPrice.format("%.2f", (productInCart.getProduct().getPrezzo()) * (productInCart.getNumeroProdotto()))%> €</td>
 					</tr>
 			
-				<%}%>		
+				<%
+					unitaryPrice.close();
+					productsPrice.close();
+				}%>		
 				
 				<tr>
 					<th colspan="2">Articoli totali: </th>
@@ -71,9 +78,9 @@
 			
 				<tr>
 					<th colspan="2">Totale: </th>
-					<td colspan="2"><%=currentUser.getShoppingCart().getTotalPrice()%> €</td>
+					<td colspan="2"><%=totalPrice.format("%.2f", currentUser.getShoppingCart().getTotalPrice())%> €</td>
 					<td>
-						<form action="#" method="POST">
+						<form action="${pageContext.request.contextPath}/purchase" method="GET">
 							<button name="remove" type="submit" value="purchaseConfirm">Check out!</button>
 						</form>
 					</td>
@@ -85,10 +92,10 @@
 		<% }
 		else{ %>
 			<h6 style="text-align: center;">Utente non loggato.</h6>
-		<% } %>
+		<% }
+		totalPrice.close();
+		%>
 
-		
-	
 	</body>
 	
 </html>
