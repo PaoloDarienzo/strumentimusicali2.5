@@ -18,11 +18,10 @@ import model.User;
  */
 @WebServlet(urlPatterns = { "/cart"})
 public class CartServlet extends HttpServlet {
-
-	//TODO
+    //TODO
 	private static final long serialVersionUID = 5262857407246188300L;
-       
-    /**
+
+	/**
      * @see HttpServlet#HttpServlet()
      */
     public CartServlet() {
@@ -57,13 +56,12 @@ public class CartServlet extends HttpServlet {
     @Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	
-    	int productID = Integer.parseInt(request.getParameter("productID"));
+    	int productID = Integer.parseInt(request.getParameter("productIDToAdd"));
     	
     	HttpSession session = request.getSession(true);
     	User loggedUser = (User) session.getAttribute("currentSessionUser");
     	
     	try {
-    		
 			loggedUser.getShoppingCart().addToCart(ProductDAO.getFromDatabase(productID));
 			
 		} catch (ClassNotFoundException e) {

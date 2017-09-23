@@ -88,7 +88,7 @@
 				<tr>
 					<td colspan="2">  
 						<form action="${pageContext.request.contextPath}/cart" method="POST">
-							<input type="hidden" name="productID" value="<%=product.getID()%>" />
+							<input type="hidden" name="productIDToAdd" value="<%=product.getID()%>" />
 							<input type="submit" value="Aggiungi al Carrello"/>
 						</form>
 					</td>

@@ -64,4 +64,24 @@
     <servlet-name>pswForgotServlet</servlet-name>
     <url-pattern>/Forgotpsw</url-pattern>
   </servlet-mapping>
+ <servlet>
+    <description></description>
+    <display-name>CartServlet</display-name>
+    <servlet-name>CartServlet</servlet-name>
+    <servlet-class>controller.CartServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CartServlet</servlet-name>
+    <url-pattern>/CartServlet</url-pattern>
+  </servlet-mapping>
+    <servlet>
+    <description></description>
+    <display-name>ModifyCartServlet</display-name>
+    <servlet-name>ModifyCartServlet</servlet-name>
+    <servlet-class>controller.ModifyCartServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ModifyCartServlet</servlet-name>
+    <url-pattern>/ModifyCart</url-pattern>
+  </servlet-mapping>
 </web-app>

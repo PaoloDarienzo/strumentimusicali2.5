@@ -49,7 +49,7 @@ public class ShoppingCart {
     public void addToCart(Product product) throws ClassNotFoundException{
     	
     	int IDProductToAdd = product.getID();
-    	Boolean isAlreadyAdded = null;
+    	Boolean isAlreadyAdded = false;
     	
     	for (ProductInCart prodottoInCarrello : this.articoliInCarrello) {
     		if(prodottoInCarrello.getProduct().getID() == IDProductToAdd) {
@@ -57,9 +57,10 @@ public class ShoppingCart {
     			
     			//While I'm here, I add 1 item
     			prodottoInCarrello.addOneItem();
+    			//prodottoInCarrello.getNumeroProdotto() is already updated
     			ShoppingCartDAO.updateInDatabase(this.userMail, IDProductToAdd, prodottoInCarrello.getNumeroProdotto());
     			
-    			break;
+    			return;
     		}
     		else
     			isAlreadyAdded = false;    			
@@ -68,7 +69,7 @@ public class ShoppingCart {
     	if(!isAlreadyAdded) { //The product that is added wasn't already in cart
     		ProductInCart aggiunto = new ProductInCart(product);
             this.articoliInCarrello.add(aggiunto);
-            ShoppingCartDAO.addOneItem(this.userMail, aggiunto);   
+            ShoppingCartDAO.addOneItem(this.userMail, aggiunto);
     	}
     	
     }

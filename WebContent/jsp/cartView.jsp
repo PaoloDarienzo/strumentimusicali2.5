@@ -52,10 +52,11 @@
 						<td><% out.println(productInCart.getProduct().getPrezzo()); %> €</td>
 						<td><% out.println(productInCart.getNumeroProdotto()); %></td>
 						<td>
-							<form action="${pageContext.request.contextPath}/cart" method="POST">
-								<button class="plusBtn" name="increment" type="submit" value="addOneProduct">+</button>
-								<button class="minusBtn" name="decrement" type="submit" value="RemoveOneProduct">-</button>
-								<button class="removeBtn" name="remove" type="submit" value="RemoveProduct">x</button>
+							<form action="${pageContext.request.contextPath}/modifyCart" method="POST">
+								<input type="hidden" name="productID" value="<%=productInCart.getProduct().getID()%>"/>
+								<button class="plusBtn" name="increment" type="submit" value="plusBtn">+</button>
+								<button class="minusBtn" name="decrement" type="submit" value="minusBtn">-</button>
+								<button class="removeBtn" name="remove" type="submit" value="removeBtn">x</button>
 							</form>
 						</td>
 						<td><% out.println((productInCart.getProduct().getPrezzo()) * (productInCart.getNumeroProdotto())); %> €</td>
