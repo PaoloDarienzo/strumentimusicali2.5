@@ -79,11 +79,16 @@ public class ProductInCart{
     }
     
     /**
-     * Returns the total price for that kind of product, based on the number of that item
-     * @return the total price for that kind of product, based on the number of that item
+     * Returns the total price for that kind of product, based on the number of that item. The total price is Discounted if the product have a discount percentage and even if the number of that product in the cart is greater or equal at the minimum number of product for the discount. 
+     * @return the total price for that kind of product, based on the number of that item. The total price is Discounted if the product have a discount percentage and even if the number of that product in the cart is greater or equal at the minimum number of product for the discount.
      */
-    protected float getPrezzo(){
-    	return product.getPrezzo() * numeroProdotto;
+    public float getPrezzo(){
+    	if(product.getSconto()!=0 && (numeroProdotto>=product.getNumeroPezziMinimo())){
+    		return (product.getPrezzo() * numeroProdotto)-(((product.getPrezzo() * numeroProdotto)* product.getSconto())/100);
+    	}
+    	else{
+    		return product.getPrezzo() * numeroProdotto;
+    	}
     }
     
 }

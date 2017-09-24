@@ -84,8 +84,8 @@
 				</tr>
 								
 				
-				<%	String bosnia = product.getLivelloConsigliato().toString(); 
-				if(bosnia != "ND"){ %>
+				<%	String livello = product.getLivelloConsigliato().toString(); 
+				if(livello != "ND"){ %>
 				
 				<tr>
 					<td> Livello consigliato </td>
