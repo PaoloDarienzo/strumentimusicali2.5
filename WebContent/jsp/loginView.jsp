@@ -24,11 +24,24 @@
 	
 		<jsp:include page="_header.jsp"></jsp:include>
 		<jsp:include page="_menu.jsp"></jsp:include>
-		
-		<div>
-		<h3>CLICK HERE!</h3>
-		<jsp:include page="_loginButton.jsp"></jsp:include>
-		</div>
+  
+  <form action="${pageContext.request.contextPath}/login" method="POST">
+    <div class="container">
+      <label><b>Username</b></label>
+      <input type="text" placeholder="Enter Username or email" name="uname" required>
+
+      <label><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="psw" required>
+        
+      <button type="submit">Login</button>
+      <input type="checkbox" checked="checked"> Remember me
+    </div>
+
+    <div class="container" style="background-color:#f1f1f1">
+      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+      <span class="psw">Forgot <a href="${pageContext.request.contextPath}/forgotpsw">password?</a></span>
+    </div>
+  </form>
 	
 	</body>
 	
