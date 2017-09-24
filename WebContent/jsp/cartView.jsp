@@ -64,7 +64,7 @@
 								<button class="removeBtn" name="remove" type="submit" value="removeBtn">x</button>
 							</form>
 						</td>
-						<td><% out.println(productInCart.getProduct().getSconto()); %></td>
+						<td><% out.println(productInCart.getProduct().getSconto()); %> % </td>
 						<td><%=productsPrice.format("%.2f", (productInCart.getPrezzo()))%> €</td>
 					</tr>
 			
