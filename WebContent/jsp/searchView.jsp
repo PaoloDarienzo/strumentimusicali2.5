@@ -83,6 +83,13 @@
 					<td> <%=formatter.format("%.2f", product.getPrezzo())%> €</td>
 				</tr>
 				
+				<%	String bosnia = product.getLivelloConsigliato().toString(); 
+				if(bosnia != "ND"){ %>
+				<tr>
+					<td> Livello consigliato </td>
+					<td> <% out.println(product.getLivelloConsigliato()); %> </td>
+				</tr><% } %>
+				
 				<% User currentUser = (User) session.getAttribute("currentSessionUser");
 					if (currentUser != null){%>
 						<tr>
