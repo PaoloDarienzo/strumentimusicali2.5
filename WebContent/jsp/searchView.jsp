@@ -82,13 +82,24 @@
 					<td> Prezzo </td>
 					<td> <%=formatter.format("%.2f", product.getPrezzo())%> €</td>
 				</tr>
+								
 				
 				<%	String bosnia = product.getLivelloConsigliato().toString(); 
 				if(bosnia != "ND"){ %>
+				
 				<tr>
 					<td> Livello consigliato </td>
 					<td> <% out.println(product.getLivelloConsigliato()); %> </td>
 				</tr><% } %>
+
+				<% if(product.getSconto() != 0){%>
+				<tr>
+					<td> Sconto praticabile </td>
+					<% if(product.getNumeroPezziMinimo() == 0){ %>
+						<td> <% out.println(product.getSconto()); %> % </td>
+					<% } else{ %>
+					<td> <% out.println(product.getSconto()); %> % -- <b>PEZZI MINIMI: </b> <% out.println(product.getNumeroPezziMinimo()); %> </td>
+				</tr><% }} %>
 				
 				<% User currentUser = (User) session.getAttribute("currentSessionUser");
 					if (currentUser != null){%>
