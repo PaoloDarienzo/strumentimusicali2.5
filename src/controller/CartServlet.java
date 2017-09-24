@@ -15,10 +15,12 @@ import model.User;
 
 /**
  * Servlet implementation class CartServlet
+ * @author Paolo D'Arienzo
+ * @version 1.5
  */
 @WebServlet(urlPatterns = { "/cart"})
 public class CartServlet extends HttpServlet {
-    //TODO
+
 	private static final long serialVersionUID = 5262857407246188300L;
 
 	/**
@@ -29,11 +31,6 @@ public class CartServlet extends HttpServlet {
     }
 
 	/**
-	 * 
-     * @param request
-     * @param response
-     * @throws javax.servlet.ServletException
-     * @throws java.io.IOException
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
     @Override
@@ -46,11 +43,6 @@ public class CartServlet extends HttpServlet {
 	}
 
 	/**
-	 * 
-     * @param request
-     * @param response
-     * @throws javax.servlet.ServletException
-     * @throws java.io.IOException
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
     @Override
@@ -74,7 +66,5 @@ public class CartServlet extends HttpServlet {
 		dispatcher.forward(request, response);
     
     }
-    
-    
 
 }

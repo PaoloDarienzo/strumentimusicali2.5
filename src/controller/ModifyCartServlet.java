@@ -1,5 +1,3 @@
-//TODO
-//Javadoc
 package controller;
 
 
@@ -21,11 +19,12 @@ import model.User;
 
 /**
  * Servlet implementation class ModifyCartServlet
+ * @author Paolo D'Arienzo
+ * @version 1.5
  */
 @WebServlet("/modifyCart")
 public class ModifyCartServlet extends HttpServlet {
-       
-    //TODO
+
 	private static final long serialVersionUID = 9138833635296097912L;
 
 	/**

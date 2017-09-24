@@ -17,11 +17,12 @@ import model.User;
 
 /**
  * Servlet implementation class ConfirmedPurchaseServlet
+ * @author Paolo D'Arienzo
+ * @version 1.5
  */
 @WebServlet("/confirmedPurchase")
 public class ConfirmedPurchaseServlet extends HttpServlet {
-       
-    //TODO
+
 	private static final long serialVersionUID = -7327126854806825734L;
 
 	/**
@@ -104,7 +105,6 @@ public class ConfirmedPurchaseServlet extends HttpServlet {
             ip = request.getRemoteAddr();  
         }  
         return ip;  
-    }  
-	
+    }
 	
 }

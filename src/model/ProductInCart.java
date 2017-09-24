@@ -1,8 +1,5 @@
 package model;
 
-//TODO
-//Manca gestione in DAO
-
 import customExceptions.NoItemException;
 
 /**
@@ -79,12 +76,13 @@ public class ProductInCart{
     }
     
     /**
-     * Returns the total price for that kind of product, based on the number of that item. The total price is Discounted if the product have a discount percentage and even if the number of that product in the cart is greater or equal at the minimum number of product for the discount. 
-     * @return the total price for that kind of product, based on the number of that item. The total price is Discounted if the product have a discount percentage and even if the number of that product in the cart is greater or equal at the minimum number of product for the discount.
+     * Returns the total price for that kind of product, based on the number of that item;
+     * The total price is discounted if the product have a discount percentage and if the number of items reach the application threshold.
+     * @return the total price for that kind of product, considering any discounts
      */
     public float getPrezzo(){
-    	if(product.getSconto()!=0 && (numeroProdotto>=product.getNumeroPezziMinimo())){
-    		return (product.getPrezzo() * numeroProdotto)-(((product.getPrezzo() * numeroProdotto)* product.getSconto())/100);
+    	if(product.getSconto()!= 0 && (numeroProdotto >= product.getNumeroPezziMinimo())){
+    		return ((product.getPrezzo() - ((float) (product.getPrezzo() * product.getSconto()) / 100)) * numeroProdotto);
     	}
     	else{
     		return product.getPrezzo() * numeroProdotto;

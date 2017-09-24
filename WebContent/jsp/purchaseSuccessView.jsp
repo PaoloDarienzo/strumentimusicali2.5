@@ -27,7 +27,9 @@
 		
 		<div style="width:800px; margin:0 auto;">
 			SUCCESS! Your order is complete.<br/>
-			You can see you order history <a href="${pageContext.request.contextPath}/userProfile">here</a>.
+			Soon your order will be sent.
+			<br/>
+			Go visit our <a href="${pageContext.request.contextPath}/home">shop</a>.
 		</div>
 	
 		<jsp:include page="_footer.jsp"></jsp:include>

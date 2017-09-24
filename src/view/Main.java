@@ -1,13 +1,9 @@
-//TODO
-//ID in DAO?
-
 package view;
 
 import java.net.UnknownHostException;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -16,7 +12,7 @@ import dao.QueriesDAO;
 /**
  * 
  * @author Paolo D'Arienzo
- * @version 1.4
+ * @version 1.5
  *
  */
 public class Main {

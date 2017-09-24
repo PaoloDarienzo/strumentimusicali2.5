@@ -1,14 +1,13 @@
 package tests;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.security.NoSuchAlgorithmException;
-import java.sql.Date;
 import java.util.List;
 
-import org.junit.Assert;
 import org.junit.Test;
 
 import model.DeliveryPoint;
@@ -29,6 +28,7 @@ public class TestPurchase {
 	 * This implies the creation of products and of an user.
 	 * So, the test is about creation of shopping cart, purchase,
 	 * and DAO of products, user, delivery point, payment.
+	 * Furthermore, tests the management of the shopping cart.
 	 * @throws UnknownHostException if an error occurs with the determination the IP address
 	 * @throws NoSuchAlgorithmException if an error occurs with the encryption of the password of the user
 	 * @throws ClassNotFoundException if an error occurs within the connection to the database
@@ -76,18 +76,38 @@ public class TestPurchase {
 		assertEquals(userToTest.getShoppingCart().getArticoliInCarrello().get(1).getNumeroProdotto(), 2);
 		
 		//Testing purchase
-		//TODO
-		//DAO
 		userToTest.confirmPurchase(	userToTest.getPayment().get(0),
 									MetodoDiConsegna.INGIORNATA,
 									userToTest.getDeliveryPoint().get(1),
 									InetAddress.getLocalHost().getHostAddress());
 		
-		Date dateToCheck = new Date(System.currentTimeMillis());
+		//Final price: price n°1 + n°2*2 (with discount): 89.00 + 582.10*2
+		assertEquals(userToTest.getPurchase(0).getFinalPriceFromPurchase(), (float) 1257.20, 0.0f);
 		
-		//Final price: price n°1 + n°2*2
-		Assert.assertEquals(userToTest.getPurchase(dateToCheck).getFinalPriceFromPurchase(), (float) 1387, 0.0f);
+		//Testing activation of discount when minimum number is reached
+		//After purchase, the cart is empty
+		assertTrue(userToTest.getShoppingCart().getArticoliInCarrello().isEmpty());
+		//Double check: the total should be 0
+		assertEquals(userToTest.getShoppingCart().getTotalPrice(), (float) 0.00, 0.0f);
 		
+		userToTest.getShoppingCart().addToCart(products.get(2), 7);
+		assertEquals(userToTest.getShoppingCart().getNumberOfItems(), 7);
+		assertEquals(userToTest.getShoppingCart().getTotalPrice(), 315.00, 0.0f);
+		//Adding the last item that triggers the discount to be applied
+		userToTest.getShoppingCart().addToCart(products.get(2));
+		//NB: adding the same product results in adding 1 item of that product
+		assertEquals(userToTest.getShoppingCart().getNumberOfItems(), 8);
+		assertEquals(userToTest.getShoppingCart().getTotalPrice(), 306.00, 0.0f);
+		
+		//Testing purchase
+		userToTest.confirmPurchase(	userToTest.getPayment().get(0),
+									MetodoDiConsegna.CORRIERE,
+									userToTest.getDeliveryPoint().get(0),
+									InetAddress.getLocalHost().getHostAddress());
+		int lastIndex = userToTest.getPurchase().size();
+		assertEquals(userToTest.getPurchase(lastIndex - 1).getFinalPriceFromPurchase(), (float) 306.00, 0.0f);
+		
+		//Cleaning the Database
 		userToTest.removePayment(pagamento);
 		userToTest.removeDeliveryPoint(dp2);
 		userToTest.removeDeliveryPoint(dp3);

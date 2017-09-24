@@ -17,10 +17,12 @@ import model.User;
 
 /**
  * Servlet implementation class RegisterServlet
+ * @author Paolo D'Arienzo
+ * @version 1.5
  */
 @WebServlet("/register")
 public class RegisterServlet extends HttpServlet {
-	//TODO
+
 	private static final long serialVersionUID = 2152688902826659767L;
 
 	/**

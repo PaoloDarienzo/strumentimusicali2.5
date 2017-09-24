@@ -3,6 +3,6 @@
  * it handles the state of the application.
  * 
  * @author Paolo D'Arienzo
- * @version 1.4
+ * @version 1.5
  */
 package model;

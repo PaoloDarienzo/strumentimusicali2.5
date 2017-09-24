@@ -11,15 +11,15 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * Servlet implementation class HomeServlet
+ * @author Paolo D'Arienzo
+ * @version 1.5
  */
 @WebServlet(urlPatterns = { "/home"})
 public class HomeServlet extends HttpServlet {
 
-	//TODO
-	//To autogenerate
 	private static final long serialVersionUID = -5486332566484278880L;
-       
-    /**
+
+	/**
      * @see HttpServlet#HttpServlet()
      */
     public HomeServlet() {

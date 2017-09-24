@@ -15,11 +15,16 @@ import model.TipoCliente;
 import model.User;
 
 /**
- * @author Paolo
- *
+ * This class contains tests the user.
+ * @author Paolo D'Arienzo
+ * @version 1.5
  */
 public class TestUser {
 
+	/**
+	 * Tests the creation of <i>User</i> and the <i>get</i> and <i>set</i> methods.
+	 * @throws NoSuchAlgorithmException if an error occurs with the encryption of the string
+	 */
 	@Test
 	public void testCreation() throws NoSuchAlgorithmException {
 		

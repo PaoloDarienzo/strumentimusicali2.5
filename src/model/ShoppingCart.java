@@ -10,7 +10,7 @@ import customExceptions.NoItemException;
 import dao.ShoppingCartDAO;
 
 /**
- *  ShoppingCart class represents the shopping cart, that is associated to an user.
+ * ShoppingCart class represents the shopping cart, that is associated to an user.
  * @author Paolo D'Arienzo
  * @version 1.5
  *
@@ -233,7 +233,7 @@ public class ShoppingCart {
     
     /**
      * Returns the total price of the items in the shopping cart
-     * @return the total price of the items in the shoppng cart
+     * @return the total price of the items in the shopping cart
      */
     public float getTotalPrice(){
     	

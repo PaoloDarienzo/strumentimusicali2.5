@@ -1,7 +1,7 @@
 package model;
 
 /**
- *  Enumeration class of the types of user.
+ * Enumeration class of the types of user.
  * @author Paolo D'Arienzo
  * @version 1.5
  *

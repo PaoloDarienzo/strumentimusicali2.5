@@ -4,7 +4,6 @@ package model;
  * Enumeration class of the brands of products.
  * @author Paolo D'Arienzo
  * @version 1.5
- *
  */
 public enum Brand {
 	

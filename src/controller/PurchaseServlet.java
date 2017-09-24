@@ -10,11 +10,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class PurchaseServlet
+ * @author Paolo D'Arienzo
+ * @version 1.5
  */
 @WebServlet("/purchase")
 public class PurchaseServlet extends HttpServlet {
-       
-    //TODO
+
 	private static final long serialVersionUID = -4705718811861229535L;
 
 	/**
@@ -44,7 +45,6 @@ public class PurchaseServlet extends HttpServlet {
     	RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/jsp/cartView.jsp");
 		
 		dispatcher.forward(request, response);
-		
 		
 	}
 

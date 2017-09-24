@@ -15,12 +15,13 @@ import model.User;
 
 /**
  * Servlet implementation class ModifyDeliveryPointServlet
+ * @author Paolo D'Arienzo
+ * @version 1.5
  */
 @WebServlet("/modifyDeliveryPoint")
 public class ModifyDeliveryPointServlet extends HttpServlet {
-       
-    //TODO
-	private static final long serialVersionUID = -2499190135562730395L;
+
+	private static final long serialVersionUID = -8156871960398825817L;
 
 	/**
      * @see HttpServlet#HttpServlet()

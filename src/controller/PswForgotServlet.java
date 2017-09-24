@@ -11,12 +11,13 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * Servlet implementation class pswForgotServlet
+ * @author Paolo D'Arienzo
+ * @version 1.5
  */
 @WebServlet("/forgotpsw")
 public class PswForgotServlet extends HttpServlet {
-	
-    //TODO
-	private static final long serialVersionUID = -2825758686810462210L;
+
+	private static final long serialVersionUID = -6396947889564819791L;
 
 	/**
      * @see HttpServlet#HttpServlet()

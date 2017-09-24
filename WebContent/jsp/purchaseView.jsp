@@ -46,7 +46,7 @@
 	%>
 	
 	
-	<% if (isPaymtOk && isDlvPointOk){ %>
+	<% if (isPaymtOk && isDlvPointOk && (currentUser.getShoppingCart().getNumberOfItems() != 0)){ %>
 	
 		<h3 style="text-align: center;">Check out</h3>
 		
@@ -69,7 +69,7 @@
 					<td><% out.println(productInCart.getProduct().getNome()); %></td>
 					<td><%=unitaryPrice.format("%.2f", productInCart.getProduct().getPrezzo())%> €</td>
 					<td><% out.println(productInCart.getNumeroProdotto()); %></td>
-					<td><%=productsPrice.format("%.2f", (productInCart.getProduct().getPrezzo()) * (productInCart.getNumeroProdotto()))%> €</td>
+					<td><%=productsPrice.format("%.2f", (productInCart.getPrezzo()))%> €</td>
 				</tr>				
 				
 				<%

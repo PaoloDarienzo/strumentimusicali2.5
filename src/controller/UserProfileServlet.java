@@ -11,11 +11,12 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * Servlet implementation class UserProfileServlet
+ * @author Paolo D'Arienzo
+ * @version 1.5
  */
 @WebServlet("/userProfile")
 public class UserProfileServlet extends HttpServlet {
-       
-	//TODO
+
 	private static final long serialVersionUID = 1370180167033374074L;
 
 	/**

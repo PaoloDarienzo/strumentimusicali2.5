@@ -1,7 +1,7 @@
 package model;
 
 /**
- *  Enumeration class of the difficulty levels of instruments.
+ * Enumeration class of the difficulty levels of instruments.
  * @author Paolo D'Arienzo
  * @version 1.5
  *

@@ -3,6 +3,6 @@
  * it interacts with the database and the model.
  * 
  * @author Paolo D'Arienzo
- * @version 1.4
+ * @version 1.5
  */
 package dao;

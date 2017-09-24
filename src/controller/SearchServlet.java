@@ -1,5 +1,3 @@
-//TODO
-//Javadoc
 package controller;
 
 import java.io.IOException;
@@ -18,14 +16,14 @@ import model.Product;
 
 /**
  * Servlet implementation class SearchServlet
+ * @author Paolo D'Arienzo
+ * @version 1.5
  */
 @WebServlet(urlPatterns = { "/search"})
 public class SearchServlet extends HttpServlet {
 
-	//TODO
-	//To autogenerate
-	private static final long serialVersionUID = 1770411980658250964L;	
-	
+	private static final long serialVersionUID = -3228470462210190485L;
+
 	/**
      * @see HttpServlet#HttpServlet()
      */
@@ -78,7 +76,6 @@ public class SearchServlet extends HttpServlet {
 		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/jsp/searchView.jsp");
 		
 		dispatcher.forward(request, response);
-		
 		
 	}
 

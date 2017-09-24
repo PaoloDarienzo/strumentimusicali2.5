@@ -5,6 +5,8 @@ import java.sql.Date;
 import java.sql.Time;
 import java.util.List;
 
+import dao.PurchaseDAO;
+
 /**
  * Purchase class represents a purchase done by a user.
  * @author Paolo D'Arienzo
@@ -158,16 +160,13 @@ public class Purchase {
     	return this.articoliAcquistati;
     }
     
-    //TODO
-    public void addInDatabase(){    	
-    }
-    
-    //TODO
-    public void updateInDatabase(){
-    }
-    
-    //TODO
-    public void deleteFromDatabase(){
+    /**
+     * Adds the purchase in the database
+     * @throws ClassNotFoundException if an error occurs with the connection to the database
+     * @see PurchaseDAO#addInDatabase(Purchase)
+     */
+    public void addInDatabase() throws ClassNotFoundException{  
+    	PurchaseDAO.addInDatabase(this);
     }
     
 }

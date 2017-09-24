@@ -8,7 +8,6 @@ import java.util.Optional;
 
 import dao.DeliveryPointDAO;
 import dao.PaymentDAO;
-import dao.PurchaseDAO;
 import dao.ShoppingCartDAO;
 import dao.UserDAO;
 
@@ -370,6 +369,7 @@ public class User {
      * @param date is the date of the required purchase
      * @return the purchase of the date indicated
      */
+    @Deprecated
     public Purchase getPurchase(Date date){
     	
         Optional<Purchase> result = this.purchase.stream()
@@ -412,8 +412,8 @@ public class User {
 			this.purchase.add(acquisto);
 			
 			this.getShoppingCart().removeAllFromCart();
-
-			PurchaseDAO.addInDatabase(acquisto);
+			
+			acquisto.addInDatabase();
 			
     	}
     	

@@ -12,8 +12,19 @@ import model.LivelloStrumento;
 import model.Product;
 import view.Main;
 
+/**
+ * This class contains tests on user.
+ * @author Paolo D'Arienzo
+ * @version 1.5
+ */
 public class TestProduct {
 
+	/**
+	 * 
+	 * Tests the creation of <i>Product</i> and the <i>get</i> methods.
+	 * @throws UnknownHostException if an error occurs with the determination of IP address
+	 * @throws ClassNotFoundException if an error occurs with the connection to the database
+	 */
 	@Test
 	public void testCreation() throws UnknownHostException, ClassNotFoundException {		
 		

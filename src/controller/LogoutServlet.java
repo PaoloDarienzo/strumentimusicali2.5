@@ -1,5 +1,4 @@
 package controller;
-//TODO
 //javadoc
 
 import java.io.IOException;
@@ -11,13 +10,15 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * Servlet implementation class LogoutServlet
+ * @author Paolo D'Arienzo
+ * @version 1.5
  */
 @WebServlet("/logout")
 public class LogoutServlet extends HttpServlet {
-	//TODO
-	private static final long serialVersionUID = -6339640521470758092L;
-       
-    /**
+
+	private static final long serialVersionUID = -2486842898701305081L;
+
+	/**
      * @see HttpServlet#HttpServlet()
      */
     public LogoutServlet() {

@@ -1,6 +1,3 @@
-//TODO
-//javadoc
-
 package controller;
 
 import java.io.IOException;
@@ -17,23 +14,21 @@ import javax.servlet.http.HttpSession;
 import dao.UserDAO;
 import model.User;
 
+/**
+ * Servlet implementation class LoginServlet
+ * @author Paolo D'Arienzo
+ * @version 1.5
+ */
 @WebServlet(urlPatterns = { "/login"})
 public class LoginServlet extends HttpServlet {
-	
-	//TODO
-	//TO autogenerate
+
 	private static final long serialVersionUID = 5876378905741836199L;
-	
-    public LoginServlet() {
+
+	public LoginServlet() {
         super();
     }
     
 	/**
-	 * 
-     * @param request
-     * @param response
-     * @throws javax.servlet.ServletException
-     * @throws java.io.IOException
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
     @Override
@@ -70,7 +65,6 @@ public class LoginServlet extends HttpServlet {
 				dispatcher.forward(request, response);
 				return;
 			}
-			
 			
 		} catch (NoSuchAlgorithmException e) {
 			// TODO Auto-generated catch block

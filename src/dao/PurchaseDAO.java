@@ -18,6 +18,12 @@ import model.Payment;
 import model.ProductInCart;
 import model.Purchase;
 
+/**
+ * PurchaseDAO class contains all the methods that interact with the database relatively to 
+ * the purchase and to the classes that extend it.
+ * @author Paolo D'Arienzo
+ * @version 1.5
+ */
 public class PurchaseDAO {
 	
 	private final static String JDBC_URL = "jdbc:postgresql://localhost:5432/strumenti_database";
@@ -26,6 +32,11 @@ public class PurchaseDAO {
     
     private final static String NOME_TABELLA = "ordine";
 	
+    /**
+     * Adds the purchase in the database
+     * @param acquisto the purchase to add
+     * @throws ClassNotFoundException if an error occurs with the connection to the database
+     */
 	public static void addInDatabase(Purchase acquisto) throws ClassNotFoundException {
 		
 		//Insertion occurs in table "aggiunto"
@@ -72,6 +83,13 @@ public class PurchaseDAO {
 		
 	}
 	
+	/**
+	 * Returns a Purchase object with the indicated ID
+	 * @param purchaseID is the ID of the purchase to search
+	 * @return the purchase with the ID indicated
+	 * @throws ClassNotFoundException if an error occurs with the connection to the database
+	 * @throws UnknownHostException if an error occurs with the determination of the IP address
+	 */
 	public static Purchase getFromDatabase(int purchaseID) throws ClassNotFoundException, UnknownHostException {
     	
     	//Query occurs in table "ordine"

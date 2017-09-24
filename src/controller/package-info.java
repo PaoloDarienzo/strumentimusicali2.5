@@ -3,6 +3,6 @@
  * it takes user requests and translates them into actions that the <i>model</i> should take.
  * 
  * @author Paolo D'Arienzo
- * @version 1.4
+ * @version 1.5
  */
 package controller;

@@ -47,7 +47,7 @@
 			<tr><th colspan="3">Metodi di pagamento presenti:</th></tr>
 			<%
 			if(currentUser.getPayment().isEmpty()){%>
-				<td>Nessun pagamento ancora presente.</td>
+				<tr><td>Nessun pagamento ancora presente.</td></tr>
 			<%} else {
 			for(Payment pagamentoPresente : currentUser.getPayment()){ %>
 				<tr>
@@ -78,7 +78,7 @@
 			<tr><th colspan="2">Punti di consegna presenti:</th></tr>
 			<%
 			if(currentUser.getDeliveryPoint().isEmpty()){%>
-				<td>Nessun punto di consegna ancora presente.</td>
+				<tr><td>Nessun punto di consegna ancora presente.</td></tr>
 			<%} else {
 				for(DeliveryPoint dlvPointPresente : currentUser.getDeliveryPoint()){ %>
 				<tr>

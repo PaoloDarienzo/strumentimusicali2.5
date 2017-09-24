@@ -10,8 +10,18 @@ import java.util.List;
 import model.*;
 import view.Main;
 
+/**
+ * This class initializes users and products, used for tests.
+ * @author Paolo D'Arienzo
+ * @version 1.5
+ */
 public class InitializationForTests {
 	
+	/**
+	 * Initialize a list of users
+	 * @return the list of initialized users
+	 * @throws NoSuchAlgorithmException if an error occurs with the encryption of the string
+	 */
 	protected static List<User> userInit() throws NoSuchAlgorithmException{
 		
 		List<User> userList = new ArrayList<User>();
@@ -47,6 +57,12 @@ public class InitializationForTests {
 		
 	}
 	
+	/**
+	 * Initialize three products, one for each type
+	 * @return the initialized list of products
+	 * @throws UnknownHostException if an error occurs with the determination of the IP address
+	 * @throws ClassNotFoundException if an error occurs with the connection to the database
+	 */
 	protected static List<Product> productInit() throws UnknownHostException, ClassNotFoundException{
 		
 		List<Product> productList = new ArrayList<Product>();
