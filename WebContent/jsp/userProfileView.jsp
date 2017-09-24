@@ -24,12 +24,20 @@
 	
 	<jsp:include page="_header.jsp"></jsp:include>
 	<jsp:include page="_menu.jsp"></jsp:include>
-		
-	<%
-	
-	User currentUser = (User) session.getAttribute("currentSessionUser");
-	
-	%>
+	<h3 style="text-align: center;">Profilo personale</h3>
+	<h3>Dati utente:</h3>
+	<%User currentUser = (User) session.getAttribute("currentSessionUser");%>
+	Nome utente: <%=currentUser.getNomeUtente() %><br>
+	Nome: <%=currentUser.getNome() %><br>
+	Cognome: <%=currentUser.getCognome() %><br>
+	Mail: <%=currentUser.getMail() %><br>
+	Telefono: <%=currentUser.getNumeroTelefono() %><br>
+	Residenza: <%=currentUser.getCittaDiResidenza() %><br>
+	Codice Fiscale: <%=currentUser.getCF() %><br>
+	<br><br><br>
+
+
+	<% %>
 	
 	<!-- Zona pagamento -->
 	
