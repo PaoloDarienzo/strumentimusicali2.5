@@ -30,10 +30,10 @@
 	Nome utente: <%=currentUser.getNomeUtente() %><br>
 	Nome: <%=currentUser.getNome() %><br>
 	Cognome: <%=currentUser.getCognome() %><br>
-	Mail: <%=currentUser.getMail() %><br>
-	Telefono: <%=currentUser.getNumeroTelefono() %><br>
 	Residenza: <%=currentUser.getCittaDiResidenza() %><br>
 	Codice Fiscale: <%=currentUser.getCF() %><br>
+	Mail: <%=currentUser.getMail() %><br>
+	Telefono: <%=currentUser.getNumeroTelefono() %><br>
 	<br><br><br>
 
 
