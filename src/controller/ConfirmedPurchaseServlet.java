@@ -87,6 +87,11 @@ public class ConfirmedPurchaseServlet extends HttpServlet {
 		doGet(request, response);
 	}
 
+	/**
+	 * Gets the IP address (IPv6) of the client
+	 * @param request passed from client
+	 * @return String containing the IP address
+	 */
 	private static String getClientIpAddr(HttpServletRequest request) {  
         String ip = request.getHeader("X-Forwarded-For");  
         if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {  
