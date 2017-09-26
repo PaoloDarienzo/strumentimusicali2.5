@@ -5,6 +5,6 @@
 
 <div id="footer">
   
-  @copyright 2017 - Strumenti musicali - Paolo D'Arienzo, Univr
+  @copyright 2017 - Strumenti musicali - Paolo D'Arienzo, Lorenzo Ricci, Univr
   
 </div>
