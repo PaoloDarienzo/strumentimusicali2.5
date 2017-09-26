@@ -72,7 +72,8 @@ public class DeliveryPoint {
 	}
 	
 	/**
-	 * Returns the complete address of the delivery point
+	 * Composites the different fields of the delivery point and return it to string
+	 * @return the complete address of the delivery point
 	 */
 	@Override
 	public String toString() {

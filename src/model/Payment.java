@@ -66,6 +66,7 @@ public class Payment {
     
     /**
      * Returns the payment method with credentials censored
+     * @return the payment fields, with credentials encrypted
      */
     @Override
     public String toString() {
