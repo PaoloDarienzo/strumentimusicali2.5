@@ -51,9 +51,12 @@ public class ConfirmedPurchaseServlet extends HttpServlet {
 		HttpSession session = request.getSession(true);
     	User loggedUser = (User) session.getAttribute("currentSessionUser");
     	
-    	String dlvMethod = request.getParameter("dlvMethod"); 
+    	String dlvMethod = request.getParameter("dlvMethod");
+    	//We assert that dlvPoint and paymt are chose because the first value is set by default if there are
+    	//methods listed, and there are method listed because otherwise the client can't get to the
+    	//JSP that calls this servlet
     	String dlvPoint = request.getParameter("dlvPoint"); 
-    	String paymt = request.getParameter("paymt"); 
+    	String paymt = request.getParameter("paymt");
     	
     	Payment pagamentoScelto = null;
     	
@@ -73,6 +76,11 @@ public class ConfirmedPurchaseServlet extends HttpServlet {
     	
     	if(dlvMethod != null) {
     		metodoDiConsegnaScelto = MetodoDiConsegna.valueOf(dlvMethod); 
+    	}
+    	else {
+    		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/jsp/purchaseFailureView.jsp");
+    		dispatcher.forward(request, response);
+    		return;
     	}
     	
     	String IPClient = getClientIpAddr(request);

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
   pageEncoding="UTF-8" 
   import="java.util.List, java.util.ArrayList, java.util.Iterator"
-  import="model.Product, model.ProductInCart, model.User" %>
+  import="model.*" %>
   
 <!DOCTYPE html>
 
