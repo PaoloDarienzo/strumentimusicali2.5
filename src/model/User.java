@@ -224,7 +224,7 @@ public class User {
      * @param numeroCellulare is the new private telephone number of the user
      */
     public void setNumeroCellulare(String numeroCellulare){
-        this.numeroCellulare = numeroCellulare;
+    	this.numeroCellulare = (numeroCellulare == "") ? "N/A" : numeroCellulare;
     }
 
     /**

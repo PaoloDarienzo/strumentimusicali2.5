@@ -134,4 +134,14 @@
     <servlet-name>ConfirmedPurchaseServlet</servlet-name>
     <url-pattern>/ConfirmedPurchase</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UserProfileChangeServlet</display-name>
+    <servlet-name>UserProfileChangeServlet</servlet-name>
+    <servlet-class>controller.UserProfileChangeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UserProfileChangeServlet</servlet-name>
+    <url-pattern>/UserProfileChange</url-pattern>
+  </servlet-mapping>
 </web-app>

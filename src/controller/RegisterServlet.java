@@ -62,6 +62,13 @@ public class RegisterServlet extends HttpServlet {
 		
 		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/jsp/registerResponseView.jsp");
 		
+		cf = cf.toUpperCase();
+		if(!isCFCorrect(cf, userType)) {
+			request.setAttribute("registerResponse", "Error: the fiscal code inserted is wrong.");
+			dispatcher.forward(request, response);
+			return;
+		}
+		
 		if(psw.equals(pswRepeated)) {
 			
 			try {
@@ -140,6 +147,32 @@ public class RegisterServlet extends HttpServlet {
 			return;
 		}
 		
+	}
+
+	/**
+	 * Check if the fiscal code inserted is correct
+	 * @param cf param to check
+	 * @param userType the type of user: only scholastic user can have 8 or 9 characters
+	 * @return true if fiscal code is correct, false otherwise
+	 */
+	//TODO
+	//Fiscal code for entities (different from people, such as companies) has 8 or 9 characters;
+	//control on that cf is not implemented yet
+	private boolean isCFCorrect(String cf, String userType) {
+		int strLength = cf.length();
+		if((strLength == 8 || strLength == 9) && userType.equalsIgnoreCase("s")) {
+			return true;
+		}
+		else if(strLength == 16) {
+			String regex = "^[a-zA-Z]{6}[0-9]{2}[a-zA-Z][0-9]{2}[a-zA-Z][0-9]{3}[a-zA-Z]";
+			if(cf.matches(regex)) {
+				return true;
+			}
+			else
+				return false;
+		}
+		else
+			return false;
 	}
 
 }

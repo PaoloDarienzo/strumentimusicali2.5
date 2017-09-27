@@ -34,6 +34,13 @@
 	Codice Fiscale: <%=currentUser.getCF() %><br>
 	Mail: <%=currentUser.getMail() %><br>
 	Telefono: <%=currentUser.getNumeroTelefono() %><br>
+	<% if (!currentUser.getNumeroCellulare().equals("N/A")) {%>
+	Numero cellulare: <%=currentUser.getNumeroCellulare() %><br/>
+	<%} else {%>
+	Numero cellulare: Non inserito<br>
+	<%}%>
+	
+	<input type="button" onclick="location.href='userProfileChange';" value="Modify cell phone"/><br>
 	<br><br><br>
 
 
