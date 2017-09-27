@@ -33,7 +33,7 @@
 
 		<form action="${pageContext.request.contextPath}/modifyDeliveryPoint" method="POST">
 			<fieldset>
-				<legend>Add payment method:</legend>
+				<legend>Add delivery point:</legend>
 				
 				<label><b>Città:</b></label>
 				<input type="text" placeholder="Inserisci città" name="city" required>
