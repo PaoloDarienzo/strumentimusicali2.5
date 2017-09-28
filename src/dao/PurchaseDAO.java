@@ -47,35 +47,42 @@ public class PurchaseDAO {
 		Class.forName("org.postgresql.Driver");
 		
 		try (Connection con = DriverManager.getConnection(JDBC_URL, JDBC_USERNAME, JDBC_PASSWORD)){
+			
+			for (ProductInCart prodottoAggiunto : acquisto.getListOfProductsPurchased()) {
+				
     		
-    		//insertion in "aggiunto"
-    		try (PreparedStatement pst = con.prepareStatement(
-    				"INSERT INTO " + NOME_TABELLA
-    				+ "(id, ora, data, ipacquirente, metododiconsegna, "
-    				+ "prezzototale, carrelloutente, via, civico, cap, "
-    				+ "nomemetodo, credenziali) "
-    				+ "VALUES (?,?,?,?,?,?,?,?,?,?,?,?)")) {
-    			
-    			pst.setInt(1, acquisto.getIDPurchase());
-    			pst.setTime(2, acquisto.getPurchaseTime());
-    			pst.setDate(3, acquisto.getPurchaseDate());
-    			pst.setString(4, acquisto.getPurchaseIP().toString());
-    			pst.setString(5, acquisto.getMetodoDiConsegnaFromPurchase().toString());
-    			pst.setFloat(6, acquisto.getFinalPriceFromPurchase());
-    			pst.setString(7, acquisto.getUserMailFromPurchase());;
-    			pst.setString(8, acquisto.getPuntoDiConsegnaFromPurchase().getVia());
-    			pst.setString(9, acquisto.getPuntoDiConsegnaFromPurchase().getCivico());
-    			pst.setString(10, acquisto.getPuntoDiConsegnaFromPurchase().getCAP());
-    			pst.setString(11, acquisto.getPaymentFromPurchase().getNomeMetodo());
-    			pst.setString(12, acquisto.getPaymentFromPurchase().getCredenziali());
-    			
-    			int n = pst.executeUpdate();
-    			System.out.println("Inserite " + n + " righe in tabella ordine: "
-    			+ acquisto.getUserMailFromPurchase() + ", " + acquisto.getIDPurchase() + ".");
-    			
-    		} catch (SQLException e) {
-    			System.out.println("Errore durante inserimento dati: " + e.getMessage());
-    		}
+	    		//insertion in "aggiunto"
+	    		try (PreparedStatement pst = con.prepareStatement(
+	    				"INSERT INTO " + NOME_TABELLA
+	    				+ "(id, idstrumento, npezzi, ora, data, ipacquirente, metododiconsegna, "
+	    				+ "prezzototale, carrelloutente, via, civico, cap, "
+	    				+ "nomemetodo, credenziali) "
+	    				+ "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)")) {
+	    			
+	    			pst.setInt(1, acquisto.getIDPurchase());
+	    			pst.setInt(2, prodottoAggiunto.getProduct().getID());
+	    			pst.setInt(3, prodottoAggiunto.getNumeroProdotto());
+	    			pst.setTime(4, acquisto.getPurchaseTime());
+	    			pst.setDate(5, acquisto.getPurchaseDate());
+	    			pst.setString(6, acquisto.getPurchaseIP().toString());
+	    			pst.setString(7, acquisto.getMetodoDiConsegnaFromPurchase().toString());
+	    			pst.setFloat(8, acquisto.getFinalPriceFromPurchase());
+	    			pst.setString(9, acquisto.getUserMailFromPurchase());;
+	    			pst.setString(10, acquisto.getPuntoDiConsegnaFromPurchase().getVia());
+	    			pst.setString(11, acquisto.getPuntoDiConsegnaFromPurchase().getCivico());
+	    			pst.setString(12, acquisto.getPuntoDiConsegnaFromPurchase().getCAP());
+	    			pst.setString(13, acquisto.getPaymentFromPurchase().getNomeMetodo());
+	    			pst.setString(14, acquisto.getPaymentFromPurchase().getCredenziali());
+	    			
+	    			int n = pst.executeUpdate();
+	    			System.out.println("Inserite " + n + " righe in tabella ordine: "
+	    			+ acquisto.getUserMailFromPurchase() + ", " + acquisto.getIDPurchase() + ".");
+	    			
+	    		} catch (SQLException e) {
+	    			System.out.println("Errore durante inserimento dati: " + e.getMessage());
+	    		}
+    		
+			}
     		
     	} catch (SQLException e){
     		System.out.println("Problema durante la connessione iniziale alla base di dati: " + e.getMessage());
