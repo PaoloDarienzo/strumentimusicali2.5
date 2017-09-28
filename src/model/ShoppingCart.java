@@ -162,7 +162,7 @@ public class ShoppingCart {
         
         if (result.isPresent()) {
         	result.get().addOneItem();
-            ShoppingCartDAO.updateInDatabase(this.userMail, productID, (result.get().getNumeroProdotto() + 1));
+            ShoppingCartDAO.updateInDatabase(this.userMail, productID, (result.get().getNumeroProdotto()));
         }
         else
         	System.out.println("No item found.");
@@ -197,7 +197,7 @@ public class ShoppingCart {
             }
             else {//Otherwise, decrement the number of items of that product in the cart
                 result.get().removeOneItem();
-                ShoppingCartDAO.updateInDatabase(this.userMail, productID, (result.get().getNumeroProdotto() - 1));
+                ShoppingCartDAO.updateInDatabase(this.userMail, productID, (result.get().getNumeroProdotto()));
             }
             
         }
