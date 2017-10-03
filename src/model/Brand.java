@@ -34,7 +34,6 @@ public enum Brand {
 	TAMA,
 	WARWICK,
 	YAMAHA,
-	ZILDJIAN,
-	Other
+	ZILDJIAN
 	
 }

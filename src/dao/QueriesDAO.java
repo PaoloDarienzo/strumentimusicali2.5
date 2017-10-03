@@ -125,7 +125,7 @@ public class QueriesDAO {
      		search = "true";
      	}
      	else {
-     		search = "to_tsvector(descrizione || '. ' || nome) @@ to_tsquery('" + search + "')";
+     		search = "to_tsvector(descrizione || '. ' || nome || '. ' || marca) @@ to_tsquery('" + search + "')";
      	}
      	
     	Class.forName("org.postgresql.Driver");
