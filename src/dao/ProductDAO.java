@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.UUID;
 
 import model.Brand;
 import model.LivelloStrumento;
@@ -53,7 +54,7 @@ public class ProductDAO {
     				+ "usato, sconto, npezziminimi, livelloconsigliato) "
     				+ "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)")) {
     			
-    			pst.setInt(1, prodotto.getID());
+    			pst.setObject(1, prodotto.getID());
     			pst.setDate(2, prodotto.getDataInserimento());
     			pst.setString(3, prodotto.getIPInserimento().getHostAddress());
     			pst.setString(4, prodotto.getNome());
@@ -115,7 +116,7 @@ public class ProductDAO {
     			pst.setString(8, prodotto.getLivelloConsigliato().toString());
     			pst.setBoolean(9, prodotto.isUsato());
     			
-    			pst.setInt(10, prodotto.getID());
+    			pst.setObject(10, prodotto.getID());
     			
     			int n = pst.executeUpdate();
     			System.out.println("Modificate " + n + " righe in tabella strumento: " + prodotto.getID() + ".");
@@ -136,7 +137,7 @@ public class ProductDAO {
      * @param productID is the ID of the product that have to be deleted
      * @throws ClassNotFoundException if an error occurs with the connection to the database
      */
-    public static void deleteFromDatabase(int productID) throws ClassNotFoundException{
+    public static void deleteFromDatabase(UUID productID) throws ClassNotFoundException{
     	
     	//Deletion occurs in table "strumento" and eventually in the associated slave tables
     	//username:= postgres
@@ -150,7 +151,7 @@ public class ProductDAO {
     		try (Statement st = con.createStatement()){
     			st.executeUpdate(
     					"DELETE FROM strumento "
-    					+ "WHERE id = " + productID);
+    					+ "WHERE id = '" + productID + "'");
     			
     			int n = st.getUpdateCount();
     			System.out.println("Rimosse " + n + " righe da tabella strumento: " + productID);
@@ -172,7 +173,7 @@ public class ProductDAO {
      * @throws ClassNotFoundException if an error occurs with the connection to the database
      * @throws UnknownHostException if an error occurs with the determination of the IP address
      */
-    public static Product getFromDatabase(int productID) throws ClassNotFoundException, UnknownHostException {
+    public static Product getFromDatabase(UUID productID) throws ClassNotFoundException, UnknownHostException {
     	
     	//Query occurs in table "strumento" and eventually in the associated slave tables
     	//username:= postgres
@@ -187,7 +188,7 @@ public class ProductDAO {
     				"SELECT * FROM strumento "
     				+ "WHERE id = ?")) {
     			
-    			pst.setInt(1, productID);
+    			pst.setObject(1, productID);
     			
     			ResultSet rs = pst.executeQuery();
     			

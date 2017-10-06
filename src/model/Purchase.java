@@ -4,6 +4,7 @@ import java.net.InetAddress;
 import java.sql.Date;
 import java.sql.Time;
 import java.util.List;
+import java.util.UUID;
 
 import dao.PurchaseDAO;
 
@@ -16,7 +17,7 @@ import dao.PurchaseDAO;
 public class Purchase {
     
 	private final String userMail;
-    private final int ID;
+    private final UUID ID;
     private final Date data;
     private final Time ora;
     private final InetAddress IPAddress;
@@ -37,7 +38,7 @@ public class Purchase {
      * @param prezzoTotale is the total price of the purchase
      * @param articoliAcquistati is the list of products purchased
      */
-    public Purchase(String mail, int ID, InetAddress IPAddress, MetodoDiConsegna metodoDiConsegna,
+    public Purchase(String mail, UUID ID, InetAddress IPAddress, MetodoDiConsegna metodoDiConsegna,
     				Payment pagamento, DeliveryPoint puntoDiConsegna,
     				float prezzoTotale, List<ProductInCart> articoliAcquistati){
     	this.userMail = mail;
@@ -65,7 +66,7 @@ public class Purchase {
      * @param prezzoTotale is the total price of the purchase
      * @param articoliAcquistati is the list of products purchased
      */
-    public Purchase(Date data, Time ora, String mail, int ID, InetAddress IPAddress, 
+    public Purchase(Date data, Time ora, String mail, UUID ID, InetAddress IPAddress, 
     		MetodoDiConsegna metodoDiConsegna, Payment pagamento, DeliveryPoint puntoDiConsegna,
 			float prezzoTotale, List<ProductInCart> articoliAcquistati){
 		this.userMail = mail;
@@ -92,7 +93,7 @@ public class Purchase {
      * Returns the ID of the purchase
      * @return the ID of the purchase
      */
-    public int getIDPurchase(){
+    public UUID getIDPurchase(){
     	return this.ID;
     }
     

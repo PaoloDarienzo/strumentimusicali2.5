@@ -3,6 +3,7 @@ package controller;
 
 import java.io.IOException;
 import java.util.NoSuchElementException;
+import java.util.UUID;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -50,7 +51,7 @@ public class ModifyCartServlet extends HttpServlet {
 		
 		HttpSession session = request.getSession(true);
     	User loggedUser = (User) session.getAttribute("currentSessionUser");
-    	int productID = Integer.parseInt(request.getParameter("productID"));
+    	UUID productID = java.util.UUID.fromString(request.getParameter("productID"));
     	
     	RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/jsp/cartView.jsp");
     	

@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.UUID;
 
 import customExceptions.NoItemException;
 import dao.ShoppingCartDAO;
@@ -48,7 +49,7 @@ public class ShoppingCart {
      */
     public void addToCart(Product product) throws ClassNotFoundException{
     	
-    	int IDProductToAdd = product.getID();
+    	UUID IDProductToAdd = product.getID();
     	Boolean isAlreadyAdded = false;
     	
     	for (ProductInCart prodottoInCarrello : this.articoliInCarrello) {
@@ -93,13 +94,13 @@ public class ShoppingCart {
      * @param quantity new number of items of that product
      * @throws NoSuchElementException when the items searched is not present in the list
      * @throws ClassNotFoundException if an error occurs with the connection to the database
-     * @see ShoppingCartDAO#updateInDatabase(String, int, int)
+     * @see ShoppingCartDAO#updateInDatabase(String, UUID, int)
      */
     public void updateCart(Product product, int quantity) throws NoSuchElementException, ClassNotFoundException{
     	//Since this method is always invoked on an already existing product,
     	//the exception can exist only in a runtime error.
     	
-    	int productID = product.getID();
+    	UUID productID = product.getID();
         
     	//convert the list in a stream, then
     	//search based on the filter, then
@@ -121,11 +122,11 @@ public class ShoppingCart {
      * Removes the product from the list
      * @param productToRemove is the product that has to be removed from the list
      * @throws ClassNotFoundException if an error occurs with the connection to the database
-     * @see ShoppingCartDAO#deleteProductFromDatabase(String, int)
+     * @see ShoppingCartDAO#deleteProductFromDatabase(String, UUID)
      */
     public void removeFromCart(Product productToRemove) throws ClassNotFoundException{
     	//If productToRemove is not in the list, nothing happens.
-    	int IDToRemove = productToRemove.getID();
+    	UUID IDToRemove = productToRemove.getID();
         this.articoliInCarrello.removeIf(a -> Objects.equals(a.getProduct().getID(), IDToRemove));
         ShoppingCartDAO.deleteProductFromDatabase(this.userMail, IDToRemove);
     }
@@ -145,13 +146,13 @@ public class ShoppingCart {
      * @param product to increment
      * @throws NoSuchElementException when the items searched is not present in the list
      * @throws ClassNotFoundException if an error occurs with the connection to the database
-     * @see ShoppingCartDAO#updateInDatabase(String, int, int)
+     * @see ShoppingCartDAO#updateInDatabase(String, UUID, int)
      */
     public void incrementInCart(Product product) throws NoSuchElementException, ClassNotFoundException{
     	//Since this method is always invoked on an already existing product,
     	//the exception can exist only in a runtime error.
     	
-    	int productID = product.getID();
+    	UUID productID = product.getID();
         
     	//convert the list in a stream, then
     	//search based on the filter, then
@@ -174,13 +175,13 @@ public class ShoppingCart {
      * @param product to decrement
      * @throws NoItemException when there aren't items to decrease
      * @throws ClassNotFoundException if an error occurs with the connection to the database
-     * @see ShoppingCartDAO#updateInDatabase(String, int, int)
+     * @see ShoppingCartDAO#updateInDatabase(String, UUID, int)
      */
     public void decrementInCart(Product product) throws NoItemException, ClassNotFoundException{
     	//Since this method is always invoked on an already existing product,
     	//the exception can exist only in a runtime error.
     	
-    	int productID = product.getID();
+    	UUID productID = product.getID();
         
     	//convert the list in a stream, then
     	//search based on the filter, then

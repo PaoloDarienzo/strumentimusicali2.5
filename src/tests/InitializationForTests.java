@@ -6,9 +6,9 @@ import java.security.NoSuchAlgorithmException;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import model.*;
-import view.Main;
 
 /**
  * This class initializes users and products, used for tests.
@@ -28,7 +28,7 @@ public class InitializationForTests {
 		
 		String pswEncrypted;
 		
-		pswEncrypted = Encode.cryptingString("Krifpol5878%lf%$ù.!");
+		pswEncrypted = Encode.cryptingString("Krifpol5878%lf%$ï¿½.!");
 		
 		User admin0 = new User("luciacrive995@gmail.com", "Lucia_crive", pswEncrypted,
 				"Lucia", "Crivellini", "3909829182", "Verona",
@@ -69,7 +69,7 @@ public class InitializationForTests {
 		
 		InetAddress AdminIP = InetAddress.getLocalHost();
 		
-		Product EKO_S300_SUNBURST = new Product(Main.createProductID() + 500, "EKO S300 Sunburst", 27, 
+		Product EKO_S300_SUNBURST = new Product(UUID.randomUUID(), "EKO S300 Sunburst", 27, 
 				"La serie Starter nasce per offrire la possibilita' a tutti i chitarristi, "
 				+ "in particolar modo i principianti, di avere uno strumento con caratteristiche simili a "
 				+ "modelli di chitarra che hanno fatto la storia della musica.", 
@@ -77,14 +77,14 @@ public class InitializationForTests {
 				new Date(2016-1900,11,02), AdminIP, "c", 0, 0, null, false);
 		productList.add(EKO_S300_SUNBURST);
 		
-		Product ltd_alexi = new Product(Main.createProductID() + 500, "ltd alexi", 2, 
+		Product ltd_alexi = new Product(UUID.randomUUID(), "ltd alexi", 2, 
 				"Chitarra Elettrica Solid Body Signature Alexi Laiho. \n" + "Pick-Up: ESP Designed LH-301B.", 
 				(float) 6.66, (float) 649.00, TipoStrumento.PIZZICO, Brand.ESP,
 				new Date(2017-1900,06,06), AdminIP, "p",
 				10, 0, null, true);
 		productList.add(ltd_alexi);
 		
-		Product CASIO_SA46 = new Product(Main.createProductID() + 500, "Casio SA46", 150, 
+		Product CASIO_SA46 = new Product(UUID.randomUUID(), "Casio SA46", 150, 
 				"Piu' che un giocattolo: "
 				+ "d'altronde i piu' piccoli devono sviluppare sui 32 tasti la "
 				+ "passione per la musica fin dall'inizio.", (float) 1.2, (float) 45.00, 

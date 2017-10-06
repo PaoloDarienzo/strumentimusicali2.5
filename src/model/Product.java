@@ -5,6 +5,7 @@ import java.net.InetAddress;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import dao.ProductDAO;
 
@@ -17,7 +18,7 @@ import dao.ProductDAO;
  */
 public class Product {
 	
-    private final int ID;
+    private final UUID ID;
     private String nome;
     private int numeroPezziDisponibili;
     private String descrizione;
@@ -58,7 +59,7 @@ public class Product {
      * @param livelloConsigliato is the suggested level for the instrument
      * @param usato indicate if the product is used or not
      */
-    public Product(int ID, String nome, int numeroPezziDisponibili, String descrizione,
+    public Product(UUID ID, String nome, int numeroPezziDisponibili, String descrizione,
                         float peso, float prezzo, TipoStrumento classificazione,
                         Brand marca, Date dataInserimento, InetAddress IPInserimento, String productType,
                         int sconto, int numeroPezziMinimo, LivelloStrumento livelloConsigliato,
@@ -103,7 +104,7 @@ public class Product {
      * Returns the ID of the product
      * @return the ID of the product
      */
-    public int getID(){
+    public UUID getID(){
         return this.ID;
     }
 
@@ -332,7 +333,7 @@ public class Product {
     /**
      * Deletes the product in the database
      * @throws ClassNotFoundException if an error occurs with the connection to the database
-     * @see ProductDAO#deleteFromDatabase(int)
+     * @see ProductDAO#deleteFromDatabase(UUID)
      */
     public void deleteFromDatabase() throws ClassNotFoundException {
     	ProductDAO.deleteFromDatabase(this.ID);    	

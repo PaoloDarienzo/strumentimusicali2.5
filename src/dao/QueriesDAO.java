@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import model.Product;
 
@@ -147,7 +148,7 @@ public class QueriesDAO {
 				ResultSet rs = st.getResultSet();
 				
 				while (rs.next()) {
-					queryResults.add(ProductDAO.getFromDatabase(rs.getInt(1)));
+					queryResults.add(ProductDAO.getFromDatabase((UUID) rs.getObject(1)));
 				}
 			
 		} catch (SQLException e) {

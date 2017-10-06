@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import model.DeliveryPoint;
 import model.MetodoDiConsegna;
@@ -59,8 +60,8 @@ public class PurchaseDAO {
 	    				+ "nomemetodo, credenziali) "
 	    				+ "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)")) {
 	    			
-	    			pst.setInt(1, acquisto.getIDPurchase());
-	    			pst.setInt(2, prodottoAggiunto.getProduct().getID());
+	    			pst.setObject(1, acquisto.getIDPurchase());
+	    			pst.setObject(2, prodottoAggiunto.getProduct().getID());
 	    			pst.setInt(3, prodottoAggiunto.getNumeroProdotto());
 	    			pst.setTime(4, acquisto.getPurchaseTime());
 	    			pst.setDate(5, acquisto.getPurchaseDate());
@@ -97,7 +98,7 @@ public class PurchaseDAO {
 	 * @throws ClassNotFoundException if an error occurs with the connection to the database
 	 * @throws UnknownHostException if an error occurs with the determination of the IP address
 	 */
-	public static Purchase getFromDatabase(int purchaseID) throws ClassNotFoundException, UnknownHostException {
+	public static Purchase getFromDatabase(UUID purchaseID) throws ClassNotFoundException, UnknownHostException {
     	
     	//Query occurs in table "ordine"
     	//username:= postgres
@@ -112,7 +113,7 @@ public class PurchaseDAO {
     				"SELECT * FROM " + NOME_TABELLA + " "
     				+ "WHERE id = ?")) {
     			
-    			pst.setInt(1, purchaseID);
+    			pst.setObject(1, purchaseID);
     			
     			ResultSet rs = pst.executeQuery();
     			

@@ -6,6 +6,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.UUID;
 
 import model.ProductInCart;
 import model.ShoppingCart;
@@ -48,7 +49,7 @@ public class ShoppingCartDAO {
     				+ "(strumento, cliente, npezzi) "
     				+ "VALUES (?,?,?)")) {
     			
-    			pst.setInt(1, prodotto.getProduct().getID());
+    			pst.setObject(1, prodotto.getProduct().getID());
     			pst.setString(2, userMail);
     			pst.setInt(3, prodotto.getNumeroProdotto());
     			
@@ -74,7 +75,7 @@ public class ShoppingCartDAO {
      * @param newQuantity is the new quantity to set for the product
      * @throws ClassNotFoundException if an error occurs with the connection to the database
      */
-    public static void updateInDatabase(String userMail, int productID, int newQuantity) throws ClassNotFoundException{
+    public static void updateInDatabase(String userMail, UUID productID, int newQuantity) throws ClassNotFoundException{
     	
     	//Update occurs in table "aggiunto"
     	//username:= postgres
@@ -91,7 +92,7 @@ public class ShoppingCartDAO {
     				+ " WHERE strumento = ? AND cliente = ?")) {
     			
     			pst.setInt(1, newQuantity);
-    			pst.setInt(2, productID);
+    			pst.setObject(2, productID);
     			pst.setString(3, userMail);
     			
     			int n = pst.executeUpdate();
@@ -113,7 +114,7 @@ public class ShoppingCartDAO {
      * @param productID is the ID of the product that have to be removed
      * @throws ClassNotFoundException if an error occurs with the connection to the database
      */
-    public static void deleteProductFromDatabase(String userMail, int productID) throws ClassNotFoundException{
+    public static void deleteProductFromDatabase(String userMail, UUID productID) throws ClassNotFoundException{
     	
     	//Deletion occurs in table "aggiunto"
     	//username:= postgres
@@ -129,7 +130,7 @@ public class ShoppingCartDAO {
     				+ "WHERE strumento = ? AND "
     				+ "cliente = ?")) {
     			
-    			pst.setInt(1, productID);
+    			pst.setObject(1, productID);
     			pst.setString(2, userMail);
     			
     			int n = pst.executeUpdate();
@@ -211,7 +212,7 @@ public class ShoppingCartDAO {
     			
     			while (rs.next()) {
 
-    				int productID = rs.getInt("strumento");
+    				UUID productID = (UUID) rs.getObject("strumento");
     				int npezzi = rs.getInt("npezzi");
     				
     				utente.getShoppingCart().removeAllFromCart();

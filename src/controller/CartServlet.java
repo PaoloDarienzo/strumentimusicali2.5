@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.util.UUID;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -48,7 +49,7 @@ public class CartServlet extends HttpServlet {
     @Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	
-    	int productID = Integer.parseInt(request.getParameter("productIDToAdd"));
+    	UUID productID = java.util.UUID.fromString(request.getParameter("productIDToAdd"));
     	
     	HttpSession session = request.getSession(true);
     	User loggedUser = (User) session.getAttribute("currentSessionUser");

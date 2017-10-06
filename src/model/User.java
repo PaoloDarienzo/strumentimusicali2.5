@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.UUID;
 
 import dao.DeliveryPointDAO;
 import dao.PaymentDAO;
@@ -15,8 +16,6 @@ import static java.util.stream.Collectors.toList;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
-
-import view.Main;
 
 /**
  * The User class represents whoever wants to connect to the website.
@@ -405,7 +404,7 @@ public class User {
     		
     		InetAddress UserIP = InetAddress.getByName(host);
     		
-			Purchase acquisto = new Purchase(this.mail, Main.createPurchaseID(), UserIP, 
+			Purchase acquisto = new Purchase(this.mail, UUID.randomUUID(), UserIP, 
 					metodoDiConsegna, pagamento, puntoDiConsegna,
 					getTotalPrice(), articoliCopia);
 			
