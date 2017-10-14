@@ -5,8 +5,6 @@ import static org.junit.Assert.assertEquals;
 import java.net.UnknownHostException;
 import java.sql.Date;
 import java.util.List;
-import java.util.UUID;
-
 import org.junit.Test;
 
 import model.LivelloStrumento;
