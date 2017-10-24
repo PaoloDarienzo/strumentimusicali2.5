@@ -34,6 +34,7 @@ public class Main {
 	
 	//TODO
 	//Da rimuovere, serve per svuotare il database
+	@SuppressWarnings("unused")
 	private static void svuotaTab(String nomeTabella) throws ClassNotFoundException{
 		
 		Class.forName("org.postgresql.Driver");

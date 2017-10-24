@@ -63,6 +63,7 @@ public class InitializationForTests {
 	 * @throws UnknownHostException if an error occurs with the determination of the IP address
 	 * @throws ClassNotFoundException if an error occurs with the connection to the database
 	 */
+	@SuppressWarnings("deprecation")
 	protected static List<Product> productInit() throws UnknownHostException, ClassNotFoundException{
 		
 		List<Product> productList = new ArrayList<Product>();

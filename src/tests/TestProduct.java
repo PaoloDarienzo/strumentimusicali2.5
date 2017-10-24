@@ -23,6 +23,7 @@ public class TestProduct {
 	 * @throws UnknownHostException if an error occurs with the determination of IP address
 	 * @throws ClassNotFoundException if an error occurs with the connection to the database
 	 */
+	@SuppressWarnings("deprecation")
 	@Test
 	public void testCreation() throws UnknownHostException, ClassNotFoundException {
 		
