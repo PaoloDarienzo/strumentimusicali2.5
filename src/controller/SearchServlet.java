@@ -59,7 +59,7 @@ public class SearchServlet extends HttpServlet {
 		
 		try {
 			
-			queryResults= QueriesDAO.getProducts(searchStringIsVoid, search,
+			queryResults = QueriesDAO.getProducts(searchStringIsVoid, search,
 					brandSelected, selectedInstrumentType, selectedUsedStatus, selectedProductType);
 		
 		} catch (ClassNotFoundException e) {
